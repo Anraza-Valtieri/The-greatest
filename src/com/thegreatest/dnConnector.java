@@ -11,7 +11,6 @@ public class dnConnector {
     public static final String URL = "jdbc:mysql://localhost/1009";
     public static final String USER = "root";
     public static final String PASSWORD = "";
-    public static final String DATABASE = "1009";
     public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver";
 
     //private constructor
