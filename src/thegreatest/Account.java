@@ -1,10 +1,8 @@
-package com.thegreatest;
+package thegreatest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class Account{
 	private String name;

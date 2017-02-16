@@ -1,4 +1,4 @@
-package com.thegreatest;
+package thegreatest;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

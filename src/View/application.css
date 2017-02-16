@@ -1,0 +1,158 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+/*
+ * Root CSS, think of it as panel (JFrame)
+ */
+.root {
+    /* 
+     * -fx-background-image: url("https://www.google.com/images/srpr/logo3w.png");
+     * -fx-background-image: url("/Image/re-zero.jpg");
+    */
+    
+    -fx-background-image: url("/Image/re-zero.jpg");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover;
+
+}
+
+/*
+ * Login (JFrame)
+ */
+#vbox_login {
+	-fx-max-width: 350px;
+}
+/*
+ * Header, Banner CSS
+ */
+.icon {
+	-fx-image:url("/Image/javaicon.png") ;
+}
+
+/*
+ * Side Navigation Bar CSS
+ */
+#profile_menu_icon {
+	-fx-image:url("/Image/girl2.gif") ;
+}
+#home_menu_icon {
+	-fx-image:url("/Image/home-icon.png") ;
+}
+
+#quiz_menu_icon {
+	-fx-image:url("/Image/createq-icon.png") ;
+}
+#teacher_viewquiz_menu_btn {
+	-fx-image:url("/Image/createq-icon.png") ;
+}
+#teacher_createquiz_menu_btn {
+	-fx-image:url("/Image/createq2-icon.png") ;
+}
+#result_menu_icon {
+	-fx-image:url("/Image/notes-icon.png") ;
+}
+#teacher_result_menu_btn {
+	-fx-image:url("/Image/notes-icon.png") ;
+}
+
+
+#hbox_banner {
+	-fx-background-color: #FDE3A7;
+}
+#vbox_content {
+	-fx-background-color: #FFF;
+}
+#vbox_menu {
+	-fx-background-color: #F4F4F4;
+}
+#profile_menu_btn {
+	-fx-background-color: transparent;
+}
+#profilecircle_image {
+	-fx-image:url("/Image/girl.jpg") ;
+}
+#home_menu_btn {
+	-fx-background-color: #F2F1EF;
+}
+#home_menu_btn:hover {
+	-fx-background-color: #ABB7B7;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+}
+#teacher_home_menu_btn {
+	-fx-background-color: #F2F1EF;
+}
+#teacher_home_menu_btn:hover {
+	-fx-background-color: #ABB7B7;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+}
+#quiz_menu_btn {
+	-fx-background-color: #F2F1EF;
+}
+#quiz_menu_btn:hover {
+	-fx-background-color: #ABB7B7;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+}
+#teacher_viewquiz_menu_btn {
+	-fx-background-color: #F2F1EF;
+}
+#teacher_viewquiz_menu_btn:hover {
+	-fx-background-color: #ABB7B7;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+}
+#teacher_createquiz_menu_btn {
+	-fx-background-color: #F2F1EF;
+}
+#teacher_createquiz_menu_btn:hover {
+	-fx-background-color: #ABB7B7;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+}
+#result_menu_btn {
+	-fx-background-color: #F2F1EF;
+}
+#result_menu_btn:hover {
+	-fx-background-color: #ABB7B7;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+}
+#teacher_result_menu_btn {
+	-fx-background-color: #F2F1EF;
+}
+#teacher_result_menu_btn:hover {
+	-fx-background-color: #ABB7B7;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+}
+/*
+ * Student Take Quiz, Question Content Box CSS, Question wrap can be apply for both student, teacher
+ */
+ #vbox_student_qnwrap {
+ 	-fx-padding: 10px;
+ }
+#label_student_qndisplay {
+	-fx-padding: 10px;
+}
+#radio_student_mcq1 {
+	-fx-padding: 5px;
+}
+#radio_student_mcq2 {
+	-fx-padding: 5px;
+}
+#radio_student_mcq3 {
+	-fx-padding: 5px;
+}
+
+/*
+ * Teacher Create Quiz, Question Content Box CSS
+ */
+#teacher_hbox_btn {
+	-fx-padding: 5px;
+}
+ #vbox_teacher_qnwrap {
+ 	-fx-padding: 10px;
+ }
+
+

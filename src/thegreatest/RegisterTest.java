@@ -1,10 +1,10 @@
-package com.thegreatest;
+package thegreatest;
 
 import java.util.Scanner;
 
 public class RegisterTest {
 
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Please enter your name: ");
 		String name = sc.nextLine();
@@ -27,5 +27,5 @@ public class RegisterTest {
 		
 		
 		test.createAccount(name, uniID, mail, pw, typeAcc);
-	}
+	}*/
 }

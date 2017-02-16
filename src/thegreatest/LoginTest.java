@@ -1,4 +1,4 @@
-package com.thegreatest;
+package thegreatest;
 
 import java.util.Scanner;
 
@@ -7,7 +7,7 @@ public class LoginTest {
 	
 
 
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Please enter your ID: ");
 		String uniID = sc.nextLine();
@@ -19,7 +19,7 @@ public class LoginTest {
 		login.setPassword(pw);
 		
 		login.getLogin(uniID, pw);
-	}
+	}*/
 
 		
 	

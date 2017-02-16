@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane id="baseStudentBorder" layoutY="14.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox id="hbox_banner" prefHeight="65.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView id="icon" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/javaicon.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Learn Java">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding></HBox>
+         </top>
+         <left>
+            <VBox id="vbox_menu" prefHeight="200.0" prefWidth="180.0" BorderPane.alignment="CENTER">
+               <children>
+                  <MenuButton id="profile_menu_btn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="80.0" prefWidth="213.0" text="Rem &amp; Ram">
+                    <items>
+                      <MenuItem id="menu_changepassword" mnemonicParsing="false" text="Change Password" />
+                        <MenuItem id="menu_logout" mnemonicParsing="false" text="Log Out" />
+                    </items>
+                     <graphic>
+                        <ImageView id="profile_menu_icon" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </MenuButton>
+                  <Button id="home_menu_btn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Home">
+                     <graphic>
+                        <ImageView id="home_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button id="quiz_menu_btn" alignment="BASELINE_LEFT" disable="true" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="com.company.Quiz">
+                     <graphic>
+                        <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button id="result_menu_btn" alignment="BASELINE_LEFT" disable="true" layoutX="10.0" layoutY="172.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Result">
+                     <graphic>
+                        <ImageView id="result_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </VBox>
+         </left>
+         <center>
+            <VBox id="vbox_content" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Pass in com.company.Quiz Name/ ID">
+                     <VBox.margin>
+                        <Insets left="20.0" top="22.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane id="scollpane_student_takequiz" prefHeight="426.0" prefWidth="588.0">
+                    <content>
+                      <AnchorPane>
+                           <children>
+                              <VBox id="vbox_student_quiz_fullwrap" prefHeight="200.0" prefWidth="568.0">
+                                 <children>
+                                    <VBox id="vbox_student_qnwrap" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label id="label_student_qnno" text="Qn.1" />
+                                          <Label id="label_student_qndisplay" text="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog" wrapText="true" />
+                                          <RadioButton id="radio_student_mcq1" mnemonicParsing="false" text="Ans 1" />
+                                          <RadioButton id="radio_student_mcq2" mnemonicParsing="false" text="Ans 1" />
+                                          <RadioButton id="radio_student_mcq3" mnemonicParsing="false" text="Ans 1" />
+                                          <RadioButton id="radio_student_mcq4" mnemonicParsing="false" text="Ans 1" />
+                                       </children>
+                                    </VBox>
+                                    <VBox id="vbox_student_qnwrap" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label id="label_student_qnno" text="Qn.1" />
+                                          <Label id="label_student_qndisplay" text="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog" wrapText="true" />
+                                          <RadioButton id="radio_student_true" mnemonicParsing="false" text="True" />
+                                          <RadioButton id="radio_student_false" mnemonicParsing="false" text="False" />
+                                       </children>
+                                    </VBox>
+                                    <VBox id="vbox_student_qnwrap" layoutX="10.0" layoutY="172.0" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label id="label_student_qnno" text="Qn.1" />
+                                          <Label id="label_student_qndisplay" text="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog" wrapText="true" />
+                                          <TextField id="textarea_student_ans" promptText="Input answer here">
+                                             <VBox.margin>
+                                                <Insets left="15.0" right="15.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox id="vbox_student_qnwrap" layoutX="10.0" layoutY="280.0" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Button id="btn_student_submitquiz" mnemonicParsing="false" text="Submit" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                     <VBox.margin>
+                        <Insets left="25.0" right="25.0" top="18.0" />
+                     </VBox.margin>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
