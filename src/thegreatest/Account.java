@@ -128,7 +128,10 @@ public class Account{
 
 			connection = dnConnector.getConnection();
 			String SQL = "SELECT * FROM accounts WHERE uniqueID=?";
-
+			if(connection == null) {
+				System.out.println("Error: No connection to DB");
+				return false;
+			}
 			statement = connection.prepareStatement(SQL);
 			statement.setString(1, uniqueID);
 			rs = statement.executeQuery();
@@ -148,9 +151,22 @@ public class Account{
 
 			if (uniqueID.equals(dbId) && password.equals(dbPw))
 			{
-				System.out.print("Successful Login!\n----");
+				System.out.println("Successful Login!\n----");
+				String dbName = rs.getString("name");
+				String dbEmail = rs.getString("email");
+				int dbType = rs.getInt("type");
+				int dbAid = rs.getInt("id");
+
+				setName(dbName);
+				setUniqID(dbId);
+				setPassword(dbPw);
+				setEmail(dbEmail);
+				setType(dbType);
+				setaID(dbAid);
 				return true;
 			}
+
+
 
 		}  catch (SQLException e) {
 			e.printStackTrace();
@@ -164,7 +180,7 @@ public class Account{
 			}
 		}
 
-		System.out.print("Unsuccessful Login\n----");
+		System.out.println("Unsuccessful Login\n----");
 		return false;
 	}
 
