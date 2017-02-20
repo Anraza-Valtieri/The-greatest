@@ -42,12 +42,16 @@ public class loginController implements Initializable {
 	        		 parent.getStylesheets().add("View/application.css");
 	        		 // Use casting to point to specific window
 	        		 ((javafx.scene.Node)(event.getSource())).getScene().getWindow().hide();
-	        		 
-	     		
-	        		 Scene scence = new Scene(parent);
-	        		 Stage stage = new Stage();
-	        		 stage.setScene(scence);
-	        		 stage.show();
+
+                     Scene scence = new Scene(parent);
+                     //Stage stage = new Stage();
+                     main.pStage.setScene(scence);
+                     //main.pStage.show();
+
+	        		 //Scene scence = new Scene(parent);
+	        		 //Stage stage = new Stage();
+	        		 //stage.setScene(scence);
+	        		 //stage.show();
 	        	 } catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -80,14 +84,12 @@ public class loginController implements Initializable {
                     if (loginType == 0) { // Student
                         System.out.println("Account Flag: student!");
                         try {
-                            Parent parent = FXMLLoader.load(getClass().getResource("/View/studentTakeQuiz.fxml"));
+                            Parent parent = FXMLLoader.load(getClass().getResource("/View/StudentQuiz.fxml"));
                             parent.getStylesheets().add("View/application.css");
                             // Use casting to point to specific window
-                            ((javafx.scene.Node)(event.getSource())).getScene().getWindow().hide();
                             Scene scence = new Scene(parent);
-                            Stage stage = new Stage();
-                            stage.setScene(scence);
-                            stage.show();
+                            main.pStage.setScene(scence);
+
                         } catch (IOException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -100,11 +102,8 @@ public class loginController implements Initializable {
                             Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
                             parent.getStylesheets().add("View/application.css");
                             // Use casting to point to specific window
-                            ((javafx.scene.Node)(event.getSource())).getScene().getWindow().hide();
                             Scene scence = new Scene(parent);
-                            Stage stage = new Stage();
-                            stage.setScene(scence);
-                            stage.show();
+                            main.pStage.setScene(scence);
                         } catch (IOException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -113,16 +112,12 @@ public class loginController implements Initializable {
 
                     if (loginType == 2) { // Admin
                         System.out.println("Account flag Admin!");
-                        System.out.println("Account flag Teacher!");
                         try {
                             Parent parent = FXMLLoader.load(getClass().getResource("/View/register.fxml"));
                             parent.getStylesheets().add("View/application.css");
                             // Use casting to point to specific window
-                            ((javafx.scene.Node)(event.getSource())).getScene().getWindow().hide();
                             Scene scence = new Scene(parent);
-                            Stage stage = new Stage();
-                            stage.setScene(scence);
-                            stage.show();
+                            main.pStage.setScene(scence);
                         } catch (IOException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();

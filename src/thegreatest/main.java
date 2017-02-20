@@ -21,13 +21,14 @@ import javafx.stage.Stage;
 public class main extends Application {
 	// Global variable
 	public static int qnno = 0;
+	public static Stage pStage;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 //		Parent root = FXMLLoader.load(getClass().getResource("/View/mainPage.fxml"));
 		Parent root = FXMLLoader.load(getClass().getResource("/View/login.fxml"));
 		root.getStylesheets().add("View/application.css");
-		
+		pStage = primaryStage;
 		primaryStage.setScene(new Scene(root));
 		primaryStage.setTitle("Learn Java Program");
 		primaryStage.show();
