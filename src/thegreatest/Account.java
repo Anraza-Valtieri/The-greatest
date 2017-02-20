@@ -11,6 +11,7 @@ public class Account{
 	private int type;
 	private String email;
 	private int aID;
+	private DbConnection dc;
 
 	public Account(){
 		this.name = "";
@@ -86,9 +87,9 @@ public class Account{
 		PreparedStatement statement = null;
 
 		String sql = "INSERT INTO accounts (name, uniqueID, email, password, type) VALUES (?, ?, ?, ?, ?)";
-
+		dc = new DbConnection();
 		try {
-			connection = dnConnector.getConnection();
+			connection = dc.Connect();
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, user);
 			statement.setString(2, uniqID);
@@ -123,10 +124,10 @@ public class Account{
 		ResultSet rs = null;
 		Connection connection = null;
 		PreparedStatement statement = null;
-
+		dc = new DbConnection();
 		try {
 
-			connection = dnConnector.getConnection();
+			connection = dc.Connect();
 			String SQL = "SELECT * FROM accounts WHERE uniqueID=?";
 			if(connection == null) {
 				System.out.println("Error: No connection to DB");
@@ -192,8 +193,9 @@ public class Account{
 
 		Account acc = null;
 		String query = "SELECT * FROM accounts WHERE id=" + aId;
+		dc = new DbConnection();
 		try {
-			connection = dnConnector.getConnection();
+			connection = dc.Connect();
 			statement = connection.prepareStatement(query);
 			rs = statement.executeQuery(query);
 
@@ -224,9 +226,9 @@ public class Account{
 		PreparedStatement statement = null;
 
 		String sql = "UPDATE accounts SET name=?, email=?, password=?, WHERE uniqueID=?";
-
+		dc = new DbConnection();
 		try {
-			connection = dnConnector.getConnection();
+			connection = dc.Connect();
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, name);
 			statement.setString(2, email);
@@ -257,9 +259,9 @@ public class Account{
 		PreparedStatement statement = null;
 
 		String sql = "DELETE FROM accounts WHERE uniqueID=?";
-
+		dc = new DbConnection();
 		try {
-			connection = dnConnector.getConnection();
+			connection = dc.Connect();
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, uniqID);
 

@@ -101,6 +101,8 @@ public class Questions {
         this.marks = marks;
     }
 
+    private DbConnection dc;
+
     public void createQuestion(){
         Connection connection = null;
         PreparedStatement statement = null;
@@ -109,9 +111,9 @@ public class Questions {
 
 
         String sql = "INSERT INTO quiz_questions (teacher_id, subject, questions_text, question_type, data1, data2, data3, data4, data5, marks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+        dc = new DbConnection();
         try {
-            connection = dnConnector.getConnection();
+            connection = dc.Connect();
             statement = connection.prepareStatement(sql);
             statement.setInt(1, teacher_id);
             statement.setString(2, subject);
@@ -158,9 +160,9 @@ public class Questions {
 
         ArrayList<Questions> aq = new ArrayList<Questions>();
 
-
+        dc = new DbConnection();
         try {
-            connection = dnConnector.getConnection();
+            connection = dc.Connect();
 
             for (int i = 0 ; i < id.length; i++){
                 String query = "SELECT * FROM quiz_questions WHERE question_id = ?" ;
@@ -207,9 +209,9 @@ public class Questions {
         PreparedStatement statement = null;
 
         String sql = "DELETE FROM quiz_questions WHERE question_id = ?";
-
+        dc = new DbConnection();
         try {
-            connection = dnConnector.getConnection();
+            connection = dc.Connect();
             statement = connection.prepareStatement(sql);
             statement.setInt(1, question_id);
 
