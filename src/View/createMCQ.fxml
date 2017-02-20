@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="createMCQPane" fx:id="createMCQPane" prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.teacherCreateQuizController">
+   <children>
+      <VBox id="vbox_teacher_qnwrap" fx:id="vbox_teacher_qnwrap" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="568.0">
+         <children>
+            <Label id="label_teacher_createquiz_qnno" text="Qn.1" />
+            <TextField id="createMCQQN_1" fx:id="createMCQQN_1" promptText="Input question here">
+               <VBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </VBox.margin>
+            </TextField>
+            <CheckBox mnemonicParsing="false">
+               <graphic>
+                  <TextField />
+               </graphic>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false">
+               <graphic>
+                  <TextField />
+               </graphic>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false">
+               <graphic>
+                  <TextField />
+               </graphic>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false">
+               <graphic>
+                  <TextField />
+               </graphic>
+            </CheckBox>
+            <Button id="teacher_createquiz_removebtn" mnemonicParsing="false" text="Next" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

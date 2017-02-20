@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="createTFPane" fx:id="createTFPane" prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.">
+   <children>
+      <VBox id="vbox_teacher_qnwrap" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="568.0">
+         <children>
+            <Label id="label_teacher_createquiz_qnno" text="Qn.1" />
+            <TextField promptText="Input question here">
+               <VBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </VBox.margin>
+            </TextField>
+            <RadioButton mnemonicParsing="false" text="True" />
+            <RadioButton layoutX="10.0" layoutY="76.0" mnemonicParsing="false" text="False" />
+            <Button id="teacher_createquiz_removebtn" mnemonicParsing="false" text="Next" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

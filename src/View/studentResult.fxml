@@ -57,7 +57,7 @@
                         <ImageView id="home_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="quiz_menu_btn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="com.company.Quiz">
+                  <Button id="quiz_menu_btn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Quiz">
                      <graphic>
                         <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -87,7 +87,7 @@
                   <TableView id="student_table_result" prefHeight="384.0" prefWidth="619.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="Status" />
-                      <TableColumn id="student_result" prefWidth="75.0" text="com.company.Quiz Name" />
+                      <TableColumn id="student_result" prefWidth="75.0" text="Quiz Name" />
                     </columns>
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" top="18.0" />

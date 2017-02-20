@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thegreatest.loginController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.loginController">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -30,7 +30,7 @@
                         <DropShadow />
                      </effect>
                   </Label>
-                  <TextField id="txtbox_login_username" fx:id="txtbox_login_username" onAction="#doSomething"/>
+                  <TextField id="txtbox_login_username" fx:id="txtbox_login_username" onAction="#dosomething" />
                   <Label layoutX="10.0" layoutY="37.0" text="Password:">
                      <effect>
                         <DropShadow />
@@ -39,10 +39,10 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <PasswordField id="pwd_login_password" fx:id="pwd_login_password" onAction="#doSomething"/>
+                  <PasswordField id="pwd_login_password" />
                   <HBox id="hbox_login_btn" prefHeight="39.0" prefWidth="760.0">
                      <children>
-                        <Button id="login_btn" fx:id="fx_login_btn" mnemonicParsing="false" text="Login" onAction="#doSomething" />
+                        <Button id="login_btn" fx:id="fx_login_btn" mnemonicParsing="false" onAction="#dosomething" text="Login" />
                         <Button id="gotoregister_btn" fx:id="fx_gotoregister_register_btn" mnemonicParsing="false" text="Register">
                            <HBox.margin>
                               <Insets left="5.0" />

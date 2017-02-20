@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.teacherCreateQuizController">
    <children>
       <BorderPane id="baseStudentBorder" layoutY="14.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -58,12 +58,12 @@
                         <ImageView id="home_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="teacher_createquiz_menu_btn" alignment="BASELINE_LEFT" disable="true" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Create com.company.Quiz">
+                  <Button id="teacher_createquiz_menu_btn" alignment="BASELINE_LEFT" disable="true" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Create Quiz">
                      <graphic>
                         <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="teacher_viewquiz_menu_btn" alignment="BASELINE_LEFT" disable="true" layoutX="10.0" layoutY="209.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View com.company.Quiz">
+                  <Button id="teacher_viewquiz_menu_btn" alignment="BASELINE_LEFT" disable="true" layoutX="10.0" layoutY="209.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Quiz">
                      <graphic>
                         <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -82,7 +82,7 @@
          <center>
             <VBox id="vbox_content" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Create com.company.Quiz">
+                  <Label text="Create Quiz">
                      <VBox.margin>
                         <Insets left="20.0" top="22.0" />
                      </VBox.margin>
@@ -92,78 +92,110 @@
                   </Label>
                   <HBox id="teacher_hbox_btn" prefHeight="44.0" prefWidth="620.0">
                      <children>
-                        <Button id="teacher_createquiz_mcqbtn" mnemonicParsing="false" text="Add Mcq Qn" />
-                        <Button id="teacher_createquiz_tfbtn" mnemonicParsing="false" text="Add T/F Qn" />
-                        <Button id="teacher_createquiz_sabtn" mnemonicParsing="false" text="Add SA Qn" />
-                        <Button id="teacher_createquiz_createbtn" mnemonicParsing="false" text="Create com.company.Quiz" />
+                        <Button id="btn_addmcq" fx:id="btn_addmcq" mnemonicParsing="false" onAction="#changetoMCQ" text="Add Mcq Qn" />
+                        <Button id="btn_addtf" fx:id="btn_addtf" mnemonicParsing="false" onAction="#changetoTF" text="Add T/F Qn" />
+                        <Button id="btn_addsa" fx:id="btn_addsa" mnemonicParsing="false" onAction="#changetoSA" text="Add SA Qn" />
+                        <Button id="teacher_createquiz_createbtn" mnemonicParsing="false" text="Create Quiz" />
                      </children>
                   </HBox>
                   <ScrollPane id="scollpane_student_takequiz" prefHeight="426.0" prefWidth="588.0">
                     <content>
                       <AnchorPane>
                            <children>
-                              <VBox prefHeight="210.0" prefWidth="578.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <VBox prefHeight="210.0" prefWidth="578.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <VBox id="vbox_teacher_qnwrap_mcq" fx:id="vbox_teacher_qnwrap_mcq" prefHeight="200.0" prefWidth="568.0" visible="false">
                                  <children>
-                                    <VBox id="vbox_teacher_qnwrap" prefHeight="200.0" prefWidth="568.0">
-                                       <children>
-                                          <Label id="label_teacher_createquiz_qnno" text="Qn.1" />
-                                          <TextField promptText="Input question here">
-                                             <VBox.margin>
-                                                <Insets left="15.0" right="15.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <CheckBox mnemonicParsing="false">
-                                             <graphic>
-                                                <TextField />
-                                             </graphic>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false">
-                                             <graphic>
-                                                <TextField />
-                                             </graphic>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false">
-                                             <graphic>
-                                                <TextField />
-                                             </graphic>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false">
-                                             <graphic>
-                                                <TextField />
-                                             </graphic>
-                                          </CheckBox>
-                                          <Button id="teacher_createquiz_removebtn" mnemonicParsing="false" text="Remove" />
-                                       </children>
-                                    </VBox>
-                                    <VBox id="vbox_teacher_qnwrap" prefHeight="200.0" prefWidth="568.0">
-                                       <children>
-                                          <Label id="label_teacher_createquiz_qnno" text="Qn.1" />
-                                          <TextField promptText="Input question here">
-                                             <VBox.margin>
-                                                <Insets left="15.0" right="15.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <RadioButton mnemonicParsing="false" text="True" />
-                                          <RadioButton layoutX="10.0" layoutY="76.0" mnemonicParsing="false" text="False" />
-                                          <Button id="teacher_createquiz_removebtn" mnemonicParsing="false" text="Remove" />
-                                       </children>
-                                    </VBox>
-                                    <VBox id="vbox_teacher_qnwrap" layoutX="10.0" layoutY="271.0" prefHeight="200.0" prefWidth="568.0">
-                                       <children>
-                                          <Label id="label_teacher_createquiz_qnno" text="Qn.1" />
-                                          <TextField promptText="Input answer here">
-                                             <VBox.margin>
-                                                <Insets left="15.0" right="15.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <TextField layoutX="25.0" layoutY="37.0" promptText="Input question here">
-                                             <VBox.margin>
-                                                <Insets left="15.0" right="15.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <Button id="teacher_createquiz_removebtn" mnemonicParsing="false" text="Remove" />
-                                       </children>
-                                    </VBox>
+                                    <Label id="label_teacher_createquiz_mcq_qnno" fx:id="label_teacher_createquiz_mcq_qnno" text="Qn.1" />
+                                    <TextField id="txtfield_createquiz_mcq" fx:id="txtfield_createquiz_mcq" promptText="Input Question here">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                                       </VBox.margin>
+                                       <opaqueInsets>
+                                          <Insets top="5.0" />
+                                       </opaqueInsets>
+                                    </TextField>
+                                    <CheckBox id="cb1_createquiz" fx:id="cb1_createquiz" mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField id="txtfield_createquiz_mcq1" fx:id="txtfield_createquiz_mcq1" />
+                                       </graphic>
+                                       <VBox.margin>
+                                          <Insets bottom="2.0" top="2.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox id="cb2_createquiz" fx:id="cb2_createquiz" mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField id="txtfield_createquiz_mcq2" fx:id="txtfield_createquiz_mcq2" />
+                                       </graphic>
+                                       <VBox.margin>
+                                          <Insets bottom="2.0" top="2.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox id="cb3_createquiz" fx:id="cb3_createquiz" mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField id="txtfield_createquiz_mcq3" fx:id="txtfield_createquiz_mcq3" />
+                                       </graphic>
+                                       <VBox.margin>
+                                          <Insets bottom="2.0" top="2.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox id="cb4_createquiz" fx:id="cb4_createquiz" mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField id="txtfield_createquiz_mcq4" fx:id="txtfield_createquiz_mcq4" />
+                                       </graphic>
+                                       <VBox.margin>
+                                          <Insets bottom="2.0" top="2.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                    <Button id="btn_createquiz_mcq" fx:id="btn_createquiz_mcq" mnemonicParsing="false" text="Save">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <VBox id="vbox_teacher_qnwrap_tf" fx:id="vbox_teacher_qnwrap_tf" prefHeight="200.0" prefWidth="568.0" visible="false">
+                                 <children>
+                                    <Label id="label_teacher_createquiz_tf_qnno" fx:id="label_teacher_createquiz_tf_qnno" text="Qn.1" />
+                                    <TextField id="txtfield_createquiz_tf" fx:id="txtfield_createquiz_tf" promptText="Input Question here">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <RadioButton id="txtfield_createquiz_tf_1" fx:id="txtfield_createquiz_tf_1" mnemonicParsing="false" text="True">
+                                       <VBox.margin>
+                                          <Insets bottom="2.0" top="2.0" />
+                                       </VBox.margin>
+                                    </RadioButton>
+                                    <RadioButton id="txtfield_createquiz_tf_2" fx:id="txtfield_createquiz_tf_2" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" text="False">
+                                       <VBox.margin>
+                                          <Insets bottom="2.0" top="2.0" />
+                                       </VBox.margin>
+                                    </RadioButton>
+                                    <Button id="btn_createquiz_tf" fx:id="btn_createquiz_tf" mnemonicParsing="false" text="Save">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <VBox id="vbox_teacher_qnwrap_sa" fx:id="vbox_teacher_qnwrap_sa" prefHeight="200.0" prefWidth="568.0" visible="false">
+                                 <children>
+                                    <Label id="label_teacher_createquiz_sa_qnno" fx:id="label_teacher_createquiz_sa_qnno" text="Qn.1" />
+                                    <TextField id="txtfield_createquiz_sa" fx:id="txtfield_createquiz_tf" promptText="Input Question here">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField id="txtfield_createquiz_saAns" fx:id="txtfield_createquiz_saAns" layoutX="25.0" layoutY="37.0" promptText="Input Answer here">
+                                       <VBox.margin>
+                                          <Insets bottom="2.0" left="15.0" right="15.0" top="2.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Button id="btn_createquiz_sa" fx:id="btn_createquiz_sa" mnemonicParsing="false" text="Save">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
                                  </children>
                               </VBox>
                            </children>
