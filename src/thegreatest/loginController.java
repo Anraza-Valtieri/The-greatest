@@ -42,16 +42,9 @@ public class loginController implements Initializable {
 	        		 parent.getStylesheets().add("View/application.css");
 	        		 // Use casting to point to specific window
 	        		 ((javafx.scene.Node)(event.getSource())).getScene().getWindow().hide();
-
                      Scene scence = new Scene(parent);
-                     //Stage stage = new Stage();
                      main.pStage.setScene(scence);
-                     //main.pStage.show();
 
-	        		 //Scene scence = new Scene(parent);
-	        		 //Stage stage = new Stage();
-	        		 //stage.setScene(scence);
-	        		 //stage.show();
 	        	 } catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -66,8 +59,8 @@ public class loginController implements Initializable {
                 boolean loginSuccess = false;
                 String uniID = fx_txtbox_login_username.getText();
                 String pw = fx_pwd_login_password.getText();
-                System.out.println("USER: "+fx_txtbox_login_username.getText());
-                System.out.println("PASS: "+fx_pwd_login_password.getText());
+                System.out.println("[LOGIN]USER: "+fx_txtbox_login_username.getText());
+                System.out.println("[LOGIN]PASS: "+fx_pwd_login_password.getText());
 
                 Account login = new Account();
                 login.setUniqID(uniID);
@@ -76,13 +69,13 @@ public class loginController implements Initializable {
                 loginSuccess = login.getLogin(uniID, pw);
                 if(loginSuccess) {
                     loginType = login.getType();
-                    System.out.println("Account Name: " + login.getName());
-                    System.out.println("Account Email: " + login.getEmail());
-                    System.out.println("Account UID: " + login.getUniqID());
-                    System.out.println("Account AID: " + login.getaID());
+                    System.out.println("[LOGIN]Account Name: " + login.getName());
+                    System.out.println("[LOGIN]Account Email: " + login.getEmail());
+                    System.out.println("[LOGIN]Account UID: " + login.getUniqID());
+                    System.out.println("[LOGIN]Account AID: " + login.getaID());
 
                     if (loginType == 0) { // Student
-                        System.out.println("Account Flag: student!");
+                        System.out.println("[LOGIN]Account Flag: student!");
                         try {
                             Parent parent = FXMLLoader.load(getClass().getResource("/View/StudentQuiz.fxml"));
                             parent.getStylesheets().add("View/application.css");
@@ -97,7 +90,7 @@ public class loginController implements Initializable {
                     }
 
                     if (loginType == 1) { // Teacher
-                        System.out.println("Account flag Teacher!");
+                        System.out.println("[LOGIN]Account flag Teacher!");
                         try {
                             Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
                             parent.getStylesheets().add("View/application.css");
@@ -111,7 +104,7 @@ public class loginController implements Initializable {
                     }
 
                     if (loginType == 2) { // Admin
-                        System.out.println("Account flag Admin!");
+                        System.out.println("[LOGIN]Account flag Admin!");
                         try {
                             Parent parent = FXMLLoader.load(getClass().getResource("/View/register.fxml"));
                             parent.getStylesheets().add("View/application.css");

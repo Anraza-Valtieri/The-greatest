@@ -28,12 +28,12 @@ public class DbConnection {
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(url, user, password);
-            System.out.println("Database is connected !");
+            System.out.println("[MYSQL]Database is connected!");
             return conn;
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Database is not connected !");
+            System.out.println("[MYSQL]Database is not connected!");
         }
 
         return null;

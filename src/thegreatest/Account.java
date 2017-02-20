@@ -99,7 +99,7 @@ public class Account{
 
 			int rowsInserted = statement.executeUpdate();
 			if (rowsInserted > 0) {
-				System.out.println("A new account was inserted successfully!");
+				System.out.println("[ACCOUNT]A new account was inserted successfully!");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -126,11 +126,10 @@ public class Account{
 		PreparedStatement statement = null;
 		dc = new DbConnection();
 		try {
-
 			connection = dc.Connect();
 			String SQL = "SELECT * FROM accounts WHERE uniqueID=?";
 			if(connection == null) {
-				System.out.println("Error: No connection to DB");
+				System.out.println("[ACCOUNT]Error: No connection to DB");
 				return false;
 			}
 			statement = connection.prepareStatement(SQL);
@@ -146,13 +145,17 @@ public class Account{
 			}
 
 			if(dbId == null || dbId == ""){
-				System.out.println("ID not found!\n----");
+				System.out.println("[ACCOUNT]ID not found!\n----");
 				return false;
 			}
 
-			if (uniqueID.equals(dbId) && password.equals(dbPw))
-			{
-				System.out.println("Successful Login!\n----");
+			System.out.println("[ACCOUNT]ID Received: "+dbId.toString());
+			System.out.println("[ACCOUNT]ID: "+uniqueID.toString());
+			System.out.println("[ACCOUNT]Password Received: "+password.toString());
+			System.out.println("[ACCOUNT]Password: "+dbPw.toString());
+
+			if (uniqueID.equals(dbId) && password.equals(dbPw)) {
+				System.out.println("[ACCOUNT]Successful Login!\n----");
 				String dbName = rs.getString("name");
 				String dbEmail = rs.getString("email");
 				int dbType = rs.getInt("type");
@@ -165,6 +168,10 @@ public class Account{
 				setType(dbType);
 				setaID(dbAid);
 				return true;
+			}
+			else {
+				System.out.println("[ACCOUNT]Login FAILED due to Mismatch!\n----");
+				return false;
 			}
 
 
