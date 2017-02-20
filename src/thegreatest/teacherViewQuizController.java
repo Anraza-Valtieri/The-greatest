@@ -54,7 +54,7 @@ public class teacherViewQuizController implements Initializable {
             Connection conn = dc.Connect();
             tableinfo = FXCollections.observableArrayList();
             // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM quiz_info");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM quiz");
             while (rs.next()) {
                 //get string from db,whichever way 
             	//rs.getString(1) = database first column
