@@ -34,33 +34,41 @@ public class teacherCreateQuizController implements Initializable {
 	@FXML private Label label_teacher_createquiz_sa_qnno;
 	
 	@FXML
-	public void changetoMCQ(ActionEvent event) throws IOException{
+	public void changetoMCQ(ActionEvent event){
 		vbox_teacher_qnwrap_mcq.setVisible(true);
 		vbox_teacher_qnwrap_tf.setVisible(false);
 		vbox_teacher_qnwrap_sa.setVisible(false);
-		main.qnno += 1;
-		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
-		
-//		vbox_teacher_qnplain.getChildren().clear();
-//		vbox_teacher_qnplain.getChildren().add(FXMLLoader.load(getClass().getResource("createMCQ.fxml")));
-//		vbox_teacher_qnplain.getChildren().add((javafx.scene.Node) FXMLLoader.load(getClass().getResource("createMCQ.fxml")));
-//		vbox_teacher_qnplain.getChildren().setAll(FXMLLoader.load("createMCQ.fxml"));
-//		vbox_teacher_qnplain.getChildren().add((javafx.scene.Node) FXMLLoader.load(getClass().getResource("createMCQ.fxml")));
-//		createMCQPane.getChildren().addAll((Collection<? extends javafx.scene.Node>) FXMLLoader.load(getClass().getResource("Content2.fxml")));
+//		main.qnno += 1;
+//		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
 	}
 	@FXML
-	public void changetoTF(ActionEvent event) throws IOException{
+	public void changetoTF(ActionEvent event){
 		vbox_teacher_qnwrap_mcq.setVisible(false);
 		vbox_teacher_qnwrap_tf.setVisible(true);
 		vbox_teacher_qnwrap_sa.setVisible(false);
-		main.qnno += 1;
-		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
+//		main.qnno += 1;
+//		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
 	}
 	@FXML
 	public void changetoSA(ActionEvent event){
 		vbox_teacher_qnwrap_mcq.setVisible(false);
 		vbox_teacher_qnwrap_tf.setVisible(false);
 		vbox_teacher_qnwrap_sa.setVisible(true);
+//		main.qnno += 1;
+//		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
+	}
+
+	@FXML
+	public void createQuestion(ActionEvent event){
+		if(vbox_teacher_qnwrap_mcq.isVisible()){
+
+		}
+		if(vbox_teacher_qnwrap_tf.isVisible()){
+
+		}
+		if(vbox_teacher_qnwrap_sa.isVisible()){
+
+		}
 		main.qnno += 1;
 		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
 	}
