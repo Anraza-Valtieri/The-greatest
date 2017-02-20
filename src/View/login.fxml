@@ -30,7 +30,7 @@
                         <DropShadow />
                      </effect>
                   </Label>
-                  <TextField id="txtbox_login_username" fx:id="fx_txtbox_login_username" onAction="#dosomething" />
+                  <TextField id="txtbox_login_username" fx:id="fx_txtbox_login_username"  />
                   <Label layoutX="10.0" layoutY="37.0" text="Password:">
                      <effect>
                         <DropShadow />
@@ -39,10 +39,10 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <PasswordField id="pwd_login_password" fx:id="fx_pwd_login_password" onAction="#dosomething" />
+                  <PasswordField id="pwd_login_password" fx:id="fx_pwd_login_password" />
                   <HBox id="hbox_login_btn" prefHeight="39.0" prefWidth="760.0">
                      <children>
-                        <Button id="login_btn" fx:id="fx_login_btn" mnemonicParsing="false" onAction="#dosomething" text="Login" />
+                        <Button id="login_btn" fx:id="fx_login_btn" mnemonicParsing="false" text="Login" />
                         <Button id="gotoregister_btn" fx:id="fx_gotoregister_register_btn" mnemonicParsing="false" text="Register">
                            <HBox.margin>
                               <Insets left="5.0" />

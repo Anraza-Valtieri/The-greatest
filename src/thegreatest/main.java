@@ -25,7 +25,6 @@ public class main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-//		Parent root = FXMLLoader.load(getClass().getResource("/View/mainPage.fxml"));
 		Parent root = FXMLLoader.load(getClass().getResource("/View/login.fxml"));
 		root.getStylesheets().add("View/application.css");
 		pStage = primaryStage;
@@ -33,10 +32,7 @@ public class main extends Application {
 		primaryStage.setTitle("Learn Java Program");
 		primaryStage.show();
 	}
-	 
-
 	
-
 	public static void main(String[] args) {
 		launch(args);
 	}

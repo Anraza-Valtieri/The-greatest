@@ -127,11 +127,7 @@ public class loginController implements Initializable {
             }
         });
 
-}
-	
-	public void dosomething() throws IOException {
-
-	}
+    }
 
 }
 
