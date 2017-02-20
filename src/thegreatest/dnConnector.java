@@ -1,4 +1,4 @@
-package Controller;
+package thegreatest;
 
 //Step 1: Use interfaces from java.sql package
 import java.sql.Connection;

@@ -1,4 +1,4 @@
-package Controller;
+package thegreatest;
 
 import java.net.URL;
 import java.util.ResourceBundle;

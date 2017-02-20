@@ -1,4 +1,4 @@
-package Controller;
+package thegreatest;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 //		Parent root = FXMLLoader.load(getClass().getResource("/View/mainPage.fxml"));
-		Parent root = FXMLLoader.load(getClass().getResource("/View/studentTakeQuiz.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/View/login.fxml"));
 		root.getStylesheets().add("View/application.css");
 		
 		primaryStage.setScene(new Scene(root));

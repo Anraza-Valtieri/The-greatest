@@ -1,4 +1,4 @@
-package Controller;
+package thegreatest;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,13 +10,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.print.DocFlavor.URL;
-
 import Model.tableData;
 
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -26,6 +21,9 @@ import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 
 
 

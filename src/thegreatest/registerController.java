@@ -1,4 +1,4 @@
-package Controller;
+package thegreatest;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
