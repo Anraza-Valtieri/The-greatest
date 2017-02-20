@@ -1,4 +1,4 @@
-package thegreatest;
+package Controller;
 
 //Step 1: Use interfaces from java.sql package
 import java.sql.Connection;
@@ -14,7 +14,7 @@ public class dnConnector {
     public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver";
 
     //private constructor
-    private dnConnector() {
+    dnConnector() {
         try {
             //Step 2: Load MySQL Java driver
             Class.forName(DRIVER_CLASS);

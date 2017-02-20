@@ -133,16 +133,28 @@
  	-fx-padding: 10px;
  }
 #label_student_qndisplay {
-	-fx-padding: 10px;
+	-fx-padding: 5px;
 }
 #radio_student_mcq1 {
-	-fx-padding: 5px;
+	-fx-padding: 2px;
 }
 #radio_student_mcq2 {
-	-fx-padding: 5px;
+	-fx-padding: 2px;
 }
 #radio_student_mcq3 {
-	-fx-padding: 5px;
+	-fx-padding: 2px;
+}
+#radio_student_mcq4 {
+	-fx-padding: 2px;
+}
+#radio_student_true {
+	-fx-padding: 2px;	
+}
+#radio_student_false {
+	-fx-padding: 2px;	
+}
+#textarea_student_ans {
+
 }
 
 /*
@@ -151,8 +163,17 @@
 #teacher_hbox_btn {
 	-fx-padding: 5px;
 }
- #vbox_teacher_qnwrap {
+#vbox_teacher_qnwrap {
  	-fx-padding: 10px;
- }
-
+}
+#vbox_teacher_qnwrap_mcq {
+	-fx-padding: 10px;
+}
+#vbox_teacher_qnwrap_tf {
+	-fx-padding: 10px;
+}
+#vbox_teacher_qnwrap_sa {
+	-fx-padding: 10px;
+}
+/* Teacher Create Quiz, Question Content Box CSS */
 

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.teacherViewQuizController">
    <children>
       <BorderPane id="baseStudentBorder" layoutY="14.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -57,12 +57,12 @@
                         <ImageView id="home_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="teacher_createquiz_menu_btn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Create com.company.Quiz">
+                  <Button id="teacher_createquiz_menu_btn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Create Quiz">
                      <graphic>
                         <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="teacher_viewquiz_menu_btn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="209.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View com.company.Quiz">
+                  <Button id="teacher_viewquiz_menu_btn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="209.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Quiz">
                      <graphic>
                         <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -81,7 +81,7 @@
          <center>
             <VBox id="vbox_content" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="View com.company.Quiz">
+                  <Label text="View Quiz">
                      <VBox.margin>
                         <Insets left="20.0" top="22.0" />
                      </VBox.margin>
@@ -89,10 +89,10 @@
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <TableView id="student_table_quizlist" prefHeight="384.0" prefWidth="619.0">
+                  <TableView id="teacher_table_quizlist" fx:id="teacher_table_quizlist" prefHeight="384.0" prefWidth="619.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Status" />
-                      <TableColumn prefWidth="75.0" text="com.company.Quiz Name" />
+                      <TableColumn fx:id="tablestatus" maxWidth="2000.0" prefWidth="75.0" text="Status" />
+                      <TableColumn fx:id="tableqname" prefWidth="75.0" text="Quiz Name" />
                     </columns>
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" top="18.0" />
