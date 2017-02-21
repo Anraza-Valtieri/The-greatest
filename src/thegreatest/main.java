@@ -38,11 +38,9 @@ public class main extends Application {
 		primaryStage.setScene(new Scene(root));
 		primaryStage.setTitle("Learn Java Program");
 		primaryStage.show();
-		Rectangle2D screenbounds = Screen.getPrimary().getVisualBounds();
-		primaryStage.setX(screenbounds.getWidth()/8);
-		primaryStage.setY(screenbounds.getHeight()/8);
 		primaryStage.setMinHeight(800);
 		primaryStage.setMinWidth(1280);
+		primaryStage.centerOnScreen();
 	}
 	
 	public static void main(String[] args) {
