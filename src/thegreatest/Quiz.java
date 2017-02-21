@@ -16,7 +16,7 @@ public class Quiz
     private DbConnection dc;
 
     public Quiz(){
-
+        quiz_id = -1;
     }
     public Quiz(String quizname, String questionids, String subject){
         this.quizname=quizname;
@@ -27,6 +27,7 @@ public class Quiz
     public int getQuiz_id() {
         return quiz_id;
     }
+    public void setQuiz_id(int quiz_id){ this.quiz_id = quiz_id; }
     public String getQuizname() {
         return quizname;
     }
@@ -44,6 +45,41 @@ public class Quiz
     }
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public void getQuizDBName(){
+        ResultSet rs = null;
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        String sql = "SELECT quizname FROM quiz WHERE quiz_id=" + quiz_id;
+        dc = new DbConnection();
+        try {
+            System.out.println(quiz_id + " TEST");
+            connection = dc.Connect();
+            statement = connection.prepareStatement(sql);
+            //statement.setInt(1, quiz_id);
+
+
+            rs = statement.executeQuery(sql);
+
+            if (rs.next()){
+                this.setQuizname(rs.getString("quizname"));
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return;
     }
 
     public String getQuestions(String subject){

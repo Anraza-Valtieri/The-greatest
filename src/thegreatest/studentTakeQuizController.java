@@ -12,12 +12,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 public class studentTakeQuizController implements Initializable {
 
 
-	@FXML MenuItem stQuiz_logout;
-	@FXML Button stQuiz_homeBtn;
+	@FXML private MenuItem stQuiz_logout;
+	@FXML private Button stQuiz_homeBtn;
+	@FXML private Label stq_quizName;
 	@FXML private Button btn_student_submitquiz;
 	@FXML private Label label_student_qnno_mcq;
 	@FXML private Label label_student_qnno_tf;
@@ -29,6 +32,7 @@ public class studentTakeQuizController implements Initializable {
 	@FXML private Label label_student_qnno;
 	@FXML private RadioButton radio_student_true;
 	@FXML private RadioButton radio_student_false;
+	@FXML private VBox stq_dataVBox;
 	@FXML TextField textarea_student_ans;
 
 	@Override
@@ -72,7 +76,48 @@ public class studentTakeQuizController implements Initializable {
 	        	/* System.out.println("?!?!?!");*/
 			}
 		});
+
+		if (main.quiz.getQuiz_id() != -1){
+			main.quiz.getQuizDBName();
+			stq_quizName.setText(main.quiz.getQuizname());
+
+			stq_dataVBox.setSpacing(10);
+
+			VBox test;
+
+			test = new VBox(5);
+			test.getChildren().addAll(studentTakeQuizController.createLabel(), studentTakeQuizController.createRBtn(), studentTakeQuizController.createTField());
+
+			stq_dataVBox.getChildren().add(test);
+
+			test = new VBox(5);
+			test.getChildren().addAll(studentTakeQuizController.createLabel(), studentTakeQuizController.createRBtn(), studentTakeQuizController.createTField());
+			stq_dataVBox.getChildren().add(test);
+		}
+
 		
+	}
+
+
+	private static Label createLabel(){
+		Label text = new Label();
+		text.setText("Test ");
+
+		return text;
+	}
+
+	private static RadioButton createRBtn(){
+		RadioButton rbtn = new RadioButton();
+		rbtn.setText("RBTN TEST");
+
+		return rbtn;
+	}
+
+	private static TextField createTField(){
+		TextField txtfield = new TextField();
+		txtfield.setPromptText("LOL TEST");
+
+		return txtfield;
 	}
 
 }

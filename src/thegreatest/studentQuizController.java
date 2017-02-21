@@ -37,10 +37,10 @@ import javafx.event.EventHandler;
 public class studentQuizController implements Initializable {
 	
 	
-	@FXML Button sQuiz_homeBtn;
-	@FXML Button sQuiz_quizBtn;
-	@FXML Button sQuiz_viewBtn;
-	@FXML MenuItem sQuiz_logout;
+	@FXML private Button sQuiz_homeBtn;
+	@FXML private Button sQuiz_quizBtn;
+	@FXML private Button sQuiz_viewBtn;
+	@FXML private MenuItem sQuiz_logout;
 
 	@FXML
 	private TableView<tableData> student_table_quizlist;
@@ -95,7 +95,32 @@ public class studentQuizController implements Initializable {
 					Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
 					// Get id of quiz and go to next fxml file that show full quiz
 					System.out.println(val);
+					boolean check = false;
+					try{
+						Integer.parseInt(val.toString());
+						check = true;
+					} catch(Exception e){
+						check = false;
+					}
 
+					if (check){
+						main.quiz = new Quiz();
+						main.quiz.setQuiz_id(Integer.parseInt(val.toString()));
+
+						try{
+							Parent parent = FXMLLoader.load(getClass().getResource("/View/studentTakeQuiz.fxml"));
+							parent.getStylesheets().add("View/application.css");
+
+							Scene scence = new Scene(parent);
+							//Stage stage = (Stage) createQ.getScene().getWindow();
+							main.pStage.setScene(scence);
+
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+
+					}
 				}
 
 			});

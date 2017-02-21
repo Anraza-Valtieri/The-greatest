@@ -77,7 +77,7 @@
          <center>
             <VBox id="vbox_content" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Pass in Quiz Name/ ID">
+                  <Label fx:id="stq_quizName" text="Pass in Quiz Name/ ID">
                      <VBox.margin>
                         <Insets left="20.0" top="22.0" />
                      </VBox.margin>
@@ -85,11 +85,11 @@
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <ScrollPane id="scollpane_student_takequiz" prefHeight="426.0" prefWidth="588.0">
+                  <ScrollPane id="scollpane_student_takequiz" fx:id="stq_scrollPane" prefHeight="426.0" prefWidth="588.0">
                     <content>
-                      <AnchorPane id="student_takequiz_content">
+                      <AnchorPane id="student_takequiz_content" fx:id="stq_anchorPane">
                            <children>
-                              <VBox id="vbox_student_quiz_fullwrap" prefHeight="200.0" prefWidth="568.0">
+                              <VBox id="vbox_student_quiz_fullwrap" fx:id="stq_dataVBox" prefHeight="200.0" prefWidth="568.0">
                                  <children>
                                     <VBox id="vbox_student_qnwrap" prefHeight="200.0" prefWidth="100.0">
                                        <children>

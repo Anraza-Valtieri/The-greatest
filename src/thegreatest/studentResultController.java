@@ -36,10 +36,10 @@ import javafx.event.EventHandler;
 
 public class studentResultController implements Initializable {
 	
-	@FXML Button srQuiz_homeBtn;
-	@FXML Button srQuiz_quizBtn;
-	@FXML Button srQuiz_viewBtn;
-	@FXML MenuItem srQuiz_logout;
+	@FXML private Button srQuiz_homeBtn;
+	@FXML private Button srQuiz_quizBtn;
+	@FXML private Button srQuiz_viewBtn;
+	@FXML private MenuItem srQuiz_logout;
 	
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
