@@ -1,5 +1,6 @@
 package thegreatest;
 
+//import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +17,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.Initializable;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.geometry.Rectangle2D;
 
 public class main extends Application {
 	// Global variable
@@ -35,6 +38,11 @@ public class main extends Application {
 		primaryStage.setScene(new Scene(root));
 		primaryStage.setTitle("Learn Java Program");
 		primaryStage.show();
+		Rectangle2D screenbounds = Screen.getPrimary().getVisualBounds();
+		primaryStage.setX(screenbounds.getWidth()/8);
+		primaryStage.setY(screenbounds.getHeight()/8);
+		primaryStage.setMinHeight(800);
+		primaryStage.setMinWidth(1280);
 	}
 	
 	public static void main(String[] args) {
