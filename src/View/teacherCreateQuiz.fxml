@@ -181,7 +181,7 @@
                               <VBox id="vbox_teacher_qnwrap_sa" fx:id="vbox_teacher_qnwrap_sa" prefHeight="200.0" prefWidth="568.0" visible="false">
                                  <children>
                                     <Label id="label_teacher_createquiz_sa_qnno" fx:id="label_teacher_createquiz_sa_qnno" text="Qn.1" />
-                                    <TextField id="txtfield_createquiz_sa" fx:id="txtfield_createquiz_tf" promptText="Input Question here">
+                                    <TextField id="txtfield_createquiz_sa" fx:id="txtfield_createquiz_sa" promptText="Input Question here">
                                        <VBox.margin>
                                           <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
                                        </VBox.margin>
