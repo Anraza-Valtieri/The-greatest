@@ -186,7 +186,7 @@
                                           <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <TextField id="txtfield_createquiz_saAns" fx:id="txtfield_createquiz_saAns" layoutX="25.0" layoutY="37.0" promptText="Input Answer here">
+                                    <TextField id="txtfield_createquiz_saAns" fx:id="txtfield_createquiz_saAns" layoutX="25.0" layoutY="37.0" promptText="Insert keywords seperated by commas. No spaces.">
                                        <VBox.margin>
                                           <Insets bottom="2.0" left="15.0" right="15.0" top="2.0" />
                                        </VBox.margin>

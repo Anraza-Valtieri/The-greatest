@@ -69,6 +69,9 @@ public class teacherCreateQuizController implements Initializable {
 		vbox_teacher_qnwrap_mcq.setVisible(true);
 		vbox_teacher_qnwrap_tf.setVisible(false);
 		vbox_teacher_qnwrap_sa.setVisible(false);
+		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
 //		main.qnno += 1;
 //		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
 	}
@@ -77,6 +80,9 @@ public class teacherCreateQuizController implements Initializable {
 		vbox_teacher_qnwrap_mcq.setVisible(false);
 		vbox_teacher_qnwrap_tf.setVisible(true);
 		vbox_teacher_qnwrap_sa.setVisible(false);
+		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
 //		main.qnno += 1;
 //		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
 	}
@@ -85,6 +91,9 @@ public class teacherCreateQuizController implements Initializable {
 		vbox_teacher_qnwrap_mcq.setVisible(false);
 		vbox_teacher_qnwrap_tf.setVisible(false);
 		vbox_teacher_qnwrap_sa.setVisible(true);
+		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
 //		main.qnno += 1;
 //		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
 	}
@@ -125,7 +134,7 @@ public class teacherCreateQuizController implements Initializable {
 				System.out.println(statement.toString());
 				int rowsInserted = statement.executeUpdate();
 				if (rowsInserted > 0) {
-					System.out.println("Question Inserted!");
+					System.out.println("MCQ Question Inserted!");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -141,13 +150,124 @@ public class teacherCreateQuizController implements Initializable {
 
 		}
 		if(vbox_teacher_qnwrap_tf.isVisible()){
+			String sql = "INSERT INTO `quiz_questions` (`teacher_id`, `subject`,`question_text`," +
+					"`question_type`, `data1`, `data2`, `data3`, `data4`, `data5`, `marks`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+			Connection connection = null;
+			PreparedStatement statement = null;
+			dc = new DbConnection();
+			try {
+				connection = dc.Connect();
+				statement = connection.prepareStatement(sql);
+				statement.setString(1, main.login.getUniqID());
+				statement.setString(2, "BLANK");
+				statement.setString(3, txtfield_createquiz_tf.getText());
+				statement.setString(4, "1");
+				statement.setString(5, "");
+				statement.setString(6, "");
+				statement.setString(7, "");
+				statement.setString(8, "");
+				String CBoption = "";
+				CBoption += txtfield_createquiz_tf_1.isSelected() ? "1" : "";
+				CBoption += txtfield_createquiz_tf_2.isSelected() ? "2" : "";
+				statement.setString(9, CBoption);
+				statement.setString(10, "1");
+				System.out.println(statement.toString());
+				int rowsInserted = statement.executeUpdate();
+				if (rowsInserted > 0) {
+					System.out.println("T/F Question Inserted!");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (connection != null) {
+					try {
+						connection.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 
 		}
 		if(vbox_teacher_qnwrap_sa.isVisible()){
+			String sql = "INSERT INTO `quiz_questions` (`teacher_id`, `subject`,`question_text`," +
+					"`question_type`, `data1`, `data2`, `data3`, `data4`, `data5`, `marks`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+			Connection connection = null;
+			PreparedStatement statement = null;
+			dc = new DbConnection();
+			try {
+				connection = dc.Connect();
+				statement = connection.prepareStatement(sql);
+				statement.setString(1, main.login.getUniqID());
+				statement.setString(2, "BLANK");
+				statement.setString(3, txtfield_createquiz_sa.getText());
+				statement.setString(4, "2");
+				statement.setString(5, "");
+				statement.setString(6, "");
+				statement.setString(7, "");
+				statement.setString(8, "");
+				String CBoption = "";
+				statement.setString(9, txtfield_createquiz_saAns.getText());
+				statement.setString(10, "1");
+				System.out.println(statement.toString());
+				int rowsInserted = statement.executeUpdate();
+				if (rowsInserted > 0) {
+					System.out.println("SA Question Inserted!");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (connection != null) {
+					try {
+						connection.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 
 		}
 		main.qnno += 1;
+		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
 		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
+	}
+
+	public int getMaxQuestionID(String subject)  {
+		ResultSet rs = null;
+		Connection connection = null;
+		PreparedStatement statement = null;
+
+		Account acc = null;
+		String query = "SELECT * FROM quiz_question WHERE subject=" + subject;
+		dc = new DbConnection();
+		try {
+			connection = dc.Connect();
+			statement = connection.prepareStatement(query);
+			rs = statement.executeQuery(query);
+
+			if (rs.next()) {
+				main.quizName = subject;
+				main.qnno = rs.getInt(1);
+				return main.qnno;
+			}
+			else{
+				main.quizName = "";
+				main.qnno = 0;
+				return 0;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return 0;
 	}
 
 	@Override
@@ -164,7 +284,6 @@ public class teacherCreateQuizController implements Initializable {
 					Scene scence = new Scene(parent);
 					//Stage stage = (Stage) createQ.getScene().getWindow();
 					main.pStage.setScene(scence);
-
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
