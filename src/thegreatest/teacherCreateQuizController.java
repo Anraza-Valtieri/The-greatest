@@ -28,8 +28,8 @@ import org.w3c.dom.Text;
 
 public class teacherCreateQuizController implements Initializable {
 
-	@FXML MenuItem tc_logout;
-	@FXML Button tc_homeBtn;
+	@FXML private MenuItem tc_logout;
+	@FXML private Button tc_homeBtn;
 	@FXML private VBox vbox_teacher_qnplain;
 	@FXML private VBox vbox_teacher_qnwrap;
 	@FXML private VBox vbox_teacher_qnwrap_mcq;
