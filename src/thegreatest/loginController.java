@@ -35,24 +35,6 @@ public class loginController implements Initializable {
 		assert fx_gotoregister_register_btn != null : "fx:id=\"myButton\" was not injected: check your FXML file 'simple.fxml'.";
 
         // initialize your logic here: all @FXML variables will have been injected
-		fx_gotoregister_register_btn.setOnAction(new EventHandler<ActionEvent>() {
-	         @Override
-	         public void handle(ActionEvent event) {
-	        	 try{
-	        		 Parent parent = FXMLLoader.load(getClass().getResource("/View/register.fxml"));	        	 
-	        		 parent.getStylesheets().add("View/application.css");
-	        		 // Use casting to point to specific window
-	        		 ((javafx.scene.Node)(event.getSource())).getScene().getWindow().hide();
-                     Scene scence = new Scene(parent);
-                     main.pStage.setScene(scence);
-
-	        	 } catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 	 
-	        	/* System.out.println("?!?!?!");*/	
-	         }
-     });
         fx_login_btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

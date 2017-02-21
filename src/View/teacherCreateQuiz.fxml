@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.teacherCreateQuizController">
+<AnchorPane id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thegreatest.teacherCreateQuizController">
    <children>
       <BorderPane id="baseStudentBorder" layoutY="14.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -44,7 +44,7 @@
                   <MenuButton id="profile_menu_btn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="80.0" prefWidth="213.0" text="Rem &amp; Ram">
                     <items>
                       <MenuItem id="menu_changepassword" mnemonicParsing="false" text="Change Password" />
-                        <MenuItem id="menu_logout" mnemonicParsing="false" text="Log Out" />
+                        <MenuItem id="menu_logout" fx:id="tc_logout" mnemonicParsing="false" text="Log Out" />
                     </items>
                      <graphic>
                         <ImageView id="profile_menu_icon" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
@@ -53,7 +53,7 @@
                         <Font size="22.0" />
                      </font>
                   </MenuButton>
-                  <Button id="teacher_home_menu_btn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Home">
+                  <Button id="teacher_home_menu_btn" fx:id="tc_homeBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Home">
                      <graphic>
                         <ImageView id="home_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -90,20 +90,23 @@
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <HBox id="teacher_hbox_btn" prefHeight="44.0" prefWidth="620.0">
-                     <children>
-                        <Button id="btn_addmcq" fx:id="btn_addmcq" mnemonicParsing="false" onAction="#changetoMCQ" text="Add Mcq Qn" />
-                        <Button id="btn_addtf" fx:id="btn_addtf" mnemonicParsing="false" onAction="#changetoTF" text="Add T/F Qn" />
-                        <Button id="btn_addsa" fx:id="btn_addsa" mnemonicParsing="false" onAction="#changetoSA" text="Add SA Qn" />
-                        <Button id="teacher_createquiz_createbtn" mnemonicParsing="false" text="Create Quiz" />
-                     </children>
-                  </HBox>
-                  <HBox id="teacher_hbox_btn" layoutX="10.0" layoutY="72.0" prefHeight="44.0" prefWidth="620.0">
+                  <HBox id="teacher_hbox_btn" layoutX="10.0" layoutY="72.0" prefHeight="44.0" prefWidth="1117.0">
                      <children>
                         <TextField id="txtbx_teacher_createquiz_quiztitle" fx:id="txtbx_teacher_createquiz_quiztitle" promptText="Quiz Title" />
+                        <Button id="teacher_createquiz_createbtn" mnemonicParsing="false" text="Create Quiz" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="-15.0" left="22.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox id="teacher_hbox_btn" alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="580.0">
+                     <children>
+                        <Button id="btn_addmcq" fx:id="btn_addmcq" disable="true" mnemonicParsing="false" onAction="#changetoMCQ" text="Add Mcq Qn" />
+                        <Button id="btn_addtf" fx:id="btn_addtf" disable="true" mnemonicParsing="false" onAction="#changetoTF" text="Add T/F Qn" />
+                        <Button id="btn_addsa" fx:id="btn_addsa" disable="true" mnemonicParsing="false" onAction="#changetoSA" text="Add SA Qn" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" />
                      </VBox.margin>
                   </HBox>
                   <ScrollPane id="scollpane_student_takequiz" prefHeight="350.0" prefWidth="588.0">
