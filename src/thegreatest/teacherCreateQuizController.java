@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -20,7 +21,9 @@ import javafx.stage.Stage;
 import org.w3c.dom.Node;
 
 public class teacherCreateQuizController implements Initializable {
-	
+
+	@FXML MenuItem tc_logout;
+	@FXML Button tc_homeBtn;
 	@FXML private VBox vbox_teacher_qnplain;
 	@FXML private VBox vbox_teacher_qnwrap;
 	@FXML private VBox vbox_teacher_qnwrap_mcq;
@@ -76,6 +79,44 @@ public class teacherCreateQuizController implements Initializable {
 	@Override
 	public void initialize(java.net.URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+
+		tc_logout.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try{
+					Parent parent = FXMLLoader.load(getClass().getResource("/View/login.fxml"));
+					parent.getStylesheets().add("View/application.css");
+
+					Scene scence = new Scene(parent);
+					//Stage stage = (Stage) createQ.getScene().getWindow();
+					main.pStage.setScene(scence);
+
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        	/* System.out.println("?!?!?!");*/
+			}
+		});
+
+		tc_homeBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try{
+					Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
+					parent.getStylesheets().add("View/application.css");
+
+					Scene scence = new Scene(parent);
+					//Stage stage = (Stage) createQ.getScene().getWindow();
+					main.pStage.setScene(scence);
+
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        	/* System.out.println("?!?!?!");*/
+			}
+		});
 		
 	}
 

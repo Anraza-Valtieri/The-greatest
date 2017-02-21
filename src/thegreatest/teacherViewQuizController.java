@@ -12,14 +12,13 @@ import java.util.ResourceBundle;
 import javax.print.DocFlavor.URL;
 import Model.tableData;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +27,12 @@ import javafx.event.ActionEvent;
 
 
 public class teacherViewQuizController implements Initializable {
-	
+
+    @FXML MenuItem tv_logout;
+    @FXML Button tv_homeBtn;
+    @FXML Button tv_createBtn;
+    @FXML Button tv_viewBtn;
+    @FXML Button tv_resultBtn;
     @FXML
     private Label label;
     @FXML
@@ -92,6 +96,82 @@ public class teacherViewQuizController implements Initializable {
 
             });
             return row;
+        });
+
+        tv_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                    Parent parent = FXMLLoader.load(getClass().getResource("/View/login.fxml"));
+                    parent.getStylesheets().add("View/application.css");
+
+                    Scene scence = new Scene(parent);
+                    //Stage stage = (Stage) createQ.getScene().getWindow();
+                    main.pStage.setScene(scence);
+
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+	        	/* System.out.println("?!?!?!");*/
+            }
+        });
+
+        tv_homeBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                    Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
+                    parent.getStylesheets().add("View/application.css");
+
+                    Scene scence = new Scene(parent);
+                    //Stage stage = (Stage) createQ.getScene().getWindow();
+                    main.pStage.setScene(scence);
+
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+	        	/* System.out.println("?!?!?!");*/
+            }
+        });
+
+        tv_createBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                    Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherCreateQuiz.fxml"));
+                    parent.getStylesheets().add("View/application.css");
+
+                    Scene scence = new Scene(parent);
+                    //Stage stage = (Stage) createQ.getScene().getWindow();
+                    main.pStage.setScene(scence);
+
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+	        	/* System.out.println("?!?!?!");*/
+            }
+        });
+
+        tv_resultBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                    Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
+                    parent.getStylesheets().add("View/application.css");
+
+                    Scene scence = new Scene(parent);
+                    //Stage stage = (Stage) createQ.getScene().getWindow();
+                    main.pStage.setScene(scence);
+
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+	        	/* System.out.println("?!?!?!");*/
+            }
         });
         
         
