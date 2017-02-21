@@ -18,6 +18,8 @@ import javafx.beans.property.StringProperty;
 
 
 public class loginController implements Initializable {
+
+    Account login;
     
 	 @FXML
 	 private Button fx_gotoregister_register_btn;

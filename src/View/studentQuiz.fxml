@@ -84,10 +84,10 @@
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <TableView id="student_table_quizlist" prefHeight="384.0" prefWidth="619.0">
+                  <TableView id="student_table_quizlist" fx:id="student_table_quizlist" prefHeight="384.0" prefWidth="619.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Status" />
-                      <TableColumn prefWidth="75.0" text="Quiz Name" />
+                      <TableColumn fx:id="tablestatus" prefWidth="127.0" text="ID" />
+                      <TableColumn fx:id="tableqname" prefWidth="441.0" text="Quiz Name" />
                     </columns>
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" top="18.0" />

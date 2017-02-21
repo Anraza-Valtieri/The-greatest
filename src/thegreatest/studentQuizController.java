@@ -41,9 +41,66 @@ public class studentQuizController implements Initializable {
 	@FXML Button sQuiz_quizBtn;
 	@FXML Button sQuiz_viewBtn;
 	@FXML MenuItem sQuiz_logout;
+
+	@FXML
+	private TableView<tableData> student_table_quizlist;
+	@FXML
+	private TableColumn<tableData, String> tablestatus;
+	@FXML
+	private TableColumn<tableData, String> tableqname;
+	//Initialize observable list to hold out database data
+	private ObservableList<tableData> tableinfo;
+	private DbConnection dc;
 	
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
+
+		dc = new DbConnection();
+
+		try {
+			Connection conn = dc.Connect();
+			tableinfo = FXCollections.observableArrayList();
+			// Execute query and store result in a resultset
+			ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM quiz");
+			while (rs.next()) {
+				//get string from db,whichever way
+				//rs.getString(1) = database first column
+				tableinfo.add(new tableData(rs.getString(1), rs.getString(2)));
+			}
+
+		} catch (SQLException ex) {
+			System.err.println("Error"+ex);
+		}
+
+		//Set cell value factory to tableview.
+		//NB.PropertyValue Factory must be the same with the one set in model class.
+		//Can use and get ID of quiz but visible to false
+		tablestatus.setCellValueFactory(new PropertyValueFactory<>("qstatus"));
+		tableqname.setCellValueFactory(new PropertyValueFactory<>("qname"));
+
+		student_table_quizlist.setItems(null);
+		student_table_quizlist.setItems(tableinfo);
+
+		// For selection of view quiz
+		student_table_quizlist.setRowFactory( tv -> {
+			TableRow<tableData> row = new TableRow<>();
+			row.setOnMouseClicked(event -> {
+				if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+//                	tableData rowData = row.getItem();
+//                    System.out.println(rowData);
+
+					student_table_quizlist.getSelectionModel().setCellSelectionEnabled(true);
+					ObservableList selectedCells = student_table_quizlist.getSelectionModel().getSelectedCells();
+					TablePosition tablePosition = (TablePosition) selectedCells.get(0);
+					Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
+					// Get id of quiz and go to next fxml file that show full quiz
+					System.out.println(val);
+
+				}
+
+			});
+			return row;
+		});
 		
 		sQuiz_logout.setOnAction(new EventHandler<ActionEvent>() {
 	         @Override
