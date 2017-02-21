@@ -8,21 +8,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thegreatest.registerController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.registerController">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <VBox id="vbox_login" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Learn Java">
+                  <Label text="Register">
                      <effect>
                         <SepiaTone />
                      </effect>
                      <font>
                         <Font size="36.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </Label>
-                  <Label layoutX="10.0" layoutY="10.0" text="Username:">
+                  <Label layoutX="10.0" layoutY="10.0" text="Name">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -30,8 +33,8 @@
                         <DropShadow />
                      </effect>
                   </Label>
-                  <TextField id="txtbox_register_username" />
-                  <Label layoutX="10.0" layoutY="37.0" text="Password:">
+                  <TextField id="txtbox_register_name" fx:id="txtbox_register_name" promptText="Name" />
+                  <Label layoutX="10.0" layoutY="63.0" text="User ID">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -39,15 +42,28 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <PasswordField id="pwd_register_password" />
+                  <TextField id="txtbox_register_uid" fx:id="txtbox_register_uid" layoutX="10.0" layoutY="93.0" promptText="User ID" />
+                  <Label layoutX="10.0" layoutY="245.0" text="Email">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField id="txtbox_register_email" fx:id="txtbox_register_email" layoutX="10.0" layoutY="93.0" promptText="Email" />
+                  <Label layoutX="10.0" layoutY="37.0" text="Password">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <PasswordField id="pwd_register_password" fx:id="pwd_register_password" promptText="Password" />
                   <HBox id="hbox_login_btn" prefHeight="39.0" prefWidth="760.0">
                      <children>
                         <Button id="register_register_btn" fx:id="fx_register_register_btn" mnemonicParsing="false" text="Register" />
-                        <Button id="register_back_btn" fx:id="fx_register_back_btn" mnemonicParsing="false" text="Back">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Button>
                      </children>
                      <padding>
                         <Insets top="5.0" />
@@ -55,7 +71,7 @@
                   </HBox>
                </children>
                <BorderPane.margin>
-                  <Insets left="-160.0" top="45.0" />
+                  <Insets left="-160.0" />
                </BorderPane.margin>
             </VBox>
          </center>

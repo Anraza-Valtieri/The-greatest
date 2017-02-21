@@ -82,7 +82,7 @@
          <center>
             <VBox id="vbox_content" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Create Quiz">
+                  <Label text="Edit Question">
                      <VBox.margin>
                         <Insets left="20.0" top="22.0" />
                      </VBox.margin>
@@ -122,17 +122,17 @@
                                           <Insets top="5.0" />
                                        </opaqueInsets>
                                     </TextField>
-                                    <CheckBox id="cb1_createquiz" fx:id="cb1_createquiz" mnemonicParsing="false">
+                                    <CheckBox id="cb3_createquiz" fx:id="cb3_createquiz" mnemonicParsing="false">
                                        <graphic>
-                                          <TextField id="txtfield_createquiz_mcq1" fx:id="txtfield_createquiz_mcq1" />
+                                          <TextField id="txtfield_createquiz_mcq3" fx:id="txtfield_createquiz_mcq3" />
                                        </graphic>
                                        <VBox.margin>
                                           <Insets bottom="2.0" top="2.0" />
                                        </VBox.margin>
                                     </CheckBox>
-                                    <CheckBox id="cb3_createquiz" fx:id="cb3_createquiz" mnemonicParsing="false">
+                                    <CheckBox id="cb1_createquiz" fx:id="cb1_createquiz" mnemonicParsing="false">
                                        <graphic>
-                                          <TextField id="txtfield_createquiz_mcq3" fx:id="txtfield_createquiz_mcq3" />
+                                          <TextField id="txtfield_createquiz_mcq1" fx:id="txtfield_createquiz_mcq1" />
                                        </graphic>
                                        <VBox.margin>
                                           <Insets bottom="2.0" top="2.0" />
@@ -159,11 +159,19 @@
                                           <Insets top="5.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <Button id="btn_createquiz_mcq" fx:id="btn_createquiz_mcq" mnemonicParsing="false" text="Save">
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Button id="btn_editqns_delmcq" fx:id="btn_editqns_delmcq" mnemonicParsing="false" text="Delete">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button id="btn_editqns_savemcq" fx:id="btn_editqns_savemcq" mnemonicParsing="false" text="Save" />
+                                       </children>
                                        <VBox.margin>
                                           <Insets top="5.0" />
                                        </VBox.margin>
-                                    </Button>
+                                    </HBox>
                                  </children>
                               </VBox>
                               <VBox id="vbox_teacher_qnwrap_tf" fx:id="vbox_teacher_qnwrap_tf" prefHeight="200.0" prefWidth="568.0" visible="false">
@@ -189,11 +197,19 @@
                                           <Insets top="5.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <Button id="btn_createquiz_tf" fx:id="btn_createquiz_tf" mnemonicParsing="false" text="Save">
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Button id="btn_editqns_deltf" fx:id="btn_editqns_deltf" mnemonicParsing="false" text="Delete">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button id="btn_editqns_savetf" fx:id="btn_editqns_savetf" mnemonicParsing="false" text="Save" />
+                                       </children>
                                        <VBox.margin>
                                           <Insets top="5.0" />
                                        </VBox.margin>
-                                    </Button>
+                                    </HBox>
                                  </children>
                               </VBox>
                               <VBox id="vbox_teacher_qnwrap_sa" fx:id="vbox_teacher_qnwrap_sa" prefHeight="200.0" prefWidth="568.0" visible="false">
@@ -215,6 +231,19 @@
                                           <Insets top="5.0" />
                                        </VBox.margin>
                                     </Button>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Button id="btn_editqns_delsa" fx:id="btn_editqns_delsa" mnemonicParsing="false" text="Delete">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button id="btn_editqns_savemcq" fx:id="btn_editqns_savemcq1" mnemonicParsing="false" text="Save" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>
