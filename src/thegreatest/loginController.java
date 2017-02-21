@@ -92,10 +92,6 @@ public class loginController implements Initializable {
 
                     if (loginType == 1) { // Teacher
                         System.out.println("[LOGIN]Account flag Teacher!");
-                        System.out.println("[LOGIN]Account Name: " + main.login.getName());
-                        System.out.println("[LOGIN]Account Email: " + main.login.getEmail());
-                        System.out.println("[LOGIN]Account UID: " + main.login.getUniqID());
-                        System.out.println("[LOGIN]Account AID: " + main.login.getaID());
                         try {
                             Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
                             parent.getStylesheets().add("View/application.css");
@@ -110,10 +106,6 @@ public class loginController implements Initializable {
 
                     if (loginType == 2) { // Admin
                         System.out.println("[LOGIN]Account flag Admin!");
-                        System.out.println("[LOGIN]Account Name: " + main.login.getName());
-                        System.out.println("[LOGIN]Account Email: " + main.login.getEmail());
-                        System.out.println("[LOGIN]Account UID: " + main.login.getUniqID());
-                        System.out.println("[LOGIN]Account AID: " + main.login.getaID());
                         try {
                             Parent parent = FXMLLoader.load(getClass().getResource("/View/register.fxml"));
                             parent.getStylesheets().add("View/application.css");
