@@ -27,7 +27,6 @@ public class loginController implements Initializable {
 	 private TextField fx_txtbox_login_username;
 	 @FXML
 	 private TextField fx_pwd_login_password;
-
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -62,17 +61,17 @@ public class loginController implements Initializable {
                 System.out.println("[LOGIN]USER: "+fx_txtbox_login_username.getText());
                 System.out.println("[LOGIN]PASS: "+fx_pwd_login_password.getText());
 
-                Account login = new Account();
-                login.setUniqID(uniID);
-                login.setPassword(pw);
+                main.login = new Account();
+                main.login.setUniqID(uniID);
+                main.login.setPassword(pw);
 
-                loginSuccess = login.getLogin(uniID, pw);
+                loginSuccess = main.login.getLogin(uniID, pw);
                 if(loginSuccess) {
-                    loginType = login.getType();
-                    System.out.println("[LOGIN]Account Name: " + login.getName());
-                    System.out.println("[LOGIN]Account Email: " + login.getEmail());
-                    System.out.println("[LOGIN]Account UID: " + login.getUniqID());
-                    System.out.println("[LOGIN]Account AID: " + login.getaID());
+                    loginType = main.login.getType();
+                    System.out.println("[LOGIN]Account Name: " + main.login.getName());
+                    System.out.println("[LOGIN]Account Email: " + main.login.getEmail());
+                    System.out.println("[LOGIN]Account UID: " + main.login.getUniqID());
+                    System.out.println("[LOGIN]Account AID: " + main.login.getaID());
 
                     if (loginType == 0) { // Student
                         System.out.println("[LOGIN]Account Flag: student!");
@@ -91,6 +90,10 @@ public class loginController implements Initializable {
 
                     if (loginType == 1) { // Teacher
                         System.out.println("[LOGIN]Account flag Teacher!");
+                        System.out.println("[LOGIN]Account Name: " + main.login.getName());
+                        System.out.println("[LOGIN]Account Email: " + main.login.getEmail());
+                        System.out.println("[LOGIN]Account UID: " + main.login.getUniqID());
+                        System.out.println("[LOGIN]Account AID: " + main.login.getaID());
                         try {
                             Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
                             parent.getStylesheets().add("View/application.css");
@@ -105,6 +108,10 @@ public class loginController implements Initializable {
 
                     if (loginType == 2) { // Admin
                         System.out.println("[LOGIN]Account flag Admin!");
+                        System.out.println("[LOGIN]Account Name: " + main.login.getName());
+                        System.out.println("[LOGIN]Account Email: " + main.login.getEmail());
+                        System.out.println("[LOGIN]Account UID: " + main.login.getUniqID());
+                        System.out.println("[LOGIN]Account AID: " + main.login.getaID());
                         try {
                             Parent parent = FXMLLoader.load(getClass().getResource("/View/register.fxml"));
                             parent.getStylesheets().add("View/application.css");
@@ -130,17 +137,17 @@ public class loginController implements Initializable {
                 System.out.println("USER: "+fx_txtbox_login_username.getText());
                 System.out.println("PASS: "+fx_pwd_login_password.getText());
 
-                Account login = new Account();
-                login.setUniqID(uniID);
-                login.setPassword(pw);
+                main.login = new Account();
+                main.login.setUniqID(uniID);
+                main.login.setPassword(pw);
 
-                loginSuccess = login.getLogin(uniID, pw);
+                loginSuccess = main.login.getLogin(uniID, pw);
                 if(loginSuccess) {
-                    loginType = login.getType();
-                    System.out.println("Account Name: " + login.getName());
-                    System.out.println("Account Email: " + login.getEmail());
-                    System.out.println("Account UID: " + login.getUniqID());
-                    System.out.println("Account AID: " + login.getaID());
+                    loginType = main.login.getType();
+                    System.out.println("Account Name: " + main.login.getName());
+                    System.out.println("Account Email: " + main.login.getEmail());
+                    System.out.println("Account UID: " + main.login.getUniqID());
+                    System.out.println("Account AID: " + main.login.getaID());
 
                     if (loginType == 0) { // Student
                         System.out.println("Account Flag: student!");
@@ -198,17 +205,17 @@ public class loginController implements Initializable {
                 System.out.println("USER: "+fx_txtbox_login_username.getText());
                 System.out.println("PASS: "+fx_pwd_login_password.getText());
 
-                Account login = new Account();
-                login.setUniqID(uniID);
-                login.setPassword(pw);
+                main.login = new Account();
+                main.login.setUniqID(uniID);
+                main.login.setPassword(pw);
 
-                loginSuccess = login.getLogin(uniID, pw);
+                loginSuccess = main.login.getLogin(uniID, pw);
                 if(loginSuccess) {
-                    loginType = login.getType();
-                    System.out.println("Account Name: " + login.getName());
-                    System.out.println("Account Email: " + login.getEmail());
-                    System.out.println("Account UID: " + login.getUniqID());
-                    System.out.println("Account AID: " + login.getaID());
+                    loginType = main.login.getType();
+                    System.out.println("Account Name: " + main.login.getName());
+                    System.out.println("Account Email: " + main.login.getEmail());
+                    System.out.println("Account UID: " + main.login.getUniqID());
+                    System.out.println("Account AID: " + main.login.getaID());
 
                     if (loginType == 0) { // Student
                         System.out.println("Account Flag: student!");

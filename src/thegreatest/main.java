@@ -22,7 +22,7 @@ public class main extends Application {
 	// Global variable
 	public static int qnno = 0;
 	public static Stage pStage;
-
+	public static Account login;
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/View/login.fxml"));
