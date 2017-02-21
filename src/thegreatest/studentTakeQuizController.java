@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class studentTakeQuizController implements Initializable {
 	
@@ -23,7 +24,7 @@ public class studentTakeQuizController implements Initializable {
 	@FXML private Label label_student_qnno;
 	@FXML private RadioButton radio_student_true;
 	@FXML private RadioButton radio_student_false;
-	@FXML TextArea textarea_student_ans;
+	@FXML TextField textarea_student_ans;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

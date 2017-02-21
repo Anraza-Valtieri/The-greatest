@@ -119,6 +119,142 @@ public class loginController implements Initializable {
                 }
             }
         });
+        
+        fx_txtbox_login_username.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                int loginType = 0; // 0 Student 1 Teacher 2 Admin
+                boolean loginSuccess = false;
+                String uniID = fx_txtbox_login_username.getText();
+                String pw = fx_pwd_login_password.getText();
+                System.out.println("USER: "+fx_txtbox_login_username.getText());
+                System.out.println("PASS: "+fx_pwd_login_password.getText());
+
+                Account login = new Account();
+                login.setUniqID(uniID);
+                login.setPassword(pw);
+
+                loginSuccess = login.getLogin(uniID, pw);
+                if(loginSuccess) {
+                    loginType = login.getType();
+                    System.out.println("Account Name: " + login.getName());
+                    System.out.println("Account Email: " + login.getEmail());
+                    System.out.println("Account UID: " + login.getUniqID());
+                    System.out.println("Account AID: " + login.getaID());
+
+                    if (loginType == 0) { // Student
+                        System.out.println("Account Flag: student!");
+                        try {
+                            Parent parent = FXMLLoader.load(getClass().getResource("/View/studentQuiz.fxml"));
+                            parent.getStylesheets().add("View/application.css");
+                            // Use casting to point to specific window
+                            Scene scence = new Scene(parent);
+                            main.pStage.setScene(scence);
+
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+
+                    if (loginType == 1) { // Teacher
+                        System.out.println("Account flag Teacher!");
+                        try {
+                            Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
+                            parent.getStylesheets().add("View/application.css");
+                            // Use casting to point to specific window
+                            Scene scence = new Scene(parent);
+                            main.pStage.setScene(scence);
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+
+                    if (loginType == 2) { // Admin
+                        System.out.println("Account flag Admin!");  
+                        try {
+                            Parent parent = FXMLLoader.load(getClass().getResource("/View/register.fxml"));
+                            parent.getStylesheets().add("View/application.css");
+                            // Use casting to point to specific window
+                            Scene scence = new Scene(parent);
+                            main.pStage.setScene(scence);
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
+        
+        fx_pwd_login_password.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                int loginType = 0; // 0 Student 1 Teacher 2 Admin
+                boolean loginSuccess = false;
+                String uniID = fx_txtbox_login_username.getText();
+                String pw = fx_pwd_login_password.getText();
+                System.out.println("USER: "+fx_txtbox_login_username.getText());
+                System.out.println("PASS: "+fx_pwd_login_password.getText());
+
+                Account login = new Account();
+                login.setUniqID(uniID);
+                login.setPassword(pw);
+
+                loginSuccess = login.getLogin(uniID, pw);
+                if(loginSuccess) {
+                    loginType = login.getType();
+                    System.out.println("Account Name: " + login.getName());
+                    System.out.println("Account Email: " + login.getEmail());
+                    System.out.println("Account UID: " + login.getUniqID());
+                    System.out.println("Account AID: " + login.getaID());
+
+                    if (loginType == 0) { // Student
+                        System.out.println("Account Flag: student!");
+                        try {
+                            Parent parent = FXMLLoader.load(getClass().getResource("/View/studentQuiz.fxml"));
+                            parent.getStylesheets().add("View/application.css");
+                            // Use casting to point to specific window
+                            Scene scence = new Scene(parent);
+                            main.pStage.setScene(scence);
+
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+
+                    if (loginType == 1) { // Teacher
+                        System.out.println("Account flag Teacher!");
+                        try {
+                            Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
+                            parent.getStylesheets().add("View/application.css");
+                            // Use casting to point to specific window
+                            Scene scence = new Scene(parent);
+                            main.pStage.setScene(scence);
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+
+                    if (loginType == 2) { // Admin
+                        System.out.println("Account flag Admin!");  
+                        try {
+                            Parent parent = FXMLLoader.load(getClass().getResource("/View/register.fxml"));
+                            parent.getStylesheets().add("View/application.css");
+                            // Use casting to point to specific window
+                            Scene scence = new Scene(parent);
+                            main.pStage.setScene(scence);
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
 
     }
 
