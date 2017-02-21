@@ -20,7 +20,8 @@ import javafx.stage.Stage;
 
 public class main extends Application {
 	// Global variable
-	public static int qnno = 0;
+	public static int qnno = 1;
+	public static String quizName = "";
 	public static Stage pStage;
 	public static Account login;
 	@Override

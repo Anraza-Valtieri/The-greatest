@@ -69,6 +69,9 @@ public class teacherCreateQuizController implements Initializable {
 		vbox_teacher_qnwrap_mcq.setVisible(true);
 		vbox_teacher_qnwrap_tf.setVisible(false);
 		vbox_teacher_qnwrap_sa.setVisible(false);
+		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
 //		main.qnno += 1;
 //		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
 	}
@@ -77,6 +80,9 @@ public class teacherCreateQuizController implements Initializable {
 		vbox_teacher_qnwrap_mcq.setVisible(false);
 		vbox_teacher_qnwrap_tf.setVisible(true);
 		vbox_teacher_qnwrap_sa.setVisible(false);
+		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
 //		main.qnno += 1;
 //		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
 	}
@@ -85,6 +91,9 @@ public class teacherCreateQuizController implements Initializable {
 		vbox_teacher_qnwrap_mcq.setVisible(false);
 		vbox_teacher_qnwrap_tf.setVisible(false);
 		vbox_teacher_qnwrap_sa.setVisible(true);
+		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
+		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
 //		main.qnno += 1;
 //		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
 	}
@@ -238,9 +247,13 @@ public class teacherCreateQuizController implements Initializable {
 			rs = statement.executeQuery(query);
 
 			if (rs.next()) {
-				return rs.getInt(1);
+				main.quizName = subject;
+				main.qnno = rs.getInt(1);
+				return main.qnno;
 			}
 			else{
+				main.quizName = "";
+				main.qnno = 0;
 				return 0;
 			}
 		} catch (SQLException e) {
