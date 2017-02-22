@@ -67,7 +67,7 @@
                         <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="teacher_result_menu_btn" fx:id="teq_viewBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="172.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Student Result" wrapText="true">
+                  <Button id="teacher_result_menu_btn" fx:id="teq_resultBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="172.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Student Result" wrapText="true">
                      <graphic>
                         <ImageView id="result_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>

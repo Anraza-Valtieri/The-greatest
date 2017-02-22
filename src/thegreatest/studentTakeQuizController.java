@@ -161,7 +161,7 @@ public class studentTakeQuizController implements Initializable {
 	private static VBox createQuestionMCQ(){
 		VBox question = new VBox(5);
 
-		
+
 
 		return question;
 	}
