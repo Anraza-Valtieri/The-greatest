@@ -51,17 +51,22 @@ public class teacherCreateQuizController implements Initializable {
 	@FXML private TextField txtfield_createquiz_mcq3;
 	@FXML private CheckBox cb4_createquiz;
 	@FXML private TextField txtfield_createquiz_mcq4;
+	@FXML private TextField txtbx_createquiz_mcq_marks;
 	@FXML private Button btn_createquiz_mcq;
 
 	@FXML private TextField txtfield_createquiz_tf;
 	@FXML private RadioButton txtfield_createquiz_tf_1;
 	@FXML private RadioButton txtfield_createquiz_tf_2;
+	@FXML private TextField txtbx_createquiz_tf_marks;
 	@FXML private Button btn_createquiz_tf;
 
 	@FXML private TextField txtfield_createquiz_sa;
 	@FXML private TextField txtfield_createquiz_saAns;
+	@FXML private TextField txtbx_createquiz_sa_marks;
 	@FXML private Button btn_createquiz_sa;
 
+	@FXML private Button teacher_createquiz_createbtn;
+	@FXML private TextField txtbx_teacher_createquiz_quiztitle;
 	private DbConnection dc;
 
 	@FXML
@@ -99,133 +104,95 @@ public class teacherCreateQuizController implements Initializable {
 	}
 
 	@FXML
+	public void AddQuizName(ActionEvent event){
+
+		if (txtbx_teacher_createquiz_quiztitle.getText() == ""){
+			return;
+		}
+		btn_addmcq.setDisable(false);
+		btn_addtf.setDisable(false);
+		btn_addsa.setDisable(false);
+		Quiz q = new Quiz();
+		q.setQuizname(txtbx_teacher_createquiz_quiztitle.getText());
+		q.setSubject(txtbx_teacher_createquiz_quiztitle.getText());
+		q.setQuestionids("0");
+		q.createquiz();
+		txtbx_teacher_createquiz_quiztitle.setDisable(true);
+		teacher_createquiz_createbtn.setDisable(true);
+		main.qnno = 1;
+	}
+
+	@FXML
 	public void createQuestion(ActionEvent event){
 		if(vbox_teacher_qnwrap_mcq.isVisible()){
-			// INSERT INTO `quiz_questions` (`question_id`, `teacher_id`, `subject`, `question_text`,
-			// `question_type`, `data1`, `data2`, `data3`, `data4`, `data5`, `marks`) VALUES ('2', '1', 'Test', 'Q1 question', '0',
-			// '1\n', '2', '3', '4', '1', '1');
-			//INSERT INTO `quiz_questions` (`question_id`, `teacher_id`, `subject`,
-			//`question_text`, `question_type`, `data1`, `data2`, `data3`, `data4`, `data5`, `marks`) VALUES (NULL, '1',
-			// 'TEST2', 'Q2 QUESTION', '0', '1', '2', '3', NULL, NULL, NULL);
+			Questions q = new Questions();
+			q.setQuestion_id(main.qnno);
+			q.setTeacher_id(main.login.getUniqID());
+			q.setSubject(main.quizName);
+			q.setQuestion_text(txtfield_createquiz_mcq.getText());
+			q.setQuestion_type(0);
+			q.setData1(txtfield_createquiz_mcq1.getText());
+			q.setData2(txtfield_createquiz_mcq2.getText());
+			q.setData3(txtfield_createquiz_mcq3.getText());
+			q.setData4(txtfield_createquiz_mcq4.getText());
+			String CBoption = "";
+			CBoption += cb1_createquiz.isSelected() ? "1" : "";
+			CBoption += cb2_createquiz.isSelected() ? "2" : "";
+			CBoption += cb3_createquiz.isSelected() ? "3" : "";
+			CBoption += cb4_createquiz.isSelected() ? "4" : "";
+			q.setData5(CBoption);
+			int marks = Integer.parseInt(txtbx_createquiz_mcq_marks.getText());
+			if(marks > 0)
+				q.setMarks(marks);
+			else
+				q.setMarks(0);
 
-			String sql = "INSERT INTO `quiz_questions` (`teacher_id`, `subject`,`question_text`," +
-					"`question_type`, `data1`, `data2`, `data3`, `data4`, `data5`, `marks`) VALUES (?,?,?,?,?,?,?,?,?,?)";
-			Connection connection = null;
-			PreparedStatement statement = null;
-			dc = new DbConnection();
-			try {
-				connection = dc.Connect();
-				statement = connection.prepareStatement(sql);
-				statement.setString(1, main.login.getUniqID());
-				statement.setString(2, "BLANK");
-				statement.setString(3, txtfield_createquiz_mcq.getText());
-				statement.setString(4, "0");
-				statement.setString(5, txtfield_createquiz_mcq1.getText());
-				statement.setString(6, txtfield_createquiz_mcq2.getText());
-				statement.setString(7, txtfield_createquiz_mcq3.getText());
-				statement.setString(8, txtfield_createquiz_mcq4.getText());
-				String CBoption = "";
-				CBoption += cb1_createquiz.isSelected() ? "1" : "";
-				CBoption += cb2_createquiz.isSelected() ? "2" : "";
-				CBoption += cb3_createquiz.isSelected() ? "3" : "";
-				CBoption += cb4_createquiz.isSelected() ? "4" : "";
-				statement.setString(9, CBoption);
-				statement.setString(10, "1");
-				System.out.println(statement.toString());
-				int rowsInserted = statement.executeUpdate();
-				if (rowsInserted > 0) {
-					System.out.println("MCQ Question Inserted!");
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				if (connection != null) {
-					try {
-						connection.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-
+			q.createQuestion();
 		}
+
 		if(vbox_teacher_qnwrap_tf.isVisible()){
-			String sql = "INSERT INTO `quiz_questions` (`teacher_id`, `subject`,`question_text`," +
-					"`question_type`, `data1`, `data2`, `data3`, `data4`, `data5`, `marks`) VALUES (?,?,?,?,?,?,?,?,?,?)";
-			Connection connection = null;
-			PreparedStatement statement = null;
-			dc = new DbConnection();
-			try {
-				connection = dc.Connect();
-				statement = connection.prepareStatement(sql);
-				statement.setString(1, main.login.getUniqID());
-				statement.setString(2, "BLANK");
-				statement.setString(3, txtfield_createquiz_tf.getText());
-				statement.setString(4, "1");
-				statement.setString(5, "");
-				statement.setString(6, "");
-				statement.setString(7, "");
-				statement.setString(8, "");
-				String CBoption = "";
-				CBoption += txtfield_createquiz_tf_1.isSelected() ? "1" : "";
-				CBoption += txtfield_createquiz_tf_2.isSelected() ? "2" : "";
-				statement.setString(9, CBoption);
-				statement.setString(10, "1");
-				System.out.println(statement.toString());
-				int rowsInserted = statement.executeUpdate();
-				if (rowsInserted > 0) {
-					System.out.println("T/F Question Inserted!");
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				if (connection != null) {
-					try {
-						connection.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-			}
+			Questions q = new Questions();
+			q.setQuestion_id(main.qnno);
+			q.setTeacher_id(main.login.getUniqID());
+			q.setSubject(main.quizName);
+			q.setQuestion_text(txtfield_createquiz_tf.getText());
+			q.setQuestion_type(1);
+			q.setData1(txtfield_createquiz_tf_1.getText());
+			q.setData2(txtfield_createquiz_tf_2.getText());
+			q.setData3("");
+			q.setData4("");
+			String CBoption = "";
+			CBoption += txtfield_createquiz_tf_1.isSelected() ? "1" : "";
+			CBoption += txtfield_createquiz_tf_2.isSelected() ? "2" : "";
+			q.setData5(CBoption);
+			int marks = Integer.parseInt(txtbx_createquiz_tf_marks.getText());
+			if(marks > 0)
+				q.setMarks(marks);
+			else
+				q.setMarks(0);
+
+			q.createQuestion();
 
 		}
 		if(vbox_teacher_qnwrap_sa.isVisible()){
-			String sql = "INSERT INTO `quiz_questions` (`teacher_id`, `subject`,`question_text`," +
-					"`question_type`, `data1`, `data2`, `data3`, `data4`, `data5`, `marks`) VALUES (?,?,?,?,?,?,?,?,?,?)";
-			Connection connection = null;
-			PreparedStatement statement = null;
-			dc = new DbConnection();
-			try {
-				connection = dc.Connect();
-				statement = connection.prepareStatement(sql);
-				statement.setString(1, main.login.getUniqID());
-				statement.setString(2, "BLANK");
-				statement.setString(3, txtfield_createquiz_sa.getText());
-				statement.setString(4, "2");
-				statement.setString(5, "");
-				statement.setString(6, "");
-				statement.setString(7, "");
-				statement.setString(8, "");
-				String CBoption = "";
-				statement.setString(9, txtfield_createquiz_saAns.getText());
-				statement.setString(10, "1");
-				System.out.println(statement.toString());
-				int rowsInserted = statement.executeUpdate();
-				if (rowsInserted > 0) {
-					System.out.println("SA Question Inserted!");
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				if (connection != null) {
-					try {
-						connection.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-			}
+			Questions q = new Questions();
+			q.setQuestion_id(main.qnno);
+			q.setTeacher_id(main.login.getUniqID());
+			q.setSubject(main.quizName);
+			q.setQuestion_text(txtfield_createquiz_sa.getText());
+			q.setQuestion_type(2);
+			q.setData1("");
+			q.setData2("");
+			q.setData3("");
+			q.setData4("");
+			q.setData5(txtfield_createquiz_saAns.getText());
+			int marks = Integer.parseInt(txtbx_createquiz_sa_marks.getText());
+			if(marks > 0)
+				q.setMarks(marks);
+			else
+				q.setMarks(0);
 
+			q.createQuestion();
 		}
 		main.qnno += 1;
 		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));

@@ -127,8 +127,7 @@ public class Quiz
         Connection connection = null;
         PreparedStatement statement = null;
 
-        String questions = getQuestions(subject);
-
+        //String questions = getQuestions(subject);
 
         String sql = "INSERT INTO quiz (quizname, question_id, subject) VALUES (?, ?, ?)";
         dc = new DbConnection();
@@ -136,7 +135,7 @@ public class Quiz
             connection = dc.Connect();
             statement = connection.prepareStatement(sql);
             statement.setString(1, quizname);
-            statement.setString(2, questions);
+            statement.setString(2, questionids);
             statement.setString(3, subject);
 
             int rowsInserted = statement.executeUpdate();
@@ -154,6 +153,7 @@ public class Quiz
                 }
             }
         }
+        main.quizName = subject;
         return;
 
     }

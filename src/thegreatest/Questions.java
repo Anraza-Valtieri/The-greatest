@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Questions {
     int question_id;
-    int teacher_id;
+    String teacher_id;
     String subject;
     String question_text;
     int question_type; // MCQ - 0 | T/F - 1 | SA - 2
@@ -16,14 +16,14 @@ public class Questions {
     String data2; // MCQ - T|F
     String data3; // MCQ
     String data4; // MCQ
-    int data5; // Store MCQ choice
+    String data5; // Store MCQ choice
     double marks;
 
     public Questions(){
 
     }
 
-    public Questions(int teacher_id, String subject, String question_text, int question_type, String data1, String data2, String data3, String data4, int data5, double marks){
+    public Questions(String teacher_id, String subject, String question_text, int question_type, String data1, String data2, String data3, String data4, String data5, double marks){
         this.teacher_id = teacher_id;
         this.subject = subject;
         this.question_text = question_text;
@@ -39,11 +39,13 @@ public class Questions {
     public int getQuestion_id() {
         return question_id;
     }
-
-    public int getTeacher_id() {
+    public void setQuestion_id(int question_id) {
+        this.question_id = question_id;
+    }
+    public String getTeacher_id() {
         return teacher_id;
     }
-    public void setTeacher_id(int teacher_id) {
+    public void setTeacher_id(String teacher_id) {
         this.teacher_id = teacher_id;
     }
     public String getSubject() {
@@ -88,10 +90,10 @@ public class Questions {
     public void setData4(String data4) {
         this.data4 = data4;
     }
-    public int getData5() {
+    public String getData5() {
         return data5;
     }
-    public void setData5(int data5) {
+    public void setData5(String data5) {
         this.data5 = data5;
     }
     public double getMarks() {
@@ -110,23 +112,24 @@ public class Questions {
 
 
 
-        String sql = "INSERT INTO quiz_questions (teacher_id, subject, questions_text, question_type, data1, data2, data3, data4, data5, marks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO quiz_questions (question_id, teacher_id, subject, question_text, question_type, data1, data2, data3, data4, data5, marks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         dc = new DbConnection();
         try {
             connection = dc.Connect();
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, teacher_id);
-            statement.setString(2, subject);
-            statement.setString(3, question_text);
-            statement.setInt(4, question_type);
-            statement.setString(5, data1);
-            statement.setString(6, data2);
-            statement.setString(7, data3);
-            statement.setString(8, data4);
-            statement.setInt(9, data5);
-            statement.setDouble(10, marks);
+            statement.setInt(1, question_id);
+            statement.setString(2, teacher_id);
+            statement.setString(3, subject);
+            statement.setString(4, question_text);
+            statement.setInt(5, question_type);
+            statement.setString(6, data1);
+            statement.setString(7, data2);
+            statement.setString(8, data3);
+            statement.setString(9, data4);
+            statement.setString(10, data5);
+            statement.setDouble(11, marks);
 
-
+            System.out.println(statement.toString());
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("Question Created!");
@@ -179,7 +182,7 @@ public class Questions {
                     q.setData2(rs.getString("data2"));
                     q.setData3(rs.getString("data3"));
                     q.setData4(rs.getString("data4"));
-                    q.setData5(rs.getInt("data5"));
+                    q.setData5(rs.getString("data5"));
                     q.setMarks(rs.getDouble("marks"));
 
                     aq.add(q);

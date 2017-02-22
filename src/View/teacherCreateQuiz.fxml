@@ -93,7 +93,7 @@
                   <HBox id="teacher_hbox_btn" layoutX="10.0" layoutY="72.0" prefHeight="44.0" prefWidth="1117.0">
                      <children>
                         <TextField id="txtbx_teacher_createquiz_quiztitle" fx:id="txtbx_teacher_createquiz_quiztitle" promptText="Quiz Title" />
-                        <Button id="teacher_createquiz_createbtn" mnemonicParsing="false" text="Create Quiz" />
+                        <Button id="teacher_createquiz_createbtn" fx:id="teacher_createquiz_createbtn" onAction="#AddQuizName" mnemonicParsing="false" text="Create Quiz" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="-15.0" left="22.0" top="5.0" />
@@ -135,7 +135,7 @@
                                     </CheckBox>
                                     <CheckBox id="cb3_createquiz" fx:id="cb3_createquiz" mnemonicParsing="false">
                                        <graphic>
-                                          <TextField id="txtfield_createquiz_mcq3" fx:id="txtfield_createquiz_mcq3" />
+                                          <TextField id="txtfield_createquiz_mcq2" fx:id="txtfield_createquiz_mcq2" />
                                        </graphic>
                                        <VBox.margin>
                                           <Insets bottom="2.0" top="2.0" />
@@ -143,7 +143,7 @@
                                     </CheckBox>
                                     <CheckBox id="cb4_createquiz" fx:id="cb4_createquiz" mnemonicParsing="false">
                                        <graphic>
-                                          <TextField id="txtfield_createquiz_mcq4" fx:id="txtfield_createquiz_mcq4" />
+                                          <TextField id="txtfield_createquiz_mcq3" fx:id="txtfield_createquiz_mcq3" />
                                        </graphic>
                                        <VBox.margin>
                                           <Insets bottom="2.0" top="2.0" />
@@ -151,7 +151,7 @@
                                     </CheckBox>
                                     <CheckBox id="cb2_createquiz" fx:id="cb2_createquiz" mnemonicParsing="false">
                                        <graphic>
-                                          <TextField id="txtfield_createquiz_mcq2" fx:id="txtfield_createquiz_mcq2" />
+                                          <TextField id="txtfield_createquiz_mcq4" fx:id="txtfield_createquiz_mcq4" />
                                        </graphic>
                                        <VBox.margin>
                                           <Insets bottom="2.0" top="2.0" />
@@ -162,7 +162,7 @@
                                           <Insets top="5.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <Button id="btn_createquiz_mcq" fx:id="btn_createquiz_mcq" mnemonicParsing="false" text="Save">
+                                    <Button id="btn_createquiz_mcq" fx:id="btn_createquiz_mcq" onAction="#createQuestion" mnemonicParsing="false" text="Save">
                                        <VBox.margin>
                                           <Insets top="5.0" />
                                        </VBox.margin>
@@ -192,7 +192,7 @@
                                           <Insets top="5.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <Button id="btn_createquiz_tf" fx:id="btn_createquiz_tf" mnemonicParsing="false" text="Save">
+                                    <Button id="btn_createquiz_tf" fx:id="btn_createquiz_tf" onAction="#createQuestion" mnemonicParsing="false" text="Save">
                                        <VBox.margin>
                                           <Insets top="5.0" />
                                        </VBox.margin>
@@ -202,7 +202,7 @@
                               <VBox id="vbox_teacher_qnwrap_sa" fx:id="vbox_teacher_qnwrap_sa" prefHeight="200.0" prefWidth="568.0" visible="false">
                                  <children>
                                     <Label id="label_teacher_createquiz_sa_qnno" fx:id="label_teacher_createquiz_sa_qnno" text="Qn.1" />
-                                    <TextField id="txtfield_createquiz_sa" fx:id="txtfield_createquiz_tf" promptText="Input Question here">
+                                    <TextField id="txtfield_createquiz_sa" fx:id="txtfield_createquiz_sa" promptText="Input Question here">
                                        <VBox.margin>
                                           <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
                                        </VBox.margin>
@@ -213,7 +213,7 @@
                                        </VBox.margin>
                                     </TextField>
                                     <TextField id="txtbx_createquiz_sa_marks" fx:id="txtbx_createquiz_sa_marks" maxWidth="46.0" promptText="Marks" />
-                                    <Button id="btn_createquiz_sa" fx:id="btn_createquiz_sa" mnemonicParsing="false" text="Save">
+                                    <Button id="btn_createquiz_sa" fx:id="btn_createquiz_sa" onAction="#createQuestion" mnemonicParsing="false" text="Save">
                                        <VBox.margin>
                                           <Insets top="5.0" />
                                        </VBox.margin>

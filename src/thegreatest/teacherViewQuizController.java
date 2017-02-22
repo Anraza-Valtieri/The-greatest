@@ -83,8 +83,6 @@ public class teacherViewQuizController implements Initializable {
             TableRow<tableData> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-//                	tableData rowData = row.getItem();
-//                    System.out.println(rowData);
                 	
                     teacher_table_quizlist.getSelectionModel().setCellSelectionEnabled(true);
                     ObservableList selectedCells = teacher_table_quizlist.getSelectionModel().getSelectedCells();         
@@ -92,6 +90,31 @@ public class teacherViewQuizController implements Initializable {
                     Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
                     // Get id of quiz and go to next fxml file that show full quiz
                     System.out.println(val);
+                    boolean check = false;
+                    try{
+                        Integer.parseInt(val.toString());
+                        check = true;
+                    } catch(Exception e){
+                        check = false;
+                    }
+
+                    if (check){
+                        main.quiz = new Quiz();
+                        main.quiz.setQuiz_id(Integer.parseInt(val.toString()));
+
+                        try{
+                            Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherEditQns.fxml"));
+                            parent.getStylesheets().add("View/application.css");
+
+                            Scene scence = new Scene(parent);
+                            main.pStage.setScene(scence);
+
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+
+                    }
                 }        
 
             });
