@@ -226,11 +226,7 @@
                                        </VBox.margin>
                                     </TextField>
                                     <TextField id="txtbx_createquiz_sa_marks" fx:id="txtbx_createquiz_sa_marks" maxWidth="46.0" promptText="Marks" />
-                                    <Button id="btn_createquiz_sa" fx:id="btn_createquiz_sa" mnemonicParsing="false" text="Save">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Button>
+
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
                                           <Button id="btn_editqns_delsa" fx:id="btn_editqns_delsa" mnemonicParsing="false" text="Delete">
