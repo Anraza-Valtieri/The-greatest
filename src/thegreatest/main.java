@@ -25,6 +25,7 @@ public class main extends Application {
 	// Global variable
 	public static int qnno = 1;
 	public static String quizName = "";
+	public static String quizId = "";
 	public static Stage pStage;
 	public static Account login;
 	public static Quiz quiz;

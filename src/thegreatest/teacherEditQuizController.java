@@ -1,17 +1,10 @@
 package thegreatest;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
-import javax.print.DocFlavor.URL;
 import Model.tableData;
-
+import Model.tableData2;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,29 +13,33 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 
+public class teacherEditQuizController implements Initializable {
 
-public class teacherViewQuizController implements Initializable {
-
-    @FXML MenuItem tv_logout;
-    @FXML Button tv_homeBtn;
-    @FXML Button tv_createBtn;
-    @FXML Button tv_viewBtn;
-    @FXML Button tv_resultBtn;
+    @FXML MenuItem teq_logout;
+    @FXML Button teq_homeBtn;
+    @FXML Button teq_createBtn;
+    @FXML Button teq_viewBtn;
+    @FXML Button teq_resultBtn;
     @FXML
     private Label label;
     @FXML
-    private TableView<tableData> teacher_table_quizlist;
+    private TableView<tableData2> teacher_table_quizlist;
     @FXML
-    private TableColumn<tableData, String> tablestatus;
+    private TableColumn<tableData2, String> table_editquiz_id;
     @FXML
-    private TableColumn<tableData, String> tableqname;
+    private TableColumn<tableData2, String> table_editquiz_type;
+    @FXML
+    private TableColumn<tableData2, String> table_editquiz_qns;
     //Initialize observable list to hold out database data
-    private ObservableList<tableData> tableinfo;
+    private ObservableList<tableData2> tableinfo;
     private DbConnection dc;
     
     @FXML
@@ -58,11 +55,21 @@ public class teacherViewQuizController implements Initializable {
             Connection conn = dc.Connect();
             tableinfo = FXCollections.observableArrayList();
             // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM quiz");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM quiz_questions where subject ='"+main.quizName+"'");
             while (rs.next()) {
-                //get string from db,whichever way 
-            	//rs.getString(1) = database first column
-            	tableinfo.add(new tableData(rs.getString(1), rs.getString(2)));
+                tableData2 td2 = new tableData2();
+                td2.setQid(rs.getString(1));
+                td2.setQquestion(rs.getString(4));
+                String type = rs.getString(5);
+                System.out.println(type);
+                td2.setQtype("MCQ");
+                if(type.equals("0"))
+                    td2.setQtype("MCQ");
+                if(type.equals("1"))
+                    td2.setQtype("T/F");
+                if(type.equals("2"))
+                    td2.setQtype("SA");
+            	tableinfo.add(td2);
             }
 
         } catch (SQLException ex) {
@@ -72,27 +79,26 @@ public class teacherViewQuizController implements Initializable {
         //Set cell value factory to tableview.
         //NB.PropertyValue Factory must be the same with the one set in model class.
         //Can use and get ID of quiz but visible to false
-        tablestatus.setCellValueFactory(new PropertyValueFactory<>("qstatus"));
-        tableqname.setCellValueFactory(new PropertyValueFactory<>("qname"));
+        table_editquiz_id.setCellValueFactory(new PropertyValueFactory<>("qid"));
+        table_editquiz_type.setCellValueFactory(new PropertyValueFactory<>("qtype"));
+        table_editquiz_qns.setCellValueFactory(new PropertyValueFactory<>("qquestion"));
         
         teacher_table_quizlist.setItems(null);
         teacher_table_quizlist.setItems(tableinfo);
         
         // For selection of view quiz
         teacher_table_quizlist.setRowFactory( tv -> {
-            TableRow<tableData> row = new TableRow<>();
+            TableRow<tableData2> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
 
-                    tableData clickedRow = row.getItem();
-                    String quizsub = clickedRow.getqname().toString();
+                    tableData2 clickedRow = row.getItem();
+                    String quizsub = clickedRow.getQid().toString();
                     // Get id of quiz and go to next fxml file that show full quiz
-                    System.out.println(quizsub);
-                    main.quizName = quizsub;
-                    //main.quiz = new Quiz();
-                    //main.quiz.setQuizname(quizsub);
+                    main.quizId = quizsub;
+
                     try{
-                        Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherEditQuiz.fxml"));
+                        Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherEditQns.fxml"));
                         parent.getStylesheets().add("View/application.css");
 
                         Scene scence = new Scene(parent);
@@ -108,7 +114,7 @@ public class teacherViewQuizController implements Initializable {
             return row;
         });
 
-        tv_logout.setOnAction(new EventHandler<ActionEvent>() {
+        teq_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try{
@@ -127,7 +133,7 @@ public class teacherViewQuizController implements Initializable {
             }
         });
 
-        tv_homeBtn.setOnAction(new EventHandler<ActionEvent>() {
+        teq_homeBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try{
@@ -146,7 +152,7 @@ public class teacherViewQuizController implements Initializable {
             }
         });
 
-        tv_createBtn.setOnAction(new EventHandler<ActionEvent>() {
+        teq_createBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try{
@@ -165,7 +171,7 @@ public class teacherViewQuizController implements Initializable {
             }
         });
 
-        tv_viewBtn.setOnAction(new EventHandler<ActionEvent>() {
+        teq_viewBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try{
@@ -184,7 +190,7 @@ public class teacherViewQuizController implements Initializable {
             }
         });
 
-        tv_resultBtn.setOnAction(new EventHandler<ActionEvent>() {
+        teq_resultBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try{

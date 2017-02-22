@@ -149,6 +149,54 @@ public class Questions {
 
     }
 
+    public void updateQuestion(){
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+
+
+
+        String sql = "UPDATE quiz_questions set question_id = ?, teacher_id = ?, subject = ?, question_text = ?, " +
+                "question_type = ?, data1 = ?, data2 = ?, data3 = ?, data4 = ?, data5 = ?, marks = ? where " +
+                "(subject = ? and question_id = ?)";
+        dc = new DbConnection();
+        try {
+            connection = dc.Connect();
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, question_id);
+            statement.setString(2, teacher_id);
+            statement.setString(3, subject);
+            statement.setString(4, question_text);
+            statement.setInt(5, question_type);
+            statement.setString(6, data1);
+            statement.setString(7, data2);
+            statement.setString(8, data3);
+            statement.setString(9, data4);
+            statement.setString(10, data5);
+            statement.setDouble(11, marks);
+            statement.setString(12, subject);
+            statement.setInt(13, question_id);
+
+            System.out.println(statement.toString());
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Question update!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return;
+
+    }
+
 
     public ArrayList<Questions> getQuestionsData(String question_id)  {
         ResultSet rs = null;
@@ -263,13 +311,13 @@ public class Questions {
         Connection connection = null;
         PreparedStatement statement = null;
 
-        String sql = "DELETE FROM quiz_questions WHERE question_id = ?";
+        String sql = "DELETE FROM quiz_questions WHERE question_id = ? and subject = ?";
         dc = new DbConnection();
         try {
             connection = dc.Connect();
             statement = connection.prepareStatement(sql);
             statement.setInt(1, question_id);
-
+            statement.setString(1, main.quizName);
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("Question Deleted!");
