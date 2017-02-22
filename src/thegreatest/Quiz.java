@@ -160,22 +160,99 @@ public class Quiz
 
     }
 
+    public boolean checkExist(String subject){
+        dc = new DbConnection();
+        Connection conn = dc.Connect();
+        try {
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM quiz where quizname = '"+subject+"'");
+            boolean val = rs.next();
+            if(val == false) {
+                System.out.println("Quiz name does not exist!");
+                return false;
+            }
+            while (val){
+                System.out.println("Quiz name does exist!");
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
 
-
-    public void deleteQuiz(int quiz_id)  {
+    public void setUpdateQuizName(String subject){
         Connection connection = null;
         PreparedStatement statement = null;
 
-        String sql = "DELETE FROM quiz WHERE quiz_id = ?";
+        if(checkExist(subject) == false) {
+            String sql = "UPDATE quiz set subject = ?, quizname = ? where " +
+                    "(subject = ?)";
+            dc = new DbConnection();
+            try {
+                connection = dc.Connect();
+                statement = connection.prepareStatement(sql);
+                statement.setString(1, subject);
+                statement.setString(2, subject);
+                statement.setString(3, main.quizName);
+
+                int rowsInserted = statement.executeUpdate();
+                if (rowsInserted > 0) {
+                    System.out.println("Quiz name updated!");
+                    Questions q = new Questions();
+                    q.updateSubject(subject, main.quizName);
+                    main.quizName = subject;
+                    setSubject(subject);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
+    public void cleanupQuiz(){
+        dc = new DbConnection();
+        try{
+            Connection conn = dc.Connect();
+            ResultSet rs = conn.createStatement().executeQuery("SET @num := 0; UPDATE quiz SET quiz_id = @num := (@num+1)");
+        } catch (SQLException ex) {
+            System.err.println("Error "+ex);
+        }
+    }
+
+    public void deleteQuiz(String quiz_id)  {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        String sql = "DELETE FROM quiz WHERE subject = ?";
         dc = new DbConnection();
         try {
             connection = dc.Connect();
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, quiz_id);
+            statement.setString(1, quiz_id);
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
-                System.out.println("Quiz Deleted!");
+                cleanupQuiz();
+                Questions q = new Questions();
+                q.deleteQuestions(main.quizName);
+                System.out.println("Quiz "+main.quizName+" deleted!");
+                main.quizName = "";
             }
         } catch (SQLException e) {
             e.printStackTrace();

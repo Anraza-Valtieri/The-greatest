@@ -109,20 +109,24 @@ public class teacherCreateQuizController implements Initializable {
 		if (txtbx_teacher_createquiz_quiztitle.getText() == ""){
 			return;
 		}
-		btn_addmcq.setDisable(false);
-		btn_addtf.setDisable(false);
-		btn_addsa.setDisable(false);
-		Quiz q = new Quiz();
-		q.setQuizname(txtbx_teacher_createquiz_quiztitle.getText());
-		q.setSubject(txtbx_teacher_createquiz_quiztitle.getText());
-		q.setQuestionids("0");
-		q.createquiz();
-		txtbx_teacher_createquiz_quiztitle.setDisable(true);
-		teacher_createquiz_createbtn.setDisable(true);
-		main.qnno = 1;
 
-		tc_homeBtn.setDisable(true);
-		tc_logout.setDisable(true);
+		Quiz q = new Quiz();
+		if(q.checkExist(txtbx_teacher_createquiz_quiztitle.getText()) == false){
+			q.setQuizname(txtbx_teacher_createquiz_quiztitle.getText());
+			q.setSubject(txtbx_teacher_createquiz_quiztitle.getText());
+			q.setQuestionids("0");
+			q.createquiz();
+			txtbx_teacher_createquiz_quiztitle.setDisable(true);
+			teacher_createquiz_createbtn.setDisable(true);
+			main.qnno = 1;
+
+			tc_homeBtn.setDisable(true);
+			tc_logout.setDisable(true);
+			btn_addmcq.setDisable(false);
+			btn_addtf.setDisable(false);
+			btn_addsa.setDisable(false);
+		}
+
 	}
 
 	@FXML

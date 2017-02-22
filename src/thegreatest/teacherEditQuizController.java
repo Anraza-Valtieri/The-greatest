@@ -171,6 +171,27 @@ public class teacherEditQuizController implements Initializable {
             }
         });
 
+        quizName.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Quiz q = new Quiz();
+                q.setUpdateQuizName(quizName.getText());
+
+                try{
+                    Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
+                    parent.getStylesheets().add("View/application.css");
+
+                    Scene scence = new Scene(parent);
+                    //Stage stage = (Stage) createQ.getScene().getWindow();
+                    main.pStage.setScene(scence);
+
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+
         teq_createBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
