@@ -249,7 +249,7 @@ public class teacherCreateQuizController implements Initializable {
 	@Override
 	public void initialize(java.net.URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		tcq_profile_menu_btn.setText(main.userName);
+		tcq_profile_menu_btn.setText(main.login.getName());
 
 		tc_logout.setOnAction(new EventHandler<ActionEvent>() {
 			@Override

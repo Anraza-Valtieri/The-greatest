@@ -52,7 +52,7 @@ public class teacherViewQuizController implements Initializable {
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-        profile_menu_btn.setText(main.userName);
+        profile_menu_btn.setText(main.login.getName());
         dc = new DbConnection();
 
         try {

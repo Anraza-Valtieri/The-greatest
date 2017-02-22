@@ -70,7 +70,7 @@ public class teacherEditQuizController implements Initializable {
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-        teq_profile_menu_btn.setText(main.userName);
+        teq_profile_menu_btn.setText(main.login.getName());
         dc = new DbConnection();
         try {
             Connection conn = dc.Connect();

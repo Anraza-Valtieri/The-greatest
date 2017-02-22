@@ -38,7 +38,7 @@ public class studentTakeQuizController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		stq_profile_menu_btn.setText(main.userName);
+		stq_profile_menu_btn.setText(main.login.getName());
 		stQuiz_logout.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {

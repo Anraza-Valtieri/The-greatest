@@ -37,7 +37,7 @@ public class studentResultController implements Initializable {
 	
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
-		sr_profile_menu_btn.setText(main.userName);
+		sr_profile_menu_btn.setText(main.login.getName());
 		srQuiz_logout.setOnAction(new EventHandler<ActionEvent>() {
 	         @Override
 	         public void handle(ActionEvent event) {

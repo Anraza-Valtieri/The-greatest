@@ -265,7 +265,7 @@ public class teacherEditQnsController implements Initializable {
 	@Override
 	public void initialize(java.net.URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		tequ_profile_menu_btn.setText(main.userName);
+		tequ_profile_menu_btn.setText(main.login.getName());
 		dc = new DbConnection();
 		try {
 			Connection conn = dc.Connect();
