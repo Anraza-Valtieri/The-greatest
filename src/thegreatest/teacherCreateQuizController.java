@@ -120,6 +120,9 @@ public class teacherCreateQuizController implements Initializable {
 		txtbx_teacher_createquiz_quiztitle.setDisable(true);
 		teacher_createquiz_createbtn.setDisable(true);
 		main.qnno = 1;
+
+		tc_homeBtn.setDisable(true);
+		tc_logout.setDisable(true);
 	}
 
 	@FXML
@@ -198,6 +201,8 @@ public class teacherCreateQuizController implements Initializable {
 		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
 		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
 		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
+		tc_homeBtn.setDisable(true);
+		tc_logout.setDisable(true);
 	}
 
 	public int getMaxQuestionID(String subject)  {

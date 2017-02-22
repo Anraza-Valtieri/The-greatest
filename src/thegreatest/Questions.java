@@ -176,8 +176,6 @@ public class Questions {
             statement.setDouble(11, marks);
             statement.setString(12, subject);
             statement.setInt(13, question_id);
-
-            System.out.println(statement.toString());
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("Question update!");

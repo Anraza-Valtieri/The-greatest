@@ -83,14 +83,10 @@ public class teacherViewQuizController implements Initializable {
             TableRow<tableData> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-
                     tableData clickedRow = row.getItem();
                     String quizsub = clickedRow.getqname().toString();
                     // Get id of quiz and go to next fxml file that show full quiz
-                    System.out.println(quizsub);
                     main.quizName = quizsub;
-                    //main.quiz = new Quiz();
-                    //main.quiz.setQuizname(quizsub);
                     try{
                         Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherEditQuiz.fxml"));
                         parent.getStylesheets().add("View/application.css");

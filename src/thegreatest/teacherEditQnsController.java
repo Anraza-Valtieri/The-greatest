@@ -278,10 +278,19 @@ public class teacherEditQnsController implements Initializable {
 				}
 				if(type.equals("1")){
 					vbox_teacher_qnwrap_tf.setVisible(true);
+					txtfield_createquiz_tf.setText(rs.getString(4));
+					txtbx_createquiz_tf_marks.setText(rs.getString(11));;
+					String ans = rs.getString(10);
+					if(ans.contains("1"))
+						txtfield_createquiz_tf_1.setSelected(true);
+					if(ans.contains("2"))
+						txtfield_createquiz_tf_2.setSelected(true);
 				}
 				if(type.equals("2")){
 					vbox_teacher_qnwrap_sa.setVisible(true);
-
+					txtfield_createquiz_sa.setText(rs.getString(4));
+					txtfield_createquiz_saAns.setText(rs.getString(10));
+					txtbx_createquiz_sa_marks.setText(rs.getString(11));;
 				}
 					return;
 			}

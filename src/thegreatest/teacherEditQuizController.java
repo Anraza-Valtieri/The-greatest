@@ -61,7 +61,6 @@ public class teacherEditQuizController implements Initializable {
                 td2.setQid(rs.getString(1));
                 td2.setQquestion(rs.getString(4));
                 String type = rs.getString(5);
-                System.out.println(type);
                 td2.setQtype("MCQ");
                 if(type.equals("0"))
                     td2.setQtype("MCQ");
@@ -91,12 +90,10 @@ public class teacherEditQuizController implements Initializable {
             TableRow<tableData2> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-
                     tableData2 clickedRow = row.getItem();
                     String quizsub = clickedRow.getQid().toString();
                     // Get id of quiz and go to next fxml file that show full quiz
                     main.quizId = quizsub;
-
                     try{
                         Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherEditQns.fxml"));
                         parent.getStylesheets().add("View/application.css");
