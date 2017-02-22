@@ -80,15 +80,61 @@ public class studentTakeQuizController implements Initializable {
 		if (main.quiz.getQuiz_id() != -1){
 			main.quiz.getQuizDBName();
 			stq_quizName.setText(main.quiz.getQuizname());
+			Questions DUMMY = new Questions();
+			main.questions = DUMMY.getQuestionsDataBySubject(main.quiz.getQuizname());
 
 			stq_dataVBox.setSpacing(10);
 
-
+			Button button = new Button("Submit");
 
 			VBox test;
 			VBox questionVBox;
 
-			test = new VBox(5);
+			for(int i = 0; i < main.questions.size(); i++){
+				if (main.questions.get(i).getQuestion_type()== 0){
+					test = studentTakeQuizController.createQuestionMCQ(main.questions.get(i).getQuestion_text(), main.questions.get(i).getData1(),
+							main.questions.get(i).getData2(), main.questions.get(i).getData3(), main.questions.get(i).getData4());
+					stq_dataVBox.getChildren().add(test);
+				}
+				else if (main.questions.get(i).getQuestion_type()== 1){
+					test = studentTakeQuizController.createQuestionTF(main.questions.get(i).getQuestion_text());
+					stq_dataVBox.getChildren().add(test);
+				}
+				else if (main.questions.get(i).getQuestion_type()== 2){
+					test = studentTakeQuizController.createQuestionSA(main.questions.get(i).getQuestion_text());
+					stq_dataVBox.getChildren().add(test);
+				}
+			}
+
+			stq_dataVBox.getChildren().add(button);
+
+			button.setOnAction(new EventHandler<ActionEvent>() {
+				@Override public void handle(ActionEvent e) {
+					int marks = 0;
+
+					for(int i = 0; i < main.questions.size(); i++){
+						if (main.questions.get(i).getQuestion_type() == 0){
+							if (studentTakeQuizController.getAnswerMCQ(i, stq_dataVBox, main.questions.get(i).getData5())) {
+								marks += main.questions.get(i).getMarks();
+							}
+						} else if (main.questions.get(i).getQuestion_type() == 1){
+							if (studentTakeQuizController.getAnswerTF(i, stq_dataVBox, main.questions.get(i).getData5())) {
+								marks += main.questions.get(i).getMarks();
+							}
+						} else if (main.questions.get(i).getQuestion_type() == 2){
+							if (studentTakeQuizController.getAnswerSA(i, stq_dataVBox, main.questions.get(i).getData5())) {
+								marks += main.questions.get(i).getMarks();
+							}
+						}
+					}
+
+					System.out.println("Marks: " + marks);
+				}
+			});
+
+
+
+			/*test = new VBox(5);
 			test.getChildren().addAll(studentTakeQuizController.createLabel("Test1"), studentTakeQuizController.createRBtn("test1"), studentTakeQuizController.createTField());
 			stq_dataVBox.getChildren().add(test);
 
@@ -131,7 +177,7 @@ public class studentTakeQuizController implements Initializable {
 				Label text = (Label)questionVBox.getChildren().get(2);
 				System.out.println(text.getText());
 			}
-
+*/
 
 		}
 	}
@@ -158,12 +204,122 @@ public class studentTakeQuizController implements Initializable {
 		return txtfield;
 	}
 
-	private static VBox createQuestionMCQ(){
+	private static VBox createQuestionMCQ(String questionText, String mcq1, String mcq2, String mcq3, String mcq4){
 		VBox question = new VBox(5);
-
-
-
+		question.getChildren().addAll(studentTakeQuizController.createLabel(questionText), studentTakeQuizController.createRBtn(mcq1), studentTakeQuizController.createRBtn(mcq2),
+				studentTakeQuizController.createRBtn(mcq3), studentTakeQuizController.createRBtn(mcq4), studentTakeQuizController.createLabel(""));
 		return question;
 	}
+
+	private static VBox createQuestionTF(String questionText){
+		VBox question = new VBox(5);
+		question.getChildren().addAll(studentTakeQuizController.createLabel(questionText), studentTakeQuizController.createRBtn("True"), studentTakeQuizController.createRBtn("False"),
+				studentTakeQuizController.createLabel(""));
+		return question;
+	}
+
+	private static VBox createQuestionSA(String questionText) {
+		VBox question = new VBox(5);
+		question.getChildren().addAll(studentTakeQuizController.createLabel(questionText), studentTakeQuizController.createTField(), studentTakeQuizController.createLabel(""));
+		return question;
+	}
+
+	private static boolean getAnswerMCQ(int questionNo, VBox stq_dataVBox, String answers) {
+		boolean check = false;
+		String answer = "";
+		RadioButton rbtn;
+		VBox questionVBox = (VBox) stq_dataVBox.getChildren().get(questionNo);
+
+		rbtn = (RadioButton) questionVBox.getChildren().get(1);
+		if (rbtn.isSelected()) {
+			answer += "1";
+		}
+			rbtn = (RadioButton) questionVBox.getChildren().get(2);
+		if (rbtn.isSelected()) {
+			answer += "2";
+		}
+
+		rbtn = (RadioButton) questionVBox.getChildren().get(3);
+		if (rbtn.isSelected()) {
+			answer += "3";
+		}
+
+		rbtn = (RadioButton) questionVBox.getChildren().get(4);
+		if (rbtn.isSelected()) {
+			answer += "4";
+		}
+
+		System.out.println("ANSWER: " + answers + " SELECTED: " + answer);
+
+		if (answer.equals(answers)){
+			check = true;
+			System.out.println("MCQ GAME GOOD");
+		} else {
+
+			System.out.println("MCQ GAME NOT GOOD");
+		}
+
+
+		System.out.println("Marks awarded: " + check);
+
+		return check;
+	}
+
+	private static boolean getAnswerTF(int questionNo, VBox stq_dataVBox, String answers) {
+		boolean check = false;
+		String answer = "";
+		RadioButton rbtn;
+		VBox questionVBox = (VBox) stq_dataVBox.getChildren().get(questionNo);
+
+		rbtn = (RadioButton) questionVBox.getChildren().get(1);
+		if (rbtn.isSelected()) {
+			answer += "1";
+		}
+		rbtn = (RadioButton) questionVBox.getChildren().get(2);
+		if (rbtn.isSelected()) {
+			answer += "2";
+		}
+
+		if (answer.equals(answers)){
+			check = true;
+			System.out.println("TF GAME GOOD");
+		} else {
+			System.out.println("TF GAME NOT GOOD");
+		}
+
+		System.out.println("ANSWER: " + answers + " SELECTED: " + answer);
+		System.out.println("Marks awarded: " + check);
+
+		return check;
+	}
+
+	private static boolean getAnswerSA(int questionNo, VBox stq_dataVBox, String answers){
+		boolean check = false;
+		VBox questionVBox = (VBox) stq_dataVBox.getChildren().get(questionNo);
+		TextField studentAnswer = (TextField) questionVBox.getChildren().get(1);
+
+		String answerToCheck = studentAnswer.getText();
+
+		String[] answerSet = answers.split(",");
+
+		for (int i = 0; i < answerSet.length; i++){
+			if (answerToCheck.toLowerCase().contains(answerSet[i].toLowerCase())) {
+				check = true;
+				System.out.println("SA GAME GOOD: " + i);
+			} else{
+				check = false;
+				System.out.println("SA GAME NOT GOOD: " + i );
+			}
+		}
+
+		System.out.println("ANSWER: " + answers + " SELECTED: " + answerToCheck);
+		System.out.println("Marks awarded: " + check);
+
+		return check;
+	}
+
+
+
+
 
 }
