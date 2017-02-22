@@ -41,7 +41,7 @@
          <left>
             <VBox id="vbox_menu" prefHeight="200.0" prefWidth="180.0" BorderPane.alignment="CENTER">
                <children>
-                  <MenuButton id="profile_menu_btn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="80.0" prefWidth="213.0" text="Rem &amp; Ram">
+                  <MenuButton id="profile_menu_btn" fx:id="stq_profile_menu_btn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="80.0" prefWidth="213.0" text="Rem &amp; Ram">
                     <items>
                       <MenuItem id="menu_changepassword" mnemonicParsing="false" text="Change Password" />
                         <MenuItem id="menu_logout" fx:id="stQuiz_logout" mnemonicParsing="false" text="Log Out" />

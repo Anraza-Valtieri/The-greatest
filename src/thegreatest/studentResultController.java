@@ -17,13 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -35,7 +29,7 @@ import javafx.event.EventHandler;
 
 
 public class studentResultController implements Initializable {
-	
+	@FXML private MenuButton sr_profile_menu_btn;
 	@FXML private Button srQuiz_homeBtn;
 	@FXML private Button srQuiz_quizBtn;
 	@FXML private Button srQuiz_viewBtn;
@@ -43,7 +37,7 @@ public class studentResultController implements Initializable {
 	
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
-		
+		sr_profile_menu_btn.setText(main.userName);
 		srQuiz_logout.setOnAction(new EventHandler<ActionEvent>() {
 	         @Override
 	         public void handle(ActionEvent event) {

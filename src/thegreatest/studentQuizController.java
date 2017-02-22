@@ -17,13 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -35,8 +29,8 @@ import javafx.event.EventHandler;
 
 
 public class studentQuizController implements Initializable {
-	
-	
+
+	@FXML private MenuButton sq_profile_menu_btn;
 	@FXML private Button sQuiz_homeBtn;
 	@FXML private Button sQuiz_quizBtn;
 	@FXML private Button sQuiz_viewBtn;
@@ -54,7 +48,7 @@ public class studentQuizController implements Initializable {
 	
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
-
+		sq_profile_menu_btn.setText(main.userName);
 		dc = new DbConnection();
 
 		try {

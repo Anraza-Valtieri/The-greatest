@@ -40,7 +40,7 @@
          <left>
             <VBox id="vbox_menu" prefHeight="200.0" prefWidth="180.0" BorderPane.alignment="CENTER">
                <children>
-                  <MenuButton id="profile_menu_btn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="80.0" prefWidth="213.0" text="Rem &amp; Ram">
+                  <MenuButton id="profile_menu_btn" fx:id="teq_profile_menu_btn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="80.0" prefWidth="213.0" text="Rem &amp; Ram">
                     <items>
                       <MenuItem id="menu_changepassword" mnemonicParsing="false" text="Change Password" />
                         <MenuItem id="menu_logout" fx:id="teq_logout" mnemonicParsing="false" text="Log Out" />
@@ -81,14 +81,14 @@
          <center>
             <VBox id="vbox_content" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Edit Quiz">
+                  <TextField text="Edit Quiz" fx:id="quizName">
                      <VBox.margin>
-                        <Insets left="20.0" top="22.0" />
+                        <Insets left="20.0" right="25.0" top="22.0" />
                      </VBox.margin>
                      <font>
                         <Font size="28.0" />
                      </font>
-                  </Label>
+                  </TextField>
                   <TableView id="teacher_table_quizlist" fx:id="teacher_table_quizlist" prefHeight="384.0" prefWidth="619.0">
                     <columns>
                       <TableColumn id="table_editquiz_id" fx:id="table_editquiz_id" maxWidth="2000.0" prefWidth="75.0" text="ID" />

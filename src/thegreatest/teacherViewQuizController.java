@@ -27,7 +27,7 @@ import javafx.event.ActionEvent;
 
 
 public class teacherViewQuizController implements Initializable {
-
+    @FXML MenuButton profile_menu_btn;
     @FXML MenuItem tv_logout;
     @FXML Button tv_homeBtn;
     @FXML Button tv_createBtn;
@@ -52,8 +52,9 @@ public class teacherViewQuizController implements Initializable {
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+        profile_menu_btn.setText(main.userName);
         dc = new DbConnection();
-        
+
         try {
             Connection conn = dc.Connect();
             tableinfo = FXCollections.observableArrayList();

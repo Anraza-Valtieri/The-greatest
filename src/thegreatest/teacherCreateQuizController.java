@@ -27,7 +27,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 
 public class teacherCreateQuizController implements Initializable {
-
+	@FXML private MenuButton tcq_profile_menu_btn;
 	@FXML private MenuItem tc_logout;
 	@FXML private Button tc_homeBtn;
 	@FXML private VBox vbox_teacher_qnplain;
@@ -245,7 +245,7 @@ public class teacherCreateQuizController implements Initializable {
 	@Override
 	public void initialize(java.net.URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-
+		tcq_profile_menu_btn.setText(main.userName);
 		tc_logout.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {

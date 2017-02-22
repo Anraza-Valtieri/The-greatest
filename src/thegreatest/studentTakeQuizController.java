@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
 
 public class studentTakeQuizController implements Initializable {
 
-
+	@FXML private MenuButton stq_profile_menu_btn;
 	@FXML private MenuItem stQuiz_logout;
 	@FXML private Button stQuiz_homeBtn;
 	@FXML private Label stq_quizName;
@@ -38,7 +38,7 @@ public class studentTakeQuizController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-
+		stq_profile_menu_btn.setText(main.userName);
 		stQuiz_logout.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {

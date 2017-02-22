@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 //import com.sun.tools.javac.comp.Check;
 
 public class teacherEditQnsController implements Initializable {
-
+	@FXML private MenuButton tequ_profile_menu_btn;
 	@FXML private MenuItem tequ_logout;
 	@FXML private Button tequ_homeBtn;
 	@FXML private VBox vbox_teacher_qnplain;
@@ -247,7 +247,7 @@ public class teacherEditQnsController implements Initializable {
 	@Override
 	public void initialize(java.net.URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-
+		tequ_profile_menu_btn.setText(main.userName);
 		dc = new DbConnection();
 		try {
 			Connection conn = dc.Connect();

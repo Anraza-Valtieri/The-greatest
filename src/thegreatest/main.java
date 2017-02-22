@@ -31,6 +31,8 @@ public class main extends Application {
 	public static Quiz quiz;
 	public static ArrayList<Questions> questions;
 
+	public static String userName;
+
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/View/login.fxml"));

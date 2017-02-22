@@ -188,6 +188,7 @@ public class loginController implements Initializable {
                 loginSuccess = main.login.getLogin(uniID, pw);
                 if(loginSuccess) {
                     loginType = main.login.getType();
+                    main.userName = main.login.getName();
                     System.out.println("Account Name: " + main.login.getName());
                     System.out.println("Account Email: " + main.login.getEmail());
                     System.out.println("Account UID: " + main.login.getUniqID());

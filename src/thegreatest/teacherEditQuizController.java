@@ -22,8 +22,9 @@ import java.util.ResourceBundle;
 
 
 public class teacherEditQuizController implements Initializable {
-
+    @FXML MenuButton teq_profile_menu_btn;
     @FXML MenuItem teq_logout;
+    @FXML TextField quizName;
     @FXML Button teq_homeBtn;
     @FXML Button teq_createBtn;
     @FXML Button teq_viewBtn;
@@ -49,6 +50,7 @@ public class teacherEditQuizController implements Initializable {
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+        teq_profile_menu_btn.setText(main.userName);
         dc = new DbConnection();
         
         try {
@@ -69,6 +71,7 @@ public class teacherEditQuizController implements Initializable {
                 if(type.equals("2"))
                     td2.setQtype("SA");
             	tableinfo.add(td2);
+                quizName.setText(main.quizName);
             }
 
         } catch (SQLException ex) {
