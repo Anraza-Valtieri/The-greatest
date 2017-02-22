@@ -16,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -29,6 +30,7 @@ public class teacherEditQuizController implements Initializable {
     @FXML Button teq_createBtn;
     @FXML Button teq_viewBtn;
     @FXML Button teq_resultBtn;
+    @FXML Button btn_delete_quiz;
     @FXML
     private Label label;
     @FXML
@@ -47,12 +49,29 @@ public class teacherEditQuizController implements Initializable {
     private void loadDataFromDatabase(ActionEvent event) {
     }
 
+    @FXML
+    public void deleteQuiz(ActionEvent event){
+        Quiz q = new Quiz();
+        q.deleteQuiz(main.quizName);
+        System.out.println("[TEACH_EDIT_QNS]: Quiz "+main.quizName+" deleted");
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
+            parent.getStylesheets().add("View/application.css");
+
+            Scene scence = new Scene(parent);
+            main.pStage.setScene(scence);
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+
+        }
+    }
+
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
         teq_profile_menu_btn.setText(main.userName);
         dc = new DbConnection();
-        
         try {
             Connection conn = dc.Connect();
             tableinfo = FXCollections.observableArrayList();

@@ -154,8 +154,6 @@ public class Questions {
         PreparedStatement statement = null;
 
 
-
-
         String sql = "UPDATE quiz_questions set question_id = ?, teacher_id = ?, subject = ?, question_text = ?, " +
                 "question_type = ?, data1 = ?, data2 = ?, data3 = ?, data4 = ?, data5 = ?, marks = ? where " +
                 "(subject = ? and question_id = ?)";
@@ -259,8 +257,6 @@ public class Questions {
 
         Questions q = null;
 
-
-
         ArrayList<Questions> aq = new ArrayList<Questions>();
 
         dc = new DbConnection();
@@ -304,8 +300,17 @@ public class Questions {
         return aq;
     }
 
+    public void cleanupQuestions(String subject){
+        dc = new DbConnection();
+        try{
+            Connection conn = dc.Connect();
+            ResultSet rs = conn.createStatement().executeQuery("SET @num := 0; UPDATE quiz_questions SET question_id = @num := (@num+1) where subject = '"+subject+"'");
+        } catch (SQLException ex) {
+            System.err.println("Error "+ex);
+        }
+    }
 
-    public void deleteQuestion(int question_id)  {
+    public void deleteQuestion(String question_id, String quizN)  {
         Connection connection = null;
         PreparedStatement statement = null;
 
@@ -314,10 +319,11 @@ public class Questions {
         try {
             connection = dc.Connect();
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, question_id);
-            statement.setString(1, main.quizName);
+            statement.setString(1, question_id);
+            statement.setString(2, quizN);
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
+                cleanupQuestions(quizN);
                 System.out.println("Question Deleted!");
             }
         } catch (SQLException e) {
@@ -335,6 +341,65 @@ public class Questions {
         return;
     }
 
+    public void deleteQuestions(String quizN)  {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        String sql = "DELETE FROM quiz_questions WHERE subject = ?";
+        dc = new DbConnection();
+        try {
+            connection = dc.Connect();
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, quizN);
+            int rowsDeleted = statement.executeUpdate();
+            if (rowsDeleted > 0) {
+                cleanupQuestions(quizN);
+                System.out.println("Questions Deleted!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return;
+    }
+
+    public void updateSubject(String subject1,String subject2)  {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        String sql = "update quiz_questions set subject = ? WHERE subject = ?";
+        dc = new DbConnection();
+        try {
+            connection = dc.Connect();
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, subject1);
+            statement.setString(2, subject2);
+            int rowsDeleted = statement.executeUpdate();
+            if (rowsDeleted > 0) {
+                System.out.println("Question Subject updated!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return;
+    }
 
 
 

@@ -1,5 +1,7 @@
 package thegreatest;
 
+import javafx.beans.property.StringProperty;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -128,7 +130,6 @@ public class Quiz
         PreparedStatement statement = null;
 
         //String questions = getQuestions(subject);
-
         String sql = "INSERT INTO quiz (quizname, question_id, subject) VALUES (?, ?, ?)";
         dc = new DbConnection();
         try {
@@ -137,6 +138,7 @@ public class Quiz
             statement.setString(1, quizname);
             statement.setString(2, questionids);
             statement.setString(3, subject);
+
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {

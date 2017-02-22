@@ -207,6 +207,24 @@ public class teacherEditQnsController implements Initializable {
 		}
 	}
 
+	@FXML
+	public void deleteQuestion(ActionEvent event){
+		Questions q = new Questions();
+		q.deleteQuestion(main.quizId, main.quizName);
+		System.out.println("[teachEditQns]: Question "+main.quizId+" deleted from "+main.quizName);
+		try {
+			Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherEditQuiz.fxml"));
+			parent.getStylesheets().add("View/application.css");
+
+			Scene scence = new Scene(parent);
+			main.pStage.setScene(scence);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+
+		}
+	}
+
 	public int getMaxQuestionID(String subject)  {
 		ResultSet rs = null;
 		Connection connection = null;

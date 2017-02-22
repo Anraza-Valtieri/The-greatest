@@ -161,7 +161,7 @@
                                     </TextField>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Button id="btn_editqns_delmcq" fx:id="btn_editqns_delmcq" mnemonicParsing="false" text="Delete">
+                                          <Button id="btn_editqns_delmcq" fx:id="btn_editqns_delmcq" onAction="#deleteQuestion" mnemonicParsing="false" text="Delete">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
@@ -199,7 +199,7 @@
                                     </TextField>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Button id="btn_editqns_deltf" fx:id="btn_editqns_deltf" mnemonicParsing="false" text="Delete">
+                                          <Button id="btn_editqns_deltf" fx:id="btn_editqns_deltf" onAction="#deleteQuestion" mnemonicParsing="false" text="Delete">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
@@ -229,7 +229,7 @@
 
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Button id="btn_editqns_delsa" fx:id="btn_editqns_delsa" mnemonicParsing="false" text="Delete">
+                                          <Button id="btn_editqns_delsa" fx:id="btn_editqns_delsa" onAction="#deleteQuestion" mnemonicParsing="false" text="Delete">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>

@@ -102,6 +102,11 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
+                  <Button id="btn_delete_quiz" fx:id="btn_delete_quiz" onAction="#deleteQuiz" mnemonicParsing="false" text="Delete">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </VBox>
          </center>

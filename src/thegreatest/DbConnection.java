@@ -21,7 +21,7 @@ public class DbConnection {
         try {
             //Your database url string,ensure it is correct
 //            String url = "jdbc:mysql://127.0.0.1/1009";
-            String url = "jdbc:mysql://localhost:3306/1009";
+            String url = "jdbc:mysql://localhost:3306/1009?allowMultiQueries=true";
 
             String user = "root";
             String password = "";

@@ -201,8 +201,8 @@ public class teacherCreateQuizController implements Initializable {
 		label_teacher_createquiz_mcq_qnno.setText("Question " + Integer.toString(main.qnno));
 		label_teacher_createquiz_tf_qnno.setText("Question " + Integer.toString(main.qnno));
 		label_teacher_createquiz_sa_qnno.setText("Question " + Integer.toString(main.qnno));
-		tc_homeBtn.setDisable(true);
-		tc_logout.setDisable(true);
+		tc_homeBtn.setDisable(false);
+		tc_logout.setDisable(false);
 	}
 
 	public int getMaxQuestionID(String subject)  {
@@ -246,6 +246,7 @@ public class teacherCreateQuizController implements Initializable {
 	public void initialize(java.net.URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		tcq_profile_menu_btn.setText(main.userName);
+
 		tc_logout.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
