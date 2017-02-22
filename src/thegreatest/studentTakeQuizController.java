@@ -83,41 +83,87 @@ public class studentTakeQuizController implements Initializable {
 
 			stq_dataVBox.setSpacing(10);
 
+
+
 			VBox test;
+			VBox questionVBox;
 
 			test = new VBox(5);
-			test.getChildren().addAll(studentTakeQuizController.createLabel(), studentTakeQuizController.createRBtn(), studentTakeQuizController.createTField());
-
+			test.getChildren().addAll(studentTakeQuizController.createLabel("Test1"), studentTakeQuizController.createRBtn("test1"), studentTakeQuizController.createTField());
 			stq_dataVBox.getChildren().add(test);
 
 			test = new VBox(5);
-			test.getChildren().addAll(studentTakeQuizController.createLabel(), studentTakeQuizController.createRBtn(), studentTakeQuizController.createTField());
+			test.getChildren().addAll(studentTakeQuizController.createLabel("Test2"), studentTakeQuizController.createRBtn("test2"), studentTakeQuizController.createTField());
 			stq_dataVBox.getChildren().add(test);
+
+			questionVBox = (VBox) stq_dataVBox.getChildren().get(0);
+
+			if (questionVBox.getChildren().get(0) instanceof Label) {
+				System.out.println("Found a Label of a question 1 at pos 0");
+				Label text = (Label)questionVBox.getChildren().get(0);
+				System.out.println(text.getText());
+			}
+			if (questionVBox.getChildren().get(1) instanceof Label) {
+				System.out.println("Found a Label of a question 1 at pos 1");
+				Label text = (Label)questionVBox.getChildren().get(1);
+				System.out.println(text.getText());
+			}
+			if (questionVBox.getChildren().get(2) instanceof Label) {
+				System.out.println("Found a Label of a question 1 at pos 2");
+				Label text = (Label)questionVBox.getChildren().get(2);
+				System.out.println(text.getText());
+			}
+
+			questionVBox = (VBox) stq_dataVBox.getChildren().get(1);
+
+			if (questionVBox.getChildren().get(0) instanceof Label) {
+				System.out.println("Found a Label of a question 2 at pos 0");
+				Label text = (Label)questionVBox.getChildren().get(0);
+				System.out.println(text.getText());
+			}
+			if (questionVBox.getChildren().get(1) instanceof Label) {
+				System.out.println("Found a Label of a question 2 at pos 1");
+				Label text = (Label)questionVBox.getChildren().get(1);
+				System.out.println(text.getText());
+			}
+			if (questionVBox.getChildren().get(2) instanceof Label) {
+				System.out.println("Found a Label of a question 2 at pos 2");
+				Label text = (Label)questionVBox.getChildren().get(2);
+				System.out.println(text.getText());
+			}
+
+
 		}
-
-		
 	}
 
 
-	private static Label createLabel(){
+	private static Label createLabel(String textString){
 		Label text = new Label();
-		text.setText("Test ");
+		text.setText(textString);
 
 		return text;
 	}
 
-	private static RadioButton createRBtn(){
+	private static RadioButton createRBtn(String textString){
 		RadioButton rbtn = new RadioButton();
-		rbtn.setText("RBTN TEST");
+		rbtn.setText(textString);
 
 		return rbtn;
 	}
 
 	private static TextField createTField(){
 		TextField txtfield = new TextField();
-		txtfield.setPromptText("LOL TEST");
+		txtfield.setPromptText("Enter your answer here");
 
 		return txtfield;
+	}
+
+	private static VBox createQuestionMCQ(){
+		VBox question = new VBox(5);
+
+		
+
+		return question;
 	}
 
 }

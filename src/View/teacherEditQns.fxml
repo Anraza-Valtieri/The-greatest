@@ -44,7 +44,7 @@
                   <MenuButton id="profile_menu_btn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="80.0" prefWidth="213.0" text="Rem &amp; Ram">
                     <items>
                       <MenuItem id="menu_changepassword" mnemonicParsing="false" text="Change Password" />
-                        <MenuItem id="menu_logout" mnemonicParsing="false" text="Log Out" />
+                        <MenuItem id="menu_logout" fx:id="tequ_logout" mnemonicParsing="false" text="Log Out" />
                     </items>
                      <graphic>
                         <ImageView id="profile_menu_icon" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
@@ -53,7 +53,7 @@
                         <Font size="22.0" />
                      </font>
                   </MenuButton>
-                  <Button id="teacher_home_menu_btn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Home">
+                  <Button id="teacher_home_menu_btn" fx:id="tequ_homeBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Home">
                      <graphic>
                         <ImageView id="home_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>

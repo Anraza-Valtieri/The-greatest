@@ -43,7 +43,7 @@
                   <MenuButton id="profile_menu_btn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="80.0" prefWidth="213.0" text="Rem &amp; Ram">
                     <items>
                       <MenuItem id="menu_changepassword" mnemonicParsing="false" text="Change Password" />
-                        <MenuItem id="menu_logout" mnemonicParsing="false" text="Log Out" />
+                        <MenuItem id="menu_logout" fx:id="teq_logout" mnemonicParsing="false" text="Log Out" />
                     </items>
                      <graphic>
                         <ImageView id="profile_menu_icon" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
@@ -52,22 +52,22 @@
                         <Font size="22.0" />
                      </font>
                   </MenuButton>
-                  <Button id="teacher_home_menu_btn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Home">
+                  <Button id="teacher_home_menu_btn" fx:id="teq_homeBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Home">
                      <graphic>
                         <ImageView id="home_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="teacher_createquiz_menu_btn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Create Quiz">
+                  <Button id="teacher_createquiz_menu_btn" fx:id="teq_createBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Create Quiz">
                      <graphic>
                         <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="teacher_viewquiz_menu_btn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="209.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Quiz">
+                  <Button id="teacher_viewquiz_menu_btn" fx:id="teq_viewBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="209.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Quiz">
                      <graphic>
                         <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="teacher_result_menu_btn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="172.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Student Result" wrapText="true">
+                  <Button id="teacher_result_menu_btn" fx:id="teq_viewBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="172.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Student Result" wrapText="true">
                      <graphic>
                         <ImageView id="result_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>

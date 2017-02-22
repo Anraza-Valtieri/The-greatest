@@ -89,44 +89,7 @@
                     <content>
                       <AnchorPane id="student_takequiz_content" fx:id="stq_anchorPane">
                            <children>
-                              <VBox id="vbox_student_quiz_fullwrap" fx:id="stq_dataVBox" prefHeight="200.0" prefWidth="568.0">
-                                 <children>
-                                    <VBox id="vbox_student_qnwrap" prefHeight="200.0" prefWidth="100.0">
-                                       <children>
-                                          <Label id="label_student_qnno_mcq" fx:id="label_student_qnno_mcq" text="Qn.1" />
-                                          <Label id="label_student_qndisplay" text="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog" wrapText="true" />
-                                          <RadioButton id="radio_student_mcq1" fx:id="radio_student_mcq1" mnemonicParsing="false" text="Ans 1" />
-                                          <RadioButton id="radio_student_mcq2" fx:id="radio_student_mcq2" mnemonicParsing="false" text="Ans 1" />
-                                          <RadioButton id="radio_student_mcq3" fx:id="radio_student_mcq3" mnemonicParsing="false" text="Ans 1" />
-                                          <RadioButton id="radio_student_mcq4" fx:id="radio_student_mcq4" mnemonicParsing="false" text="Ans 1" />
-                                       </children>
-                                    </VBox>
-                                    <VBox id="vbox_student_qnwrap" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
-                                       <children>
-                                          <Label id="label_student_qnno_tf" fx:id="label_student_qnno_tf" text="Qn.1" />
-                                          <Label id="label_student_qndisplay" text="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog" wrapText="true" />
-                                          <RadioButton id="radio_student_true" fx:id="radio_student_true" mnemonicParsing="false" text="True" />
-                                          <RadioButton id="radio_student_false" fx:id="radio_student_false" mnemonicParsing="false" text="False" />
-                                       </children>
-                                    </VBox>
-                                    <VBox id="vbox_student_qnwrap" layoutX="10.0" layoutY="172.0" prefHeight="200.0" prefWidth="100.0">
-                                       <children>
-                                          <Label id="label_student_qnno_sa" fx:id="label_student_qnno_sa" text="Qn.1" />
-                                          <Label id="label_student_qndisplay" text="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog" wrapText="true" />
-                                          <TextField id="textarea_student_ans" fx:id="textarea_student_ans" promptText="Input answer here">
-                                             <VBox.margin>
-                                                <Insets left="15.0" right="15.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                    <VBox id="vbox_student_qnwrap" layoutX="10.0" layoutY="280.0" prefHeight="200.0" prefWidth="100.0">
-                                       <children>
-                                          <Button id="btn_student_submitquiz" fx:id="btn_student_submitquiz" mnemonicParsing="false" text="Submit" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </VBox>
+                              <VBox id="vbox_student_quiz_fullwrap" fx:id="stq_dataVBox" prefHeight="200.0" prefWidth="568.0" />
                            </children>
                         </AnchorPane>
                     </content>
