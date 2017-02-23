@@ -86,8 +86,8 @@
                   </Label>
                   <TableView id="student_table_quizlist" fx:id="student_table_quizlist" prefHeight="384.0" prefWidth="619.0">
                     <columns>
-                      <TableColumn fx:id="tablestatus" prefWidth="127.0" text="ID" />
-                      <TableColumn fx:id="tableqname" prefWidth="441.0" text="Quiz Name" />
+                      <TableColumn fx:id="tablestatus" maxWidth="500.0" prefWidth="100.0" text="ID" />
+                      <TableColumn fx:id="tableqname" prefWidth="465.0" text="Quiz Name" />
                     </columns>
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" top="18.0" />

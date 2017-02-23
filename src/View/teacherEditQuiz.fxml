@@ -81,7 +81,7 @@
          <center>
             <VBox id="vbox_content" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField text="Edit Quiz" fx:id="quizName">
+                  <TextField fx:id="quizName" text="Edit Quiz">
                      <VBox.margin>
                         <Insets left="20.0" right="25.0" top="22.0" />
                      </VBox.margin>
@@ -102,11 +102,19 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button id="btn_delete_quiz" fx:id="btn_delete_quiz" onAction="#deleteQuiz" mnemonicParsing="false" text="Delete">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </Button>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button id="btn_delete_quiz" fx:id="btn_delete_quiz" mnemonicParsing="false" onAction="#deleteQuiz" text="Delete Entire Quiz(!)">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="fx_add_quiz" mnemonicParsing="false" text="Add New Question" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
             </VBox>
          </center>

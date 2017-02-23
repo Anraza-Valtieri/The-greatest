@@ -56,6 +56,7 @@ public class studentQuizController implements Initializable {
 			tableinfo = FXCollections.observableArrayList();
 			// Execute query and store result in a resultset
 			ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM quiz");
+			tableinfo.add(new tableData(null, "-Practice random questions-"));
 			while (rs.next()) {
 				//get string from db,whichever way
 				//rs.getString(1) = database first column
@@ -89,31 +90,35 @@ public class studentQuizController implements Initializable {
 					Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
 					// Get id of quiz and go to next fxml file that show full quiz
 					System.out.println(val);
-					boolean check = false;
-					try{
-						Integer.parseInt(val.toString());
-						check = true;
-					} catch(Exception e){
-						check = false;
-					}
+					if (val.equals(null)){
 
-					if (check){
-						main.quiz = new Quiz();
-						main.quiz.setQuiz_id(Integer.parseInt(val.toString()));
-
-						try{
-							Parent parent = FXMLLoader.load(getClass().getResource("/View/studentTakeQuiz.fxml"));
-							parent.getStylesheets().add("View/application.css");
-
-							Scene scence = new Scene(parent);
-							//Stage stage = (Stage) createQ.getScene().getWindow();
-							main.pStage.setScene(scence);
-
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+					} else {
+						boolean check = false;
+						try {
+							Integer.parseInt(val.toString());
+							check = true;
+						} catch (Exception e) {
+							check = false;
 						}
 
+						if (check) {
+							main.quiz = new Quiz();
+							main.quiz.setQuiz_id(Integer.parseInt(val.toString()));
+
+							try {
+								Parent parent = FXMLLoader.load(getClass().getResource("/View/studentTakeQuiz.fxml"));
+								parent.getStylesheets().add("View/application.css");
+
+								Scene scence = new Scene(parent);
+								//Stage stage = (Stage) createQ.getScene().getWindow();
+								main.pStage.setScene(scence);
+
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+
+						}
 					}
 				}
 
