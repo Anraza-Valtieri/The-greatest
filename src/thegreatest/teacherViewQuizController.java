@@ -52,6 +52,8 @@ public class teacherViewQuizController implements Initializable {
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+        main.quizName = "";
+        main.quizId = "";
         profile_menu_btn.setText(main.login.getName());
         dc = new DbConnection();
 

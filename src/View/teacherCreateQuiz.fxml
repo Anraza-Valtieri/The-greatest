@@ -133,7 +133,7 @@
                                           <Insets bottom="2.0" top="2.0" />
                                        </VBox.margin>
                                     </CheckBox>
-                                    <CheckBox id="cb3_createquiz" fx:id="cb3_createquiz" mnemonicParsing="false">
+                                    <CheckBox id="cb2_createquiz" fx:id="cb2_createquiz" mnemonicParsing="false">
                                        <graphic>
                                           <TextField id="txtfield_createquiz_mcq2" fx:id="txtfield_createquiz_mcq2" />
                                        </graphic>
@@ -141,7 +141,7 @@
                                           <Insets bottom="2.0" top="2.0" />
                                        </VBox.margin>
                                     </CheckBox>
-                                    <CheckBox id="cb4_createquiz" fx:id="cb4_createquiz" mnemonicParsing="false">
+                                    <CheckBox id="cb3_createquiz" fx:id="cb3_createquiz" mnemonicParsing="false">
                                        <graphic>
                                           <TextField id="txtfield_createquiz_mcq3" fx:id="txtfield_createquiz_mcq3" />
                                        </graphic>
@@ -149,7 +149,7 @@
                                           <Insets bottom="2.0" top="2.0" />
                                        </VBox.margin>
                                     </CheckBox>
-                                    <CheckBox id="cb2_createquiz" fx:id="cb2_createquiz" mnemonicParsing="false">
+                                    <CheckBox id="cb4_createquiz" fx:id="cb4_createquiz" mnemonicParsing="false">
                                        <graphic>
                                           <TextField id="txtfield_createquiz_mcq4" fx:id="txtfield_createquiz_mcq4" />
                                        </graphic>

@@ -213,25 +213,18 @@ public class teacherCreateQuizController implements Initializable {
 		ResultSet rs = null;
 		Connection connection = null;
 		PreparedStatement statement = null;
-
-		Account acc = null;
-		String query = "SELECT * FROM quiz_question WHERE subject=" + subject;
+		String query = "SELECT * FROM quiz_questions WHERE subject=" + subject;
 		dc = new DbConnection();
 		try {
 			connection = dc.Connect();
 			statement = connection.prepareStatement(query);
 			rs = statement.executeQuery(query);
-
-			if (rs.next()) {
-				main.quizName = subject;
-				main.qnno = rs.getInt(1);
-				return main.qnno;
+			int x = 0;
+			while (rs.next()) {
+				//main.quizName = subject;
+				x = rs.getInt(1);
 			}
-			else{
-				main.quizName = "";
-				main.qnno = 0;
-				return 0;
-			}
+			return x;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -250,7 +243,18 @@ public class teacherCreateQuizController implements Initializable {
 	public void initialize(java.net.URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		tcq_profile_menu_btn.setText(main.login.getName());
+		if(main.quizName != "") {
+			txtbx_teacher_createquiz_quiztitle.setText(main.quizName);
+			txtbx_teacher_createquiz_quiztitle.setDisable(true);
+			teacher_createquiz_createbtn.setDisable(true);
+			main.qnno = getMaxQuestionID(main.quizName)+1;
 
+			tc_homeBtn.setDisable(true);
+			tc_logout.setDisable(true);
+			btn_addmcq.setDisable(false);
+			btn_addtf.setDisable(false);
+			btn_addsa.setDisable(false);
+		}
 		tc_logout.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {

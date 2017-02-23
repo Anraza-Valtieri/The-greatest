@@ -109,7 +109,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="fx_add_quiz" mnemonicParsing="false" text="Add New Question" />
+                        <Button fx:id="fx_add_question" mnemonicParsing="false" text="Add New Question" />
                      </children>
                      <VBox.margin>
                         <Insets left="25.0" />
