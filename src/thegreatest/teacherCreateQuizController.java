@@ -143,10 +143,16 @@ public class teacherCreateQuizController implements Initializable {
 			q.setData3(txtfield_createquiz_mcq3.getText());
 			q.setData4(txtfield_createquiz_mcq4.getText());
 			String CBoption = "";
-			CBoption += cb1_createquiz.isSelected() ? "1" : "";
-			CBoption += cb2_createquiz.isSelected() ? "2" : "";
-			CBoption += cb3_createquiz.isSelected() ? "3" : "";
-			CBoption += cb4_createquiz.isSelected() ? "4" : "";
+			if(cb1_createquiz.isSelected() && !txtfield_createquiz_mcq1.getText().trim().isEmpty())
+				CBoption += "1";
+			if(cb2_createquiz.isSelected() && !txtfield_createquiz_mcq2.getText().trim().isEmpty())
+				CBoption += "2";
+			if(cb3_createquiz.isSelected() && !txtfield_createquiz_mcq3.getText().trim().isEmpty())
+				CBoption += "3";
+			if(cb4_createquiz.isSelected() && !txtfield_createquiz_mcq4.getText().trim().isEmpty())
+				CBoption += "4";
+			if(CBoption.isEmpty())
+				return;
 			q.setData5(CBoption);
 			int marks = Integer.parseInt(txtbx_createquiz_mcq_marks.getText());
 			if(marks > 0)
