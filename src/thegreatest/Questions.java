@@ -300,6 +300,55 @@ public class Questions {
         return aq;
     }
 
+    public ArrayList<Questions> getPracticeQuestions()  {
+        ResultSet rs = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        Questions q = null;
+
+        ArrayList<Questions> aq = new ArrayList<Questions>();
+
+        dc = new DbConnection();
+        try {
+            connection = dc.Connect();
+
+            String query = "SELECT * FROM quiz_questions ORDER BY RAND() LIMIT 6" ;
+            statement = connection.prepareStatement(query);
+            rs = statement.executeQuery();
+
+            while (rs.next()) {
+                q = new Questions();
+                q.setQuestion_text(rs.getString("question_text"));
+                q.setSubject(rs.getString("subject"));
+                q.setQuestion_type(rs.getInt("question_type"));
+                q.setData1(rs.getString("data1"));
+                q.setData2(rs.getString("data2"));
+                q.setData3(rs.getString("data3"));
+                q.setData4(rs.getString("data4"));
+                q.setData5(rs.getString("data5"));
+                q.setMarks(rs.getDouble("marks"));
+
+                aq.add(q);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+
+        }
+
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        return aq;
+    }
+
     public void cleanupQuestions(String subject){
         dc = new DbConnection();
         try{

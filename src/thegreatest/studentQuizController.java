@@ -90,8 +90,22 @@ public class studentQuizController implements Initializable {
 					Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
 					// Get id of quiz and go to next fxml file that show full quiz
 					System.out.println(val);
-					if (val.equals(null)){
+					if (val == null){
+						main.quiz = new Quiz();
+						main.quiz.setQuiz_id(-12345);
 
+						try {
+							Parent parent = FXMLLoader.load(getClass().getResource("/View/studentTakeQuiz.fxml"));
+							parent.getStylesheets().add("View/application.css");
+
+							Scene scence = new Scene(parent);
+							//Stage stage = (Stage) createQ.getScene().getWindow();
+							main.pStage.setScene(scence);
+
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					} else {
 						boolean check = false;
 						try {

@@ -77,7 +77,61 @@ public class studentTakeQuizController implements Initializable {
 			}
 		});
 
-		if (main.quiz.getQuiz_id() != -1){
+		if (main.quiz.getQuiz_id() == -12345) {
+			main.quiz.setQuizname("Practice 6 random questions");
+			stq_quizName.setText(main.quiz.getQuizname());
+			Questions DUMMY = new Questions();
+			main.questions = DUMMY.getPracticeQuestions();
+
+			stq_dataVBox.setSpacing(10);
+
+			Button button = new Button("Submit");
+
+			VBox test;
+			VBox questionVBox;
+
+			for (int i = 0; i < main.questions.size(); i++) {
+				if (main.questions.get(i).getQuestion_type() == 0) {
+					test = studentTakeQuizController.createQuestionMCQ(main.questions.get(i).getQuestion_text(), main.questions.get(i).getData1(),
+							main.questions.get(i).getData2(), main.questions.get(i).getData3(), main.questions.get(i).getData4());
+					stq_dataVBox.getChildren().add(test);
+				} else if (main.questions.get(i).getQuestion_type() == 1) {
+					test = studentTakeQuizController.createQuestionTF(main.questions.get(i).getQuestion_text());
+					stq_dataVBox.getChildren().add(test);
+				} else if (main.questions.get(i).getQuestion_type() == 2) {
+					test = studentTakeQuizController.createQuestionSA(main.questions.get(i).getQuestion_text());
+					stq_dataVBox.getChildren().add(test);
+				}
+			}
+
+			stq_dataVBox.getChildren().add(button);
+
+			button.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					int marks = 0;
+
+					for (int i = 0; i < main.questions.size(); i++) {
+						if (main.questions.get(i).getQuestion_type() == 0) {
+							if (studentTakeQuizController.getAnswerMCQ(i, stq_dataVBox, main.questions.get(i).getData5())) {
+								marks += main.questions.get(i).getMarks();
+							}
+						} else if (main.questions.get(i).getQuestion_type() == 1) {
+							if (studentTakeQuizController.getAnswerTF(i, stq_dataVBox, main.questions.get(i).getData5())) {
+								marks += main.questions.get(i).getMarks();
+							}
+						} else if (main.questions.get(i).getQuestion_type() == 2) {
+							if (studentTakeQuizController.getAnswerSA(i, stq_dataVBox, main.questions.get(i).getData5())) {
+								marks += main.questions.get(i).getMarks();
+							}
+						}
+					}
+
+					System.out.println("Marks: " + marks);
+				}
+			});
+
+		} else if (main.quiz.getQuiz_id() != -1){
 			main.quiz.getQuizDBName();
 			stq_quizName.setText(main.quiz.getQuizname());
 			Questions DUMMY = new Questions();
@@ -207,20 +261,20 @@ public class studentTakeQuizController implements Initializable {
 	private static VBox createQuestionMCQ(String questionText, String mcq1, String mcq2, String mcq3, String mcq4){
 		VBox question = new VBox(5);
 		question.getChildren().addAll(studentTakeQuizController.createLabel(questionText), studentTakeQuizController.createRBtn(mcq1), studentTakeQuizController.createRBtn(mcq2),
-				studentTakeQuizController.createRBtn(mcq3), studentTakeQuizController.createRBtn(mcq4), studentTakeQuizController.createLabel(""));
+				studentTakeQuizController.createRBtn(mcq3), studentTakeQuizController.createRBtn(mcq4), studentTakeQuizController.createLabel("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _"));
 		return question;
 	}
 
 	private static VBox createQuestionTF(String questionText){
 		VBox question = new VBox(5);
 		question.getChildren().addAll(studentTakeQuizController.createLabel(questionText), studentTakeQuizController.createRBtn("True"), studentTakeQuizController.createRBtn("False"),
-				studentTakeQuizController.createLabel(""));
+				studentTakeQuizController.createLabel("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _"));
 		return question;
 	}
 
 	private static VBox createQuestionSA(String questionText) {
 		VBox question = new VBox(5);
-		question.getChildren().addAll(studentTakeQuizController.createLabel(questionText), studentTakeQuizController.createTField(), studentTakeQuizController.createLabel(""));
+		question.getChildren().addAll(studentTakeQuizController.createLabel(questionText), studentTakeQuizController.createTField(), studentTakeQuizController.createLabel("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _"));
 		return question;
 	}
 
