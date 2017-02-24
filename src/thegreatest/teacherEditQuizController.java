@@ -233,6 +233,8 @@ public class teacherEditQuizController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try{
+                    main.quizName = "";
+                    main.quizId = "";
                     Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
                     parent.getStylesheets().add("View/application.css");
 

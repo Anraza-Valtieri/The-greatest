@@ -136,8 +136,13 @@ public class teacherCreateQuizController implements Initializable {
 			q.setQuestion_id(main.qnno);
 			q.setTeacher_id(main.login.getUniqID());
 			q.setSubject(main.quizName);
+			if(txtfield_createquiz_mcq.getText().trim().isEmpty())
+				return;
 			q.setQuestion_text(txtfield_createquiz_mcq.getText());
 			q.setQuestion_type(0);
+			if(txtfield_createquiz_mcq1.getText().trim().isEmpty() || txtfield_createquiz_mcq2.getText().trim().isEmpty()
+					|| txtfield_createquiz_mcq3.getText().trim().isEmpty() || txtfield_createquiz_mcq4.getText().trim().isEmpty())
+				return;
 			q.setData1(txtfield_createquiz_mcq1.getText());
 			q.setData2(txtfield_createquiz_mcq2.getText());
 			q.setData3(txtfield_createquiz_mcq3.getText());
@@ -158,7 +163,7 @@ public class teacherCreateQuizController implements Initializable {
 			if(marks > 0)
 				q.setMarks(marks);
 			else
-				q.setMarks(0);
+				q.setMarks(1);
 
 			q.createQuestion();
 		}
@@ -168,6 +173,8 @@ public class teacherCreateQuizController implements Initializable {
 			q.setQuestion_id(main.qnno);
 			q.setTeacher_id(main.login.getUniqID());
 			q.setSubject(main.quizName);
+			if(txtfield_createquiz_tf.getText().trim().isEmpty())
+				return;
 			q.setQuestion_text(txtfield_createquiz_tf.getText());
 			q.setQuestion_type(1);
 			q.setData1(txtfield_createquiz_tf_1.getText());
@@ -175,14 +182,23 @@ public class teacherCreateQuizController implements Initializable {
 			q.setData3("");
 			q.setData4("");
 			String CBoption = "";
-			CBoption += txtfield_createquiz_tf_1.isSelected() ? "1" : "";
-			CBoption += txtfield_createquiz_tf_2.isSelected() ? "2" : "";
+			//CBoption += txtfield_createquiz_tf_1.isSelected() ? "1" : "";
+			//CBoption += txtfield_createquiz_tf_2.isSelected() ? "2" : "";
+
+			if(txtfield_createquiz_tf_1.isSelected() && !txtfield_createquiz_tf_2.isSelected())
+				CBoption = "1";
+
+			if(txtfield_createquiz_tf_2.isSelected() && !txtfield_createquiz_tf_1.isSelected())
+				CBoption = "2";
+
+			if(CBoption.isEmpty())
+				return;
 			q.setData5(CBoption);
 			int marks = Integer.parseInt(txtbx_createquiz_tf_marks.getText());
 			if(marks > 0)
 				q.setMarks(marks);
 			else
-				q.setMarks(0);
+				q.setMarks(1);
 
 			q.createQuestion();
 
@@ -192,18 +208,22 @@ public class teacherCreateQuizController implements Initializable {
 			q.setQuestion_id(main.qnno);
 			q.setTeacher_id(main.login.getUniqID());
 			q.setSubject(main.quizName);
+			if(txtfield_createquiz_sa.getText().trim().isEmpty())
+				return;
 			q.setQuestion_text(txtfield_createquiz_sa.getText());
 			q.setQuestion_type(2);
 			q.setData1("");
 			q.setData2("");
 			q.setData3("");
 			q.setData4("");
+			if(txtfield_createquiz_saAns.getText().trim().isEmpty())
+				return;
 			q.setData5(txtfield_createquiz_saAns.getText());
 			int marks = Integer.parseInt(txtbx_createquiz_sa_marks.getText());
 			if(marks > 0)
 				q.setMarks(marks);
 			else
-				q.setMarks(0);
+				q.setMarks(1);
 
 			q.createQuestion();
 		}
@@ -219,7 +239,7 @@ public class teacherCreateQuizController implements Initializable {
 		ResultSet rs = null;
 		Connection connection = null;
 		PreparedStatement statement = null;
-		String query = "SELECT * FROM quiz_questions WHERE subject=" + subject;
+		String query = "SELECT * FROM quiz_questions WHERE subject='" + subject+"'";
 		dc = new DbConnection();
 		try {
 			connection = dc.Connect();
