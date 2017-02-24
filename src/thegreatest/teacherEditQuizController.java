@@ -29,7 +29,6 @@ public class teacherEditQuizController implements Initializable {
     @FXML Button teq_homeBtn;
     @FXML Button teq_createBtn;
     @FXML Button teq_viewBtn;
-    @FXML Button teq_resultBtn;
     @FXML Button btn_delete_quiz;
     @FXML Button fx_add_question;
     @FXML
@@ -248,27 +247,6 @@ public class teacherEditQuizController implements Initializable {
 	        	/* System.out.println("?!?!?!");*/
             }
         });
-
-        teq_resultBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try{
-                    Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
-                    parent.getStylesheets().add("View/application.css");
-
-                    Scene scence = new Scene(parent);
-                    //Stage stage = (Stage) createQ.getScene().getWindow();
-                    main.pStage.setScene(scence);
-
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-	        	/* System.out.println("?!?!?!");*/
-            }
-        });
-        
-        
 	}
 
 

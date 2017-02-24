@@ -19,7 +19,7 @@ public class studentTakeQuizController implements Initializable {
 
 	@FXML private MenuButton stq_profile_menu_btn;
 	@FXML private MenuItem stQuiz_logout;
-	@FXML private Button stQuiz_homeBtn;
+	@FXML private Button stQuiz_quizBtn;
 	@FXML private Label stq_quizName;
 	@FXML private Button btn_student_submitquiz;
 	@FXML private Label label_student_qnno_mcq;
@@ -72,7 +72,7 @@ public class studentTakeQuizController implements Initializable {
 			}
 		});
 
-		stQuiz_homeBtn.setOnAction(new EventHandler<ActionEvent>() {
+		stQuiz_quizBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				try{
