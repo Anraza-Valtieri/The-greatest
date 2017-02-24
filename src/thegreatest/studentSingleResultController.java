@@ -28,12 +28,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-/**
- * Created by munpa on 24/2/2017.
- */
 public class studentSingleResultController implements Initializable {
     @FXML private MenuButton ssr_profile_menu_btn;
-    @FXML private Button ssResult_homeBtn;
     @FXML private Button ssResult_quizBtn;
     @FXML private Button ssResult_resultBtn;
     @FXML private MenuItem ssResult_logout;
@@ -62,30 +58,11 @@ public class studentSingleResultController implements Initializable {
             }
         });
 
-        ssResult_homeBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try{
-                    Parent parent = FXMLLoader.load(getClass().getResource("/View/studentQuiz.fxml"));
-                    parent.getStylesheets().add("View/application.css");
-
-                    Scene scence = new Scene(parent);
-                    //Stage stage = (Stage) createQ.getScene().getWindow();
-                    main.pStage.setScene(scence);
-
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-	        	/* System.out.println("?!?!?!");*/
-            }
-        });
-
         ssResult_quizBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try{
-                    Parent parent = FXMLLoader.load(getClass().getResource("/View/studentTakeQuiz.fxml"));
+                    Parent parent = FXMLLoader.load(getClass().getResource("/View/studentQuiz.fxml"));
                     parent.getStylesheets().add("View/application.css");
 
                     Scene scence = new Scene(parent);

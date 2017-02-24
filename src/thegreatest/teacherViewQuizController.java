@@ -32,7 +32,6 @@ public class teacherViewQuizController implements Initializable {
     @FXML Button tv_homeBtn;
     @FXML Button tv_createBtn;
     @FXML Button tv_viewBtn;
-    @FXML Button tv_resultBtn;
     @FXML
     private Label label;
     @FXML
@@ -182,26 +181,6 @@ public class teacherViewQuizController implements Initializable {
 	        	/* System.out.println("?!?!?!");*/
             }
         });
-
-        tv_resultBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try{
-                    Parent parent = FXMLLoader.load(getClass().getResource("/View/teacherViewQuiz.fxml"));
-                    parent.getStylesheets().add("View/application.css");
-
-                    Scene scence = new Scene(parent);
-                    //Stage stage = (Stage) createQ.getScene().getWindow();
-                    main.pStage.setScene(scence);
-
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-	        	/* System.out.println("?!?!?!");*/
-            }
-        });
-        
         
 	}
 

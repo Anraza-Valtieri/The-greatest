@@ -30,7 +30,6 @@ import javafx.event.EventHandler;
 
 public class studentResultController implements Initializable {
 	@FXML private MenuButton sr_profile_menu_btn;
-	@FXML private Button srQuiz_homeBtn;
 	@FXML private Button srQuiz_quizBtn;
 	@FXML private Button srQuiz_viewBtn;
 	@FXML private MenuItem srQuiz_logout;
@@ -82,10 +81,8 @@ public class studentResultController implements Initializable {
 //                	tableData rowData = row.getItem();
 //                    System.out.println(rowData);
 
-					studentR_table_quizlist.getSelectionModel().setCellSelectionEnabled(true);
-					ObservableList selectedCells = studentR_table_quizlist.getSelectionModel().getSelectedCells();
-					TablePosition tablePosition = (TablePosition) selectedCells.get(0);
-					Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
+					tableData clickedRow = row.getItem();
+					String val = clickedRow.getqstatus().toString();
 					// Get id of quiz and go to next fxml file that show full quiz
 					System.out.println(val);
 					boolean check = false;
@@ -137,31 +134,12 @@ public class studentResultController implements Initializable {
 	        	/* System.out.println("?!?!?!");*/	
 	         }
        });
-		
-		srQuiz_homeBtn.setOnAction(new EventHandler<ActionEvent>() {
-	         @Override
-	         public void handle(ActionEvent event) {
-	        	 try{
-	        		 Parent parent = FXMLLoader.load(getClass().getResource("/View/studentQuiz.fxml"));	        	 
-	        		 parent.getStylesheets().add("View/application.css");
-	     		
-	        		 Scene scence = new Scene(parent);
-	        		 //Stage stage = (Stage) createQ.getScene().getWindow();
-	        		 main.pStage.setScene(scence);
-	        		 
-	        	 } catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 	 
-	        	/* System.out.println("?!?!?!");*/	
-	         }
-        });
-		
+
 		srQuiz_quizBtn.setOnAction(new EventHandler<ActionEvent>() {
 	         @Override
 	         public void handle(ActionEvent event) {
 	        	 try{
-	        		 Parent parent = FXMLLoader.load(getClass().getResource("/View/studentTakeQuiz.fxml"));	        	 
+	        		 Parent parent = FXMLLoader.load(getClass().getResource("/View/studentQuiz.fxml"));
 	        		 parent.getStylesheets().add("View/application.css");
 	     		
 	        		 Scene scence = new Scene(parent);

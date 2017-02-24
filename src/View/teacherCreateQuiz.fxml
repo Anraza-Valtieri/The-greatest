@@ -68,11 +68,6 @@
                         <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="teacher_result_menu_btn" alignment="BASELINE_LEFT" disable="true" layoutX="10.0" layoutY="172.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Student Result" wrapText="true">
-                     <graphic>
-                        <ImageView id="result_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
                </children>
                <padding>
                   <Insets top="10.0" />
@@ -93,7 +88,7 @@
                   <HBox id="teacher_hbox_btn" layoutX="10.0" layoutY="72.0" prefHeight="44.0" prefWidth="1117.0">
                      <children>
                         <TextField id="txtbx_teacher_createquiz_quiztitle" fx:id="txtbx_teacher_createquiz_quiztitle" promptText="Quiz Title" />
-                        <Button id="teacher_createquiz_createbtn" fx:id="teacher_createquiz_createbtn" onAction="#AddQuizName" mnemonicParsing="false" text="Create Quiz" />
+                        <Button id="teacher_createquiz_createbtn" fx:id="teacher_createquiz_createbtn" mnemonicParsing="false" onAction="#AddQuizName" text="Create Quiz" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="-15.0" left="22.0" top="5.0" />
@@ -162,7 +157,7 @@
                                           <Insets top="5.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <Button id="btn_createquiz_mcq" fx:id="btn_createquiz_mcq" onAction="#createQuestion" mnemonicParsing="false" text="Save">
+                                    <Button id="btn_createquiz_mcq" fx:id="btn_createquiz_mcq" mnemonicParsing="false" onAction="#createQuestion" text="Save">
                                        <VBox.margin>
                                           <Insets top="5.0" />
                                        </VBox.margin>
@@ -192,7 +187,7 @@
                                           <Insets top="5.0" />
                                        </VBox.margin>
                                     </TextField>
-                                    <Button id="btn_createquiz_tf" fx:id="btn_createquiz_tf" onAction="#createQuestion" mnemonicParsing="false" text="Save">
+                                    <Button id="btn_createquiz_tf" fx:id="btn_createquiz_tf" mnemonicParsing="false" onAction="#createQuestion" text="Save">
                                        <VBox.margin>
                                           <Insets top="5.0" />
                                        </VBox.margin>
@@ -213,7 +208,7 @@
                                        </VBox.margin>
                                     </TextField>
                                     <TextField id="txtbx_createquiz_sa_marks" fx:id="txtbx_createquiz_sa_marks" maxWidth="46.0" promptText="Marks" />
-                                    <Button id="btn_createquiz_sa" fx:id="btn_createquiz_sa" onAction="#createQuestion" mnemonicParsing="false" text="Save">
+                                    <Button id="btn_createquiz_sa" fx:id="btn_createquiz_sa" mnemonicParsing="false" onAction="#createQuestion" text="Save">
                                        <VBox.margin>
                                           <Insets top="5.0" />
                                        </VBox.margin>

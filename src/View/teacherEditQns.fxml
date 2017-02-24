@@ -68,11 +68,6 @@
                         <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="teacher_result_menu_btn" alignment="BASELINE_LEFT" disable="true" layoutX="10.0" layoutY="172.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Student Result" wrapText="true">
-                     <graphic>
-                        <ImageView id="result_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
                </children>
                <padding>
                   <Insets top="10.0" />
@@ -161,12 +156,12 @@
                                     </TextField>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Button id="btn_editqns_delmcq" fx:id="btn_editqns_delmcq" onAction="#deleteQuestion" mnemonicParsing="false" text="Delete">
+                                          <Button id="btn_editqns_delmcq" fx:id="btn_editqns_delmcq" mnemonicParsing="false" onAction="#deleteQuestion" text="Delete">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button id="btn_editqns_savemcq" fx:id="btn_editqns_savemcq" onAction="#createQuestion" mnemonicParsing="false" text="Save" />
+                                          <Button id="btn_editqns_savemcq" fx:id="btn_editqns_savemcq" mnemonicParsing="false" onAction="#createQuestion" text="Save" />
                                        </children>
                                        <VBox.margin>
                                           <Insets top="5.0" />
@@ -199,12 +194,12 @@
                                     </TextField>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Button id="btn_editqns_deltf" fx:id="btn_editqns_deltf" onAction="#deleteQuestion" mnemonicParsing="false" text="Delete">
+                                          <Button id="btn_editqns_deltf" fx:id="btn_editqns_deltf" mnemonicParsing="false" onAction="#deleteQuestion" text="Delete">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button id="btn_editqns_savetf" fx:id="btn_editqns_savetf" onAction="#createQuestion" mnemonicParsing="false" text="Save" />
+                                          <Button id="btn_editqns_savetf" fx:id="btn_editqns_savetf" mnemonicParsing="false" onAction="#createQuestion" text="Save" />
                                        </children>
                                        <VBox.margin>
                                           <Insets top="5.0" />
@@ -229,12 +224,12 @@
 
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Button id="btn_editqns_delsa" fx:id="btn_editqns_delsa" onAction="#deleteQuestion" mnemonicParsing="false" text="Delete">
+                                          <Button id="btn_editqns_delsa" fx:id="btn_editqns_delsa" mnemonicParsing="false" onAction="#deleteQuestion" text="Delete">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button id="btn_editqns_savesa" fx:id="btn_editqns_savesa" onAction="#createQuestion" mnemonicParsing="false" text="Save" />
+                                          <Button id="btn_editqns_savesa" fx:id="btn_editqns_savesa" mnemonicParsing="false" onAction="#createQuestion" text="Save" />
                                        </children>
                                        <VBox.margin>
                                           <Insets top="5.0" />
