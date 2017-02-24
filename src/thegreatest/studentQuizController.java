@@ -83,8 +83,15 @@ public class studentQuizController implements Initializable {
 //                	tableData rowData = row.getItem();
 //                    System.out.println(rowData);
 
+					String val;
+
 					tableData clickedRow = row.getItem();
-					String val = clickedRow.getqstatus().toString();
+					if (clickedRow.getqstatus() == null){
+						val = null;
+					} else {
+						val = clickedRow.getqstatus().toString();
+					}
+
 					// Get id of quiz and go to next fxml file that show full quiz
 					System.out.println(val);
 					if (val == null){
