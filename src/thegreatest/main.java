@@ -30,6 +30,7 @@ public class main extends Application {
 	public static Account login;
 	public static Quiz quiz;
 	public static ArrayList<Questions> questions;
+	public static Result results;
 
 	public static String userName;
 

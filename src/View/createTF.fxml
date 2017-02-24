@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="createTFPane" fx:id="createTFPane" prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.">
+<AnchorPane id="createTFPane" fx:id="createTFPane" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.">
    <children>
       <VBox id="vbox_teacher_qnwrap" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="568.0">
          <children>
@@ -17,8 +16,11 @@
                   <Insets left="15.0" right="15.0" />
                </VBox.margin>
             </TextField>
-            <RadioButton mnemonicParsing="false" text="True" />
-            <RadioButton layoutX="10.0" layoutY="76.0" mnemonicParsing="false" text="False" />
+            <RadioButton mnemonicParsing="false" text="True">
+               <toggleGroup>
+                  <ToggleGroup fx:id="TFGroup" />
+               </toggleGroup></RadioButton>
+            <RadioButton layoutX="10.0" layoutY="76.0" mnemonicParsing="false" text="False" toggleGroup="$TFGroup" />
             <Button id="teacher_createquiz_removebtn" mnemonicParsing="false" text="Next" />
          </children>
       </VBox>

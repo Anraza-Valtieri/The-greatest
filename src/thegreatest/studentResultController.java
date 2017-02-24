@@ -34,10 +34,91 @@ public class studentResultController implements Initializable {
 	@FXML private Button srQuiz_quizBtn;
 	@FXML private Button srQuiz_viewBtn;
 	@FXML private MenuItem srQuiz_logout;
+
+	@FXML
+	private TableView<tableData> studentR_table_quizlist;
+	@FXML
+	private TableColumn<tableData, String> tablestatus;
+	@FXML
+	private TableColumn<tableData, String> tableqname;
+	//Initialize observable list to hold out database data
+	private ObservableList<tableData> tableinfo;
+	private DbConnection dc;
 	
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
 		sr_profile_menu_btn.setText(main.login.getName());
+		dc = new DbConnection();
+
+		try {
+			Connection conn = dc.Connect();
+			tableinfo = FXCollections.observableArrayList();
+			// Execute query and store result in a resultset
+			ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM results WHERE user = " + main.login.getaID());
+			while (rs.next()) {
+				//get string from db,whichever way
+				//rs.getString(1) = database first column
+				tableinfo.add(new tableData(rs.getString(1), rs.getString(3)));
+			}
+
+		} catch (SQLException ex) {
+			System.err.println("Error"+ex);
+		}
+
+		//Set cell value factory to tableview.
+		//NB.PropertyValue Factory must be the same with the one set in model class.
+		//Can use and get ID of quiz but visible to false
+		tablestatus.setCellValueFactory(new PropertyValueFactory<>("qstatus"));
+		tableqname.setCellValueFactory(new PropertyValueFactory<>("qname"));
+
+		studentR_table_quizlist.setItems(null);
+		studentR_table_quizlist.setItems(tableinfo);
+
+		// For selection of view quiz
+		studentR_table_quizlist.setRowFactory( tv -> {
+			TableRow<tableData> row = new TableRow<>();
+			row.setOnMouseClicked(event -> {
+				if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+//                	tableData rowData = row.getItem();
+//                    System.out.println(rowData);
+
+					studentR_table_quizlist.getSelectionModel().setCellSelectionEnabled(true);
+					ObservableList selectedCells = studentR_table_quizlist.getSelectionModel().getSelectedCells();
+					TablePosition tablePosition = (TablePosition) selectedCells.get(0);
+					Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
+					// Get id of quiz and go to next fxml file that show full quiz
+					System.out.println(val);
+					boolean check = false;
+					try {
+						Integer.parseInt(val.toString());
+						check = true;
+					} catch (Exception e) {
+						check = false;
+					}
+
+					if (check) {
+						main.results = new Result();
+						main.results.setResultID(Integer.parseInt(val.toString()));
+
+						try {
+							Parent parent = FXMLLoader.load(getClass().getResource("/View/studentSingleResult.fxml"));
+							parent.getStylesheets().add("View/application.css");
+
+							Scene scence = new Scene(parent);
+							//Stage stage = (Stage) createQ.getScene().getWindow();
+							main.pStage.setScene(scence);
+
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+
+					}
+				}
+			});
+			return row;
+		});
+
 		srQuiz_logout.setOnAction(new EventHandler<ActionEvent>() {
 	         @Override
 	         public void handle(ActionEvent event) {

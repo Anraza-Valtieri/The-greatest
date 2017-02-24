@@ -35,8 +35,22 @@ public class studentTakeQuizController implements Initializable {
 	@FXML private VBox stq_dataVBox;
 	@FXML TextField textarea_student_ans;
 
+
+	static int marksObtained = 0;
+	static int totalMarks = 0;
+	static String inputanswer = "";
+	static String actualanswer = "";
+	static String question = "";
+	static String indvmark = "";
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		marksObtained = 0;
+		totalMarks = 0;
+		inputanswer = "";
+		actualanswer = "";
+		question = "";
+		indvmark = "";
 		// TODO Auto-generated method stub
 		stq_profile_menu_btn.setText(main.login.getName());
 		stQuiz_logout.setOnAction(new EventHandler<ActionEvent>() {
@@ -102,6 +116,36 @@ public class studentTakeQuizController implements Initializable {
 					test = studentTakeQuizController.createQuestionSA(main.questions.get(i).getQuestion_text());
 					stq_dataVBox.getChildren().add(test);
 				}
+
+				totalMarks += main.questions.get(i).getMarks();
+				if (main.questions.get(i).getQuestion_type() == 0){
+					if (main.questions.get(i).getData5().contains("1")){
+						actualanswer += main.questions.get(i).getData1() + ";";
+					}
+					if (main.questions.get(i).getData5().contains("2")){
+						actualanswer += main.questions.get(i).getData2() + ";";
+					}
+					if (main.questions.get(i).getData5().contains("3")){
+						actualanswer += main.questions.get(i).getData3() + ";";
+					}
+					if (main.questions.get(i).getData5().contains("4")){
+						actualanswer += main.questions.get(i).getData4() + ";";
+					}
+
+					actualanswer += "/*/*/";
+
+				} else if (main.questions.get(i).getQuestion_type() == 1){
+					if (main.questions.get(i).getData5().equals("1")){
+						actualanswer += "True/*/*/";
+					} else {
+						actualanswer += "False/*/*/";
+					}
+
+				} else {
+					actualanswer += "Keywords: " + main.questions.get(i).getData5() + "/*/*/";
+				}
+				question += main.questions.get(i).getQuestion_text() + "/*/*/";
+
 			}
 
 			stq_dataVBox.getChildren().add(button);
@@ -115,19 +159,43 @@ public class studentTakeQuizController implements Initializable {
 						if (main.questions.get(i).getQuestion_type() == 0) {
 							if (studentTakeQuizController.getAnswerMCQ(i, stq_dataVBox, main.questions.get(i).getData5())) {
 								marks += main.questions.get(i).getMarks();
+								indvmark += String.valueOf(main.questions.get(i).getMarks()) + "/*/*/";
+							} else {
+								indvmark += "0/*/*/";
 							}
 						} else if (main.questions.get(i).getQuestion_type() == 1) {
 							if (studentTakeQuizController.getAnswerTF(i, stq_dataVBox, main.questions.get(i).getData5())) {
 								marks += main.questions.get(i).getMarks();
+								indvmark += String.valueOf(main.questions.get(i).getMarks()) + "/*/*/";
+							} else {
+								indvmark += "0/*/*/";
 							}
 						} else if (main.questions.get(i).getQuestion_type() == 2) {
 							if (studentTakeQuizController.getAnswerSA(i, stq_dataVBox, main.questions.get(i).getData5())) {
 								marks += main.questions.get(i).getMarks();
+								indvmark += String.valueOf(main.questions.get(i).getMarks()) + "/*/*/";
+							} else {
+								indvmark += "0/*/*/";
 							}
 						}
 					}
 
-					System.out.println("Marks: " + marks);
+					marksObtained = marks;
+
+					doTheResultThingy(main.login.getaID(), main.quiz.getQuizname(), String.valueOf(marksObtained), String.valueOf(totalMarks), inputanswer, actualanswer, question, indvmark);
+
+					try {
+						Parent parent = FXMLLoader.load(getClass().getResource("/View/studentResult.fxml"));
+						parent.getStylesheets().add("View/application.css");
+
+						Scene scence = new Scene(parent);
+						//Stage stage = (Stage) createQ.getScene().getWindow();
+						main.pStage.setScene(scence);
+
+					} catch (IOException ex) {
+						// TODO Auto-generated catch block
+						ex.printStackTrace();
+					}
 				}
 			});
 
@@ -158,6 +226,36 @@ public class studentTakeQuizController implements Initializable {
 					test = studentTakeQuizController.createQuestionSA(main.questions.get(i).getQuestion_text());
 					stq_dataVBox.getChildren().add(test);
 				}
+
+				totalMarks += main.questions.get(i).getMarks();
+				if (main.questions.get(i).getQuestion_type() == 0){
+					if (main.questions.get(i).getData5().contains("1")){
+						actualanswer += main.questions.get(i).getData1() + ";";
+					}
+					if (main.questions.get(i).getData5().contains("2")){
+						actualanswer += main.questions.get(i).getData2() + ";";
+					}
+					if (main.questions.get(i).getData5().contains("3")){
+						actualanswer += main.questions.get(i).getData3() + ";";
+					}
+					if (main.questions.get(i).getData5().contains("4")){
+						actualanswer += main.questions.get(i).getData4() + ";";
+					}
+
+					actualanswer += "/*/*/";
+
+				} else if (main.questions.get(i).getQuestion_type() == 1){
+					if (main.questions.get(i).getData5().equals("0")){
+						actualanswer += "True/*/*/";
+					} else {
+						actualanswer += "False/*/*/";
+					}
+
+				} else {
+					actualanswer += "Keywords: " + main.questions.get(i).getData5() + "/*/*/";
+				}
+				question += main.questions.get(i).getQuestion_text() + "/*/*/";
+
 			}
 
 			stq_dataVBox.getChildren().add(button);
@@ -170,69 +268,46 @@ public class studentTakeQuizController implements Initializable {
 						if (main.questions.get(i).getQuestion_type() == 0){
 							if (studentTakeQuizController.getAnswerMCQ(i, stq_dataVBox, main.questions.get(i).getData5())) {
 								marks += main.questions.get(i).getMarks();
+								indvmark += String.valueOf(main.questions.get(i).getMarks()) + "/*/*/";
+							} else {
+								indvmark += "0/*/*/";
 							}
 						} else if (main.questions.get(i).getQuestion_type() == 1){
 							if (studentTakeQuizController.getAnswerTF(i, stq_dataVBox, main.questions.get(i).getData5())) {
 								marks += main.questions.get(i).getMarks();
+								indvmark += String.valueOf(main.questions.get(i).getMarks()) + "/*/*/";
+							} else {
+								indvmark += "0/*/*/";
 							}
 						} else if (main.questions.get(i).getQuestion_type() == 2){
 							if (studentTakeQuizController.getAnswerSA(i, stq_dataVBox, main.questions.get(i).getData5())) {
 								marks += main.questions.get(i).getMarks();
+								indvmark += String.valueOf(main.questions.get(i).getMarks()) + "/*/*/";
+							} else {
+								indvmark += "0/*/*/";
 							}
 						}
 					}
 
-					System.out.println("Marks: " + marks);
+					marksObtained = marks;
+
+					doTheResultThingy(main.login.getaID(), main.quiz.getQuizname(), String.valueOf(marksObtained), String.valueOf(totalMarks), inputanswer, actualanswer, question, indvmark);
+
+					try {
+						Parent parent = FXMLLoader.load(getClass().getResource("/View/studentResult.fxml"));
+						parent.getStylesheets().add("View/application.css");
+
+						Scene scence = new Scene(parent);
+						//Stage stage = (Stage) createQ.getScene().getWindow();
+						main.pStage.setScene(scence);
+
+					} catch (IOException ex) {
+						// TODO Auto-generated catch block
+						ex.printStackTrace();
+					}
 				}
+
 			});
-
-
-
-			/*test = new VBox(5);
-			test.getChildren().addAll(studentTakeQuizController.createLabel("Test1"), studentTakeQuizController.createRBtn("test1"), studentTakeQuizController.createTField());
-			stq_dataVBox.getChildren().add(test);
-
-			test = new VBox(5);
-			test.getChildren().addAll(studentTakeQuizController.createLabel("Test2"), studentTakeQuizController.createRBtn("test2"), studentTakeQuizController.createTField());
-			stq_dataVBox.getChildren().add(test);
-
-			questionVBox = (VBox) stq_dataVBox.getChildren().get(0);
-
-			if (questionVBox.getChildren().get(0) instanceof Label) {
-				System.out.println("Found a Label of a question 1 at pos 0");
-				Label text = (Label)questionVBox.getChildren().get(0);
-				System.out.println(text.getText());
-			}
-			if (questionVBox.getChildren().get(1) instanceof Label) {
-				System.out.println("Found a Label of a question 1 at pos 1");
-				Label text = (Label)questionVBox.getChildren().get(1);
-				System.out.println(text.getText());
-			}
-			if (questionVBox.getChildren().get(2) instanceof Label) {
-				System.out.println("Found a Label of a question 1 at pos 2");
-				Label text = (Label)questionVBox.getChildren().get(2);
-				System.out.println(text.getText());
-			}
-
-			questionVBox = (VBox) stq_dataVBox.getChildren().get(1);
-
-			if (questionVBox.getChildren().get(0) instanceof Label) {
-				System.out.println("Found a Label of a question 2 at pos 0");
-				Label text = (Label)questionVBox.getChildren().get(0);
-				System.out.println(text.getText());
-			}
-			if (questionVBox.getChildren().get(1) instanceof Label) {
-				System.out.println("Found a Label of a question 2 at pos 1");
-				Label text = (Label)questionVBox.getChildren().get(1);
-				System.out.println(text.getText());
-			}
-			if (questionVBox.getChildren().get(2) instanceof Label) {
-				System.out.println("Found a Label of a question 2 at pos 2");
-				Label text = (Label)questionVBox.getChildren().get(2);
-				System.out.println(text.getText());
-			}
-*/
-
 		}
 	}
 
@@ -287,21 +362,31 @@ public class studentTakeQuizController implements Initializable {
 		rbtn = (RadioButton) questionVBox.getChildren().get(1);
 		if (rbtn.isSelected()) {
 			answer += "1";
+
+			inputanswer += main.questions.get(questionNo).getData1() + " ; ";
 		}
 			rbtn = (RadioButton) questionVBox.getChildren().get(2);
 		if (rbtn.isSelected()) {
 			answer += "2";
+
+			inputanswer += main.questions.get(questionNo).getData2() + " ; ";
 		}
 
 		rbtn = (RadioButton) questionVBox.getChildren().get(3);
 		if (rbtn.isSelected()) {
 			answer += "3";
+
+			inputanswer += main.questions.get(questionNo).getData3() + " ; ";
 		}
 
 		rbtn = (RadioButton) questionVBox.getChildren().get(4);
 		if (rbtn.isSelected()) {
 			answer += "4";
+
+			inputanswer += main.questions.get(questionNo).getData4() + " ; ";
 		}
+
+		inputanswer += "/*/*/";
 
 		System.out.println("ANSWER: " + answers + " SELECTED: " + answer);
 
@@ -328,10 +413,12 @@ public class studentTakeQuizController implements Initializable {
 		rbtn = (RadioButton) questionVBox.getChildren().get(1);
 		if (rbtn.isSelected()) {
 			answer += "1";
+			inputanswer += "True/*/*/";
 		}
 		rbtn = (RadioButton) questionVBox.getChildren().get(2);
 		if (rbtn.isSelected()) {
 			answer += "2";
+			inputanswer += "False/*/*/";
 		}
 
 		if (answer.equals(answers)){
@@ -354,15 +441,18 @@ public class studentTakeQuizController implements Initializable {
 
 		String answerToCheck = studentAnswer.getText();
 
+		inputanswer += answerToCheck + "/*/*/";
+
 		String[] answerSet = answers.split(",");
 
 		for (int i = 0; i < answerSet.length; i++){
 			if (answerToCheck.toLowerCase().contains(answerSet[i].toLowerCase())) {
 				check = true;
 				System.out.println("SA GAME GOOD: " + i);
-			} else{
+			} else {
 				check = false;
 				System.out.println("SA GAME NOT GOOD: " + i );
+				break;
 			}
 		}
 
@@ -372,6 +462,13 @@ public class studentTakeQuizController implements Initializable {
 		return check;
 	}
 
+	private static void doTheResultThingy(int userID, String quizname, String marksObtained, String totalMarks, String inputAnswer,
+										  String actualAnswer, String questions, String indvmark){
+		Result result = new Result(userID, quizname, marksObtained, totalMarks, inputAnswer, actualAnswer, questions, indvmark);
+		result.createResult();
+
+		return;
+	}
 
 
 

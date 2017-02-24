@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thegreatest.studentResultController">
+<AnchorPane id="baseAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thegreatest.studentSingleResultController">
    <children>
       <BorderPane id="baseStudentBorder" layoutY="14.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -40,10 +41,10 @@
          <left>
             <VBox id="vbox_menu" prefHeight="200.0" prefWidth="180.0" BorderPane.alignment="CENTER">
                <children>
-                  <MenuButton id="profile_menu_btn" fx:id="sr_profile_menu_btn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="80.0" prefWidth="213.0" text="Rem &amp; Ram">
+                  <MenuButton id="profile_menu_btn" fx:id="ssr_profile_menu_btn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="80.0" prefWidth="213.0" text="Rem &amp; Ram">
                     <items>
                       <MenuItem id="menu_changepassword" mnemonicParsing="false" text="Change Password" />
-                        <MenuItem id="menu_logout" fx:id="srQuiz_logout" mnemonicParsing="false" text="Log Out" />
+                        <MenuItem id="menu_logout" fx:id="ssResult_logout" mnemonicParsing="false" text="Log Out" />
                     </items>
                      <graphic>
                         <ImageView id="profile_menu_icon" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
@@ -52,17 +53,17 @@
                         <Font size="22.0" />
                      </font>
                   </MenuButton>
-                  <Button id="home_menu_btn" fx:id="srQuiz_homeBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Home">
+                  <Button id="home_menu_btn" fx:id="ssResult_homeBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Home">
                      <graphic>
                         <ImageView id="home_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="quiz_menu_btn" fx:id="srQuiz_quizBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Quiz">
+                  <Button id="quiz_menu_btn" fx:id="ssResult_quizBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="Quiz">
                      <graphic>
                         <ImageView id="quiz_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button id="result_menu_btn" fx:id="srQuiz_viewBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="172.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Result">
+                  <Button id="result_menu_btn" fx:id="ssResult_resultBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="172.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="213.0" text="View Result">
                      <graphic>
                         <ImageView id="result_menu_icon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -76,7 +77,7 @@
          <center>
             <VBox id="vbox_content" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="View Result">
+                  <Label fx:id="ssr_quizName" text="Results">
                      <VBox.margin>
                         <Insets left="20.0" top="22.0" />
                      </VBox.margin>
@@ -84,18 +85,18 @@
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <TableView id="student_table_result" fx:id="studentR_table_quizlist" prefHeight="384.0" prefWidth="619.0">
-                    <columns>
-                      <TableColumn fx:id="tablestatus" maxWidth="500.0" prefWidth="100.0" text="ID" />
-                      <TableColumn id="student_result" fx:id="tableqname" prefWidth="75.0" text="Quiz Name" />
-                    </columns>
+                  <ScrollPane id="scollpane_result_takequiz" fx:id="ssr_scrollPane" prefHeight="426.0" prefWidth="588.0">
+                    <content>
+                      <AnchorPane id="result_takequiz_content" fx:id="ssr_anchorPane">
+                           <children>
+                              <VBox id="vbox_result_quiz_fullwrap" fx:id="ssr_dataVBox" prefHeight="200.0" prefWidth="568.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" top="18.0" />
                      </VBox.margin>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
+                  </ScrollPane>
                </children>
             </VBox>
          </center>
