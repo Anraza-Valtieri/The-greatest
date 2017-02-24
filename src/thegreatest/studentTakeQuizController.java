@@ -356,34 +356,41 @@ public class studentTakeQuizController implements Initializable {
 	private static boolean getAnswerMCQ(int questionNo, VBox stq_dataVBox, String answers) {
 		boolean check = false;
 		String answer = "";
-		RadioButton rbtn;
+		RadioButton rbtn1;
+		RadioButton rbtn2;
+		RadioButton rbtn3;
+		RadioButton rbtn4;
 		VBox questionVBox = (VBox) stq_dataVBox.getChildren().get(questionNo);
 
-		rbtn = (RadioButton) questionVBox.getChildren().get(1);
-		if (rbtn.isSelected()) {
+		rbtn1 = (RadioButton) questionVBox.getChildren().get(1);
+		if (rbtn1.isSelected()) {
 			answer += "1";
 
 			inputanswer += main.questions.get(questionNo).getData1() + " ; ";
 		}
-			rbtn = (RadioButton) questionVBox.getChildren().get(2);
-		if (rbtn.isSelected()) {
+			rbtn2 = (RadioButton) questionVBox.getChildren().get(2);
+		if (rbtn2.isSelected()) {
 			answer += "2";
 
 			inputanswer += main.questions.get(questionNo).getData2() + " ; ";
 		}
 
-		rbtn = (RadioButton) questionVBox.getChildren().get(3);
-		if (rbtn.isSelected()) {
+		rbtn3 = (RadioButton) questionVBox.getChildren().get(3);
+		if (rbtn3.isSelected()) {
 			answer += "3";
 
 			inputanswer += main.questions.get(questionNo).getData3() + " ; ";
 		}
 
-		rbtn = (RadioButton) questionVBox.getChildren().get(4);
-		if (rbtn.isSelected()) {
+		rbtn4 = (RadioButton) questionVBox.getChildren().get(4);
+		if (rbtn4.isSelected()) {
 			answer += "4";
 
 			inputanswer += main.questions.get(questionNo).getData4() + " ; ";
+		}
+
+		if (!rbtn1.isSelected() && !rbtn2.isSelected() && !rbtn3.isSelected() && rbtn4.isSelected()){
+			inputanswer += "Did not enter anything/*/*/";
 		}
 
 		inputanswer += "/*/*/";
@@ -407,18 +414,23 @@ public class studentTakeQuizController implements Initializable {
 	private static boolean getAnswerTF(int questionNo, VBox stq_dataVBox, String answers) {
 		boolean check = false;
 		String answer = "";
-		RadioButton rbtn;
+		RadioButton rbtn1;
+		RadioButton rbtn2;
 		VBox questionVBox = (VBox) stq_dataVBox.getChildren().get(questionNo);
 
-		rbtn = (RadioButton) questionVBox.getChildren().get(1);
-		if (rbtn.isSelected()) {
+		rbtn1 = (RadioButton) questionVBox.getChildren().get(1);
+		if (rbtn1.isSelected()) {
 			answer += "1";
 			inputanswer += "True/*/*/";
 		}
-		rbtn = (RadioButton) questionVBox.getChildren().get(2);
-		if (rbtn.isSelected()) {
+		rbtn2 = (RadioButton) questionVBox.getChildren().get(2);
+		if (rbtn2.isSelected()) {
 			answer += "2";
 			inputanswer += "False/*/*/";
+		}
+
+		if (!rbtn1.isSelected() && !rbtn2.isSelected()){
+			inputanswer += "Did not enter anything/*/*/";
 		}
 
 		if (answer.equals(answers)){
@@ -441,7 +453,12 @@ public class studentTakeQuizController implements Initializable {
 
 		String answerToCheck = studentAnswer.getText();
 
-		inputanswer += answerToCheck + "/*/*/";
+		if (answerToCheck.equals("")){
+			inputanswer += "Did not enter anything/*/*/";
+		} else {
+
+			inputanswer += answerToCheck + "/*/*/";
+		}
 
 		String[] answerSet = answers.split(",");
 
